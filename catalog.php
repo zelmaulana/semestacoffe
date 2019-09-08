@@ -220,7 +220,9 @@
                                     <div class="tab-content">
                                         <div class="tab-pane fade active in" id="rekomendasi" >
                                         <?php
-                                        $sbarang = mysqli_query($koneksi, "SELECT * FROM m_barang a LEFT OUTER JOIN l_kategori b on a.kategori_id = b.kategori_id WHERE a.kategori_id = '$_GET[id]' AND a.judul LIKE '%$_POST[cari]%' ");
+										$sbarang = mysqli_query($koneksi, "SELECT * FROM m_barang a LEFT OUTER JOIN l_kategori b on a.kategori_id = b.kategori_id WHERE a.kategori_id = '$_GET[id]' AND a.judul LIKE '%$_POST[cari]%' ");
+										
+										
                                         while ($hbarang = mysqli_fetch_array($sbarang)){
                                             ?>
                                             <div class="col-sm-3">
@@ -395,10 +397,17 @@
 						}
 						else{
 							?>
+
+
+
+
+							<!-- kie sing jalan -->
 							<div class="tab-content">
 								<div class="tab-pane fade active in" id="rekomendasi" >
 								<?php
-								$sbarang = mysqli_query($koneksi, "SELECT * FROM m_barang a LEFT OUTER JOIN l_kategori b on a.kategori_id = b.kategori_id WHERE a.judul LIKE '%$_POST[cari]%' ");
+								$sbarang = mysqli_query($koneksi, "SELECT * FROM m_barang a LEFT OUTER JOIN l_kategori b on a.kategori_id = b.kategori_id WHERE a.judul LIKE '%$_POST[cari]%' ORDER BY brg_id DESC LIMIT 8 ");
+
+								//print  $sbarang ;
 								while ($hbarang = mysqli_fetch_array($sbarang)){
 									?>
 									<div class="col-sm-3">
