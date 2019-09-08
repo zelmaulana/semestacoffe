@@ -280,6 +280,35 @@ else{
 				}
 			}
 			?>
+	
+	<footer id="footer"><!--Footer-->
+		<div class="footer-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-3">
+						<div class="companyinfo">
+							<h2><span>Semesta</span> Coffee</h2>
+							<p>"Menyatukan Kita"</p>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="address">
+							<img src="images/home/map.png" alt="" />
+							<p>Jl. Tegalsari Dukuhwaluh, Kembaran, Belakang Kampus 1 UMP</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="row">
+					<p class="pull-left">Copyright © 2019 Semesta Coffee Inc.</p>
+				</div>
+			</div>
+		</div>
+		
+	</footer><!--/Footer-->
 
             <!--/form-->
 	<!-- /.login-box -->

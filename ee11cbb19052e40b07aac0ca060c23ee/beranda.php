@@ -399,7 +399,7 @@
 							<div class="tab-content">
 								<div class="tab-pane fade active in" id="rekomendasi" >
 								<?php
-								$sbarang = mysqli_query($koneksi, "SELECT * FROM m_barang a LEFT OUTER JOIN l_kategori b on a.kategori_id = b.kategori_id WHERE a.judul LIKE '%$_POST[cari]%' ORDER BY brg_id DESC LIMIT 8 ");
+								$sbarang = mysqli_query($koneksi, "SELECT * FROM m_barang a LEFT OUTER JOIN l_kategori b on a.kategori_id = b.kategori_id WHERE a.judul LIKE '%$_POST[cari]%' ORDER BY judul DESC LIMIT 8 ");
 								while ($hbarang = mysqli_fetch_array($sbarang)){
 									?>
 									<div class="col-sm-3">
