@@ -91,7 +91,7 @@
 										?>
 										<div class="col-sm-3">
 											<div class="product-image-wrapper">
-												<div class="single-products">
+											<div class="single-products">
 													<div class="productinfo text-center">
 														<a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['image']?>" alt="" style="width:auto;height:80px" /></a>
 														<?php
@@ -102,20 +102,21 @@
 														$hrg = $hbarang['harga_jual'] - $harga;
                                                         
 														?>
-														<h2>Rp. <strike><?php echo number_format($hbarang['harga_jual'],0,",",".")?></strike><p> disc <?php echo $hbarang['diskon'] ?>% </p></h2>
+														<h2>Rp. <strike><?php echo number_format($hbarang['harga_jual'],0,',','.')?></strike><p> disc <?php echo $hbarang['diskon'] ?>% </p></h2>
                                                         
-                                                        <h5>Rp. <?php echo number_format($hrg,0,",",".") ?></h5>
+                                                        <p style="color:orange; font-weight: bold;">Rp. <?php echo number_format($hrg,0,',','.') ?></p>
                                                         <?php
 														}
 														else{
 															?>
-															<h2>Rp. <?php echo number_format($hbarang['harga_jual'],0,",",".")?><p>&nbsp;</p></h2>
+															<h2>Rp. <?php echo number_format($hbarang['harga_jual'],0,',','.')?><p>&nbsp;</p></h2>
                                                             <p>&nbsp;</p>
                                                             <?php
 														}
 														?>
-														<p><?php echo $hbarang['judul']?><br><b style="color: orange;">(<?php echo $hbarang['kategori_name']?>)</b></p>
-														<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Pesan</a>
+														<p><?php echo $hbarang['judul']?></p>
+														<p>(<?php echo $hbarang['kategori_name']?>)</p>
+														<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Beli</a>
 													</div>
 													
 												</div>
@@ -132,7 +133,7 @@
 										?>
 										<div class="col-sm-3">
 											<div class="product-image-wrapper">
-												<div class="single-products">
+											<div class="single-products">
 													<div class="productinfo text-center">
 														<a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['buku_image']?>" alt="" style="width:auto;height:80px" /></a>
 														<?php
@@ -143,20 +144,21 @@
 														$hrg = $hbarang['harga_jual'] - $harga;
                                                         
 														?>
-														<h2>Rp. <strike><?php echo number_format($hbarang['harga_jual'],0,",",".")?></strike><p> disc <?php echo $hbarang['diskon'] ?>% </p></h2>
+														<h2>Rp. <strike><?php echo number_format($hbarang['harga_jual'],0,',','.')?></strike><p> disc <?php echo $hbarang['diskon'] ?>% </p></h2>
                                                         
-                                                        <h5>Rp. <?php echo number_format($hrg,0,",",".") ?></h5>
+                                                        <p style="color:orange; font-weight: bold;">Rp. <?php echo number_format($hrg,0,',','.') ?></p>
                                                         <?php
 														}
 														else{
 															?>
-															<h2>Rp. <?php echo number_format($hbarang['harga_jual'],0,",",".")?><p>&nbsp;</p></h2>
+															<h2>Rp. <?php echo number_format($hbarang['harga_jual'],0,',','.')?><p>&nbsp;</p></h2>
                                                             <p>&nbsp;</p>
                                                             <?php
 														}
 														?>
-														<p><?php echo $hbarang['judul']?><br><b style="color: orange;">(<?php echo $hbarang['kategori_name']?>)</b></p>
-														<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Pesan</a>
+														<p><?php echo $hbarang['judul']?></p>
+														<p>(<?php echo $hbarang['kategori_name']?>)</p>
+														<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Beli</a>
 													</div>
 													
 												</div>
@@ -175,7 +177,7 @@
 										?>
 										<div class="col-sm-3">
 											<div class="product-image-wrapper">
-												<div class="single-products">
+											<div class="single-products">
 													<div class="productinfo text-center">
 														<a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['buku_image']?>" alt="" style="width:auto;height:80px" /></a>
 														<?php
@@ -186,20 +188,21 @@
 														$hrg = $hbarang['harga_jual'] - $harga;
                                                         
 														?>
-														<h2>Rp. <strike><?php echo number_format($hbarang['harga_jual'],0,",",".")?></strike><p> disc <?php echo $hbarang['diskon'] ?>% </p></h2>
+														<h2>Rp. <strike><?php echo number_format($hbarang['harga_jual'],0,',','.')?></strike><p> disc <?php echo $hbarang['diskon'] ?>% </p></h2>
                                                         
-                                                        <h5>Rp. <?php echo number_format($hrg,0,",",".") ?></h5>
+                                                        <p style="color:orange; font-weight: bold;">Rp. <?php echo number_format($hrg,0,',','.') ?></p>
                                                         <?php
 														}
 														else{
 															?>
-															<h2>Rp. <?php echo number_format($hbarang['harga_jual'],0,",",".")?><p>&nbsp;</p></h2>
+															<h2>Rp. <?php echo number_format($hbarang['harga_jual'],0,',','.')?><p>&nbsp;</p></h2>
                                                             <p>&nbsp;</p>
                                                             <?php
 														}
 														?>
-														<p><?php echo $hbarang['judul']?>(<?php echo $hbarang['jenis_name']?>)</p>
-														<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Pesan</a>
+														<p><?php echo $hbarang['judul']?></p>
+														<p>(<?php echo $hbarang['kategori_name']?>)</p>
+														<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Beli</a>
 													</div>
 													
 												</div>
@@ -222,9 +225,9 @@
                                             ?>
                                             <div class="col-sm-3">
                                                 <div class="product-image-wrapper">
-                                                    <div class="single-products">
+												<div class="single-products">
                                                         <div class="productinfo text-center">
-                                                            <a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['image']?>" alt="" style="width:auto;height:80px" /></a>
+														<a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['image']?>" alt="" style="width:auto;height:80px" /></a>
                                                             <?php
 														$diskon = $hbarang['diskon'] / 100;
 														if($diskon > 0){
@@ -233,20 +236,21 @@
 														$hrg = $hbarang['harga_jual'] - $harga;
                                                         
 														?>
-														<h2>Rp. <strike><?php echo number_format($hbarang['harga_jual'],0,",",".")?></strike><p> disc <?php echo $hbarang['diskon'] ?>% </p></h2>
+														<h2>Rp. <strike><?php echo number_format($hbarang['harga_jual'],0,',','.')?></strike><p> disc <?php echo $hbarang['diskon'] ?>% </p></h2>
                                                         
-                                                        <h5>Rp. <?php echo number_format($hrg,0,",",".") ?></h5>
+                                                        <p style="color:orange; font-weight: bold;">Rp. <?php echo number_format($hrg,0,',','.') ?></p>
                                                         <?php
 														}
 														else{
 															?>
-															<h2>Rp. <?php echo number_format($hbarang['harga_jual'],0,",",".")?><p>&nbsp;</p></h2>
+															<h2>Rp. <?php echo number_format($hbarang['harga_jual'],0,',','.')?><p>&nbsp;</p></h2>
                                                             <p>&nbsp;</p>
                                                             <?php
 														}
 														?>
-                                                            <p> <?php echo $hbarang['judul']?> <br><b style="color: orange;">(<?php echo $hbarang['kategori_name']?>)</b></p>
-                                                            <a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Pesan</a>
+                                                            <p><?php echo $hbarang['judul']?></p> 
+															<p>(<?php echo $hbarang['kategori_name']?>)</p>
+                                                            <a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Beli</a>
                                                         </div>
                                                         
                                                     </div>
@@ -263,9 +267,9 @@
                                             ?>
                                             <div class="col-sm-3">
                                                 <div class="product-image-wrapper">
-                                                    <div class="single-products">
+												<div class="single-products">
                                                         <div class="productinfo text-center">
-                                                            <a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['image']?>" alt="" style="width:auto;height:80px" /></a>
+														<a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['image']?>" alt="" style="width:auto;height:80px" /></a>
                                                             <?php
 														$diskon = $hbarang['diskon'] / 100;
 														if($diskon > 0){
@@ -274,20 +278,21 @@
 														$hrg = $hbarang['harga_jual'] - $harga;
                                                         
 														?>
-														<h2>Rp. <strike><?php echo number_format($hbarang['harga_jual'],0,",",".")?></strike><p> disc <?php echo $hbarang['diskon'] ?>% </p></h2>
+														<h2>Rp. <strike><?php echo number_format($hbarang['harga_jual'],0,',','.')?></strike><p> disc <?php echo $hbarang['diskon'] ?>% </p></h2>
                                                         
-                                                        <h5>Rp. <?php echo number_format($hrg,0,",",".") ?></h5>
+                                                        <p style="color:orange; font-weight: bold;">Rp. <?php echo number_format($hrg,0,',','.') ?></p>
                                                         <?php
 														}
 														else{
 															?>
-															<h2>Rp. <?php echo number_format($hbarang['harga_jual'],0,",",".")?><p>&nbsp;</p></h2>
+															<h2>Rp. <?php echo number_format($hbarang['harga_jual'],0,',','.')?><p>&nbsp;</p></h2>
                                                             <p>&nbsp;</p>
                                                             <?php
 														}
 														?>
-                                                            <p><?php echo $hbarang['judul']?> <br><b style="color: orange;">(<?php echo $hbarang['kategori_name']?>)</b></p>
-                                                            <a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Pesan</a>
+                                                            <p><?php echo $hbarang['judul']?></p> 
+															<p>(<?php echo $hbarang['kategori_name']?>)</p>
+                                                            <a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Beli</a>
                                                         </div>
                                                         
                                                     </div>
@@ -306,9 +311,9 @@
                                             ?>
                                             <div class="col-sm-3">
                                                 <div class="product-image-wrapper">
-                                                    <div class="single-products">
+												<div class="single-products">
                                                         <div class="productinfo text-center">
-                                                            <a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['image']?>" alt="" style="width:auto;height:80px" /></a>
+														<a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['image']?>" alt="" style="width:auto;height:80px" /></a>
                                                         <?php
 														$diskon = $hbarang['diskon'] / 100;
 														if($diskon > 0){
@@ -317,20 +322,21 @@
 														$hrg = $hbarang['harga_jual'] - $harga;
                                                         
 														?>
-														<h2>Rp. <strike><?php echo number_format($hbarang['harga_jual'],0,",",".")?></strike><p> disc <?php echo $hbarang['diskon'] ?>% </p></h2>
+														<h2>Rp. <strike><?php echo number_format($hbarang['harga_jual'],0,',','.')?></strike><p> disc <?php echo $hbarang['diskon'] ?>% </p></h2>
                                                         
-                                                        <h5>Rp. <?php echo number_format($hrg,0,",",".") ?></h5>
+                                                        <p style="color:orange; font-weight: bold;">Rp. <?php echo number_format($hrg,0,',','.') ?></p>
                                                         <?php
 														}
 														else{
 															?>
-															<h2>Rp. <?php echo number_format($hbarang['harga_jual'],0,",",".")?><p>&nbsp;</p></h2>
+															<h2>Rp. <?php echo number_format($hbarang['harga_jual'],0,',','.')?><p>&nbsp;</p></h2>
                                                             <p>&nbsp;</p>
                                                             <?php
 														}
 														?>
-                                                            <p> <?php echo $hbarang['buku_judul']?> (<?php echo $hbarang['jenis_name']?>)</p>
-                                                            <a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Pesan</a>
+                                                            <p><?php echo $hbarang['judul']?></p> 
+															<p>(<?php echo $hbarang['kategori_name']?>)</p>
+                                                            <a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Beli</a>
                                                         </div>
                                                         
                                                     </div>
@@ -398,9 +404,9 @@
 									?>
 									<div class="col-sm-3">
 										<div class="product-image-wrapper">
-											<div class="single-products">
+										<div class="single-products">
 												<div class="productinfo text-center">
-													<a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['image']?>" alt="" style="width:auto;height:80px" /></a>
+												<a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['image']?>" alt="" style="width:auto;height:80px" /></a>
 													<?php
 														$diskon = $hbarang['diskon'] / 100;
 														if($diskon > 0){
@@ -409,20 +415,21 @@
 														$hrg = $hbarang['harga_jual'] - $harga;
                                                         
 														?>
-														<h2>Rp. <strike><?php echo number_format($hbarang['harga_jual'],0,",",".")?></strike><p> disc <?php echo $hbarang['diskon'] ?>% </p></h2>
+														<h2>Rp. <strike><?php echo number_format($hbarang['harga_jual'],0,',','.')?></strike><p> disc <?php echo $hbarang['diskon'] ?>% </p></h2>
                                                         
-                                                        <h5>Rp. <?php echo number_format($hrg,0,",",".") ?></h5>
+                                                        <p style="color:orange; font-weight: bold;">Rp. <?php echo number_format($hrg,0,',','.') ?></p>
                                                         <?php
 														}
 														else{
 															?>
-															<h2>Rp. <?php echo number_format($hbarang['harga_jual'],0,",",".")?><p>&nbsp;</p></h2>
+															<h2>Rp. <?php echo number_format($hbarang['harga_jual'],0,',','.')?><p>&nbsp;</p></h2>
                                                             <p>&nbsp;</p>
                                                             <?php
 														}
 														?>
-													<p><?php echo $hbarang['judul']?> <br><b style="color: orange;">(<?php echo $hbarang['kategori_name']?>)</b></p>
-													<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Pesan</a>
+															<p><?php echo $hbarang['judul']?></p> 
+															<p>(<?php echo $hbarang['kategori_name']?>)</p>
+													<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Beli</a>
 												</div>
 												
 											</div>
@@ -439,9 +446,9 @@
 									?>
 									<div class="col-sm-3">
 										<div class="product-image-wrapper">
-											<div class="single-products">
+										<div class="single-products">
 												<div class="productinfo text-center">
-													<a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['image']?>" alt="" style="width:auto;height:80px" /></a>
+												<a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['image']?>" alt="" style="width:auto;height:80px" /></a>
 													<?php
 														$diskon = $hbarang['diskon'] / 100;
 														if($diskon > 0){
@@ -450,20 +457,21 @@
 														$hrg = $hbarang['harga_jual'] - $harga;
                                                         
 														?>
-														<h2>Rp. <strike><?php echo number_format($hbarang['harga_jual'],0,",",".")?></strike><p> disc <?php echo $hbarang['diskon'] ?>% </p></h2>
+														<h2>Rp. <strike><?php echo number_format($hbarang['harga_jual'],0,',','.')?></strike><p> disc <?php echo $hbarang['diskon'] ?>% </p></h2>
                                                         
-                                                        <h5>Rp. <?php echo number_format($hrg,0,",",".") ?></h5>
+                                                        <p style="color:orange; font-weight: bold;">Rp. <?php echo number_format($hrg,0,',','.') ?></p>
                                                         <?php
 														}
 														else{
 															?>
-															<h2>Rp. <?php echo number_format($hbarang['harga_jual'],0,",",".")?><p>&nbsp;</p></h2>
+															<h2>Rp. <?php echo number_format($hbarang['harga_jual'],0,',','.')?><p>&nbsp;</p></h2>
                                                             <p>&nbsp;</p>
                                                             <?php
 														}
 														?>
-													<p><?php echo $hbarang['judul']?> <br><b style="color: orange;">(<?php echo $hbarang['kategori_name']?>)</b></p>
-													<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Pesan</a>
+															<p><?php echo $hbarang['judul']?></p> 
+															<p>(<?php echo $hbarang['kategori_name']?>)</p>
+													<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Beli</a>
 												</div>
 												
 											</div>
@@ -482,9 +490,9 @@
 									?>
 									<div class="col-sm-3">
 										<div class="product-image-wrapper">
-											<div class="single-products">
+										<div class="single-products">
 												<div class="productinfo text-center">
-													<a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['image']?>" alt="" style="width:auto;height:80px" /></a>
+												<a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['image']?>" alt="" style="width:auto;height:80px" /></a>
 													<?php
 														$diskon = $hbarang['diskon'] / 100;
 														if($diskon > 0){
@@ -493,20 +501,21 @@
 														$hrg = $hbarang['harga_jual'] - $harga;
                                                         
 														?>
-														<h2>Rp. <strike><?php echo number_format($hbarang['harga_jual'],0,",",".")?></strike><p> disc <?php echo $hbarang['diskon'] ?>% </p></h2>
+														<h2>Rp. <strike><?php echo number_format($hbarang['harga_jual'],0,',','.')?></strike><p> disc <?php echo $hbarang['diskon'] ?>% </p></h2>
                                                         
-                                                        <h5>Rp. <?php echo number_format($hrg,0,",",".") ?></h5>
+                                                        <p style="color:orange; font-weight: bold;">Rp. <?php echo number_format($hrg,0,',','.') ?></p>
                                                         <?php
 														}
 														else{
 															?>
-															<h2>Rp. <?php echo number_format($hbarang['harga_jual'],0,",",".")?><p>&nbsp;</p></h2>
+															<h2>Rp. <?php echo number_format($hbarang['harga_jual'],0,',','.')?><p>&nbsp;</p></h2>
                                                             <p>&nbsp;</p>
                                                             <?php
 														}
 														?>
-													<p> <?php echo $hbarang['buku_judul']?> (<?php echo $hbarang['jenis_name']?>)</p>
-													<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Pesan</a>
+															<p><?php echo $hbarang['judul']?></p> 
+															<p>(<?php echo $hbarang['kategori_name']?>)</p>
+													<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Beli</a>
 												</div>
 												
 											</div>
