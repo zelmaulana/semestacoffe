@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 08, 2019 at 01:34 AM
+-- Generation Time: Sep 09, 2019 at 04:50 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -90359,6 +90359,44 @@ INSERT INTO `l_level` (`level_id`, `level_name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `l_meja`
+--
+
+CREATE TABLE `l_meja` (
+  `id_meja` int(11) NOT NULL,
+  `no_meja` int(11) NOT NULL,
+  `nama_meja` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `l_meja`
+--
+
+INSERT INTO `l_meja` (`id_meja`, `no_meja`, `nama_meja`) VALUES
+(1, 1, 'Meja 1'),
+(2, 2, 'Meja 2'),
+(3, 3, 'Meja 3'),
+(4, 4, 'Meja 4'),
+(5, 5, 'Meja 5'),
+(6, 6, 'Meja 6'),
+(7, 7, 'Meja 7'),
+(8, 8, 'Meja 8'),
+(9, 9, 'Meja 9'),
+(10, 10, 'Meja 10'),
+(11, 11, 'Meja 11'),
+(12, 12, 'Meja 12'),
+(13, 13, 'Meja 13'),
+(14, 14, 'Meja 14'),
+(15, 15, 'Meja 15'),
+(16, 16, 'Meja 16'),
+(17, 17, 'Meja 17'),
+(18, 18, 'Meja 18'),
+(19, 19, 'Meja 19'),
+(20, 20, 'Meja 20');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `l_ongkir`
 --
 
@@ -91111,12 +91149,12 @@ INSERT INTO `m_barang` (`brg_id`, `judul`, `penerbit_id`, `thn_terbit`, `kota_te
 (22, 'Susu Murni (Hot)', 2, '2019', 'Purwokerto', 100, 1, 3, 0, 4, 6000, 6000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Milk based'),
 (23, 'Susu Murni (Ice)', 2, '2019', 'Purwokerto', 100, 1, 3, 0, 6, 6000, 7000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Milk based'),
 (24, 'Susu Aren (Hot)', 2, '2019', 'Purwokerto', 100, 1, 3, 0, 4, 6000, 10000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Milk based'),
-(25, 'Susu Aren (Ice', 2, '2019', 'Purwokerto', 100, 1, 3, 0, 2, 6000, 11000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Milk based'),
-(26, 'Ayam Senja', 2, '2019', 'Purwokerto', 100, 1, 4, 0, 1, 6000, 15000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Food'),
+(25, 'Susu Aren (Ice)', 2, 'Null', 'Null', 100, 1, 3, 0, 2, 6000, 11000, 0, 5.00, 0.00, 0, 'coffee-480x385.jpg', 'Milk based'),
+(26, 'Ayam Senja', 2, 'Null', 'Null', 100, 1, 4, 0, 1, 6000, 15000, 0, 5.00, 0.00, 0, 'coffee-480x385.jpg', 'Food'),
 (27, 'Semesta Noodle', 2, '2019', 'Purwokerto', 100, 1, 4, 0, 6, 6000, 8000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Food'),
 (28, 'Lele Balada', 2, '2019', 'Purwokerto', 100, 1, 4, 0, 2, 6000, 15000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Food'),
 (29, 'French Fries', 2, '2019', 'Purwokerto', 100, 1, 5, 0, 4, 6000, 9000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Snack'),
-(30, 'Oppa Toast', 2, '2019', 'Purwokerto', 100, 1, 5, 0, 6, 6000, 8000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Snack'),
+(30, 'Oppa Toast', 2, 'Null', 'Null', 100, 1, 5, 0, 6, 6000, 8000, 0, 10.00, 0.00, 0, 'coffee-480x385.jpg', 'Snack'),
 (31, 'Ice Cream', 2, '2019', 'Purwokerto', 100, 1, 5, 0, 1, 6000, 8000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Snack'),
 (32, 'Brownies', 0, 'Null', 'Null', 100, 1, 5, 0, 0, 6000, 10000, 0, 0.00, 0.00, 0, 'brownies.jpg', 'Brownies'),
 (33, 'Singkong Crispy', 0, 'Null', 'Null', 100, 1, 5, 0, 0, 6000, 7000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Singkong Crispy');
@@ -91196,6 +91234,7 @@ CREATE TABLE `t_keranjang` (
   `pemesanan_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `brg_id` int(11) NOT NULL,
+  `id_meja` int(11) NOT NULL,
   `jumlah_trx` int(11) NOT NULL,
   `total` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -91204,17 +91243,19 @@ CREATE TABLE `t_keranjang` (
 -- Dumping data for table `t_keranjang`
 --
 
-INSERT INTO `t_keranjang` (`keranjang_id`, `pemesanan_id`, `user_id`, `brg_id`, `jumlah_trx`, `total`) VALUES
-(110, 80, 11, 5, 1, 153000),
-(111, 81, 11, 8, 1, 45000),
-(112, 82, 11, 10, 1, 55000),
-(113, 83, 11, 11, 1, 55000),
-(114, 84, 11, 7, 1, 57600),
-(115, 85, 11, 5, 1, 161500),
-(118, 87, 11, 5, 1, 168300),
-(119, 0, 11, 8, 1, 45000),
-(120, 88, 14, 5, 1, 168300),
-(137, 0, 14, 7, 1, 8000);
+INSERT INTO `t_keranjang` (`keranjang_id`, `pemesanan_id`, `user_id`, `brg_id`, `id_meja`, `jumlah_trx`, `total`) VALUES
+(110, 80, 11, 5, 0, 1, 153000),
+(111, 81, 11, 8, 0, 1, 45000),
+(112, 82, 11, 10, 0, 1, 55000),
+(113, 83, 11, 11, 0, 1, 55000),
+(114, 84, 11, 7, 0, 1, 57600),
+(115, 85, 11, 5, 0, 1, 161500),
+(118, 87, 11, 5, 0, 1, 168300),
+(119, 0, 11, 8, 0, 1, 45000),
+(120, 88, 14, 5, 0, 1, 168300),
+(138, 0, 15, 5, 0, 1, 8550),
+(140, 0, 14, 9, 0, 1, 11000),
+(142, 0, 14, 25, 0, 1, 10450);
 
 --
 -- Triggers `t_keranjang`
@@ -91391,6 +91432,12 @@ ALTER TABLE `l_level`
   ADD PRIMARY KEY (`level_id`);
 
 --
+-- Indexes for table `l_meja`
+--
+ALTER TABLE `l_meja`
+  ADD PRIMARY KEY (`id_meja`);
+
+--
 -- Indexes for table `l_ongkir`
 --
 ALTER TABLE `l_ongkir`
@@ -91517,6 +91564,12 @@ ALTER TABLE `l_level`
   MODIFY `level_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `l_meja`
+--
+ALTER TABLE `l_meja`
+  MODIFY `id_meja` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
 -- AUTO_INCREMENT for table `l_ongkir`
 --
 ALTER TABLE `l_ongkir`
@@ -91580,7 +91633,7 @@ ALTER TABLE `m_user`
 -- AUTO_INCREMENT for table `t_keranjang`
 --
 ALTER TABLE `t_keranjang`
-  MODIFY `keranjang_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
+  MODIFY `keranjang_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
 
 --
 -- AUTO_INCREMENT for table `t_pemesanan`

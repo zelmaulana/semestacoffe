@@ -57,7 +57,7 @@ if (empty($_SESSION['id'])) {
 			<meta name="description" content="">
 			<meta name="author" content="">
 			<title>Semesta "Menyatukan Kita"</title>
-			<link rel="icon" type="image/png" href="../images/ump.png">
+			<link rel="icon" type="image/png" href="../images/logo_fav.png">
 			<link href="../css/bootstrap.min.css" rel="stylesheet">
 			<link href="../css/font-awesome.min.css" rel="stylesheet">
 			<link href="../css/prettyPhoto.css" rel="stylesheet">
@@ -106,7 +106,7 @@ if (empty($_SESSION['id'])) {
 						<div class="row">
 							<div class="col-sm-4">
 								<div class="logo pull-left">
-									<a href="?i="><img class="img img-responsive" src="../images/logo_semesta.png"></a>
+									<a href="?i="><img class="img img-responsive" src="../images/logo_header.png" width="390" height="95"></a>
 								</div>
 							</div>
 							<div class="col-sm-8">

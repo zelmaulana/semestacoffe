@@ -10,7 +10,6 @@
 					<tr class="cart_menu">
 						<td class="image">Item</td>
 						<td class="description"></td>
-						<td class="meja">No. Meja</td>
 						<td class="price">Harga</td>
 						<td class="quantity">Jumlah</td>
 						<td class="total">Total</td>
@@ -33,11 +32,6 @@
 							<td class="cart_description">
 								<h4><?php echo $hker['judul'] ?></h4>
 								<p>Diskon <?php echo $hker['diskon'] ?>%</p>
-							</td>
-
-							<!-- Get nilai meja -->
-							<td class="cart_meja">
-								<p>Meja <?php echo $hker['no_meja'] ?></p>
 							</td>
 
 							<td class="cart_price">
@@ -119,6 +113,9 @@ $ha = mysqli_fetch_array($sa);
 			<div class="col-sm-6">
 				<div class="total_area">
 					<ul>
+						No Meja
+						<input style="width: 100px;" type="text" class="form-control" name="nomeja" id="nomeja" disabled />
+						<br />
 						Catatan Menu
 						<br />
 						<textarea name="catatan" id="catatan" class="form-control" disabled></textarea><br />
@@ -127,10 +124,11 @@ $ha = mysqli_fetch_array($sa);
                             <li>Ongkos Kirim <span>Rp. <?php echo $ha['biaya'] ?></span></li> -->
 						<li>Total Bayar <span>Rp. <?php echo number_format($bayar, 0, ',', '.') ?></span></li><br />
 						<a href="?i=bayar&id=<?php echo md5('byr') ?>"><button type="button" class="btn-success" <?php if ($na == 0) {
-																													echo "disabled";
-																												} else {
-																													echo "";
-																												} ?>>Bayar</button></a>
+																														echo "disabled";
+																													} else {
+																														echo "";
+																													} ?>>Checkout</button></a>
+						<a href="?i=keranjang"><button type="button" class="btn-warning">Kembali ke Keranjang</button></a>
 					</ul>
 
 				</div>
