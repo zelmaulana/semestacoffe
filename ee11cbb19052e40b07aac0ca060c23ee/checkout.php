@@ -48,8 +48,8 @@
 									}
 									?>
 							</td>
-							<td class="cart_quantity" width="15%">
-								<p><?php echo $hker['jumlah_trx'] ?></p>
+							<td class="cart_quantity">
+								<p style="text-align: center;"><?php echo $hker['jumlah_trx'] ?></p>
 							</td>
 							<td class="cart_total">
 								<p class="cart_total_price">Rp. <?php echo number_format($hker['total'], 0, ',', '.') ?></p>
@@ -123,12 +123,13 @@ $ha = mysqli_fetch_array($sa);
 						<!-- <li>Total Belanja <span>Rp. <?php echo $hrinc['bb'] ?></span></li>
                             <li>Ongkos Kirim <span>Rp. <?php echo $ha['biaya'] ?></span></li> -->
 						<li>Total Bayar <span>Rp. <?php echo number_format($bayar, 0, ',', '.') ?></span></li><br />
-						<a href="?i=bayar&id=<?php echo md5('byr') ?>"><button type="button" class="btn-success" <?php if ($na == 0) {
+						<a href="?i=keranjang"><button type="button" class="btn btn-warning">Kembali ke Keranjang</button></a>
+						<a href="?i=bayar&id=<?php echo md5('byr') ?>"><button type="button" class="btn btn-info" <?php if ($na == 0) {
 																														echo "disabled";
 																													} else {
 																														echo "";
 																													} ?>>Checkout</button></a>
-						<a href="?i=keranjang"><button type="button" class="btn-warning">Kembali ke Keranjang</button></a>
+
 					</ul>
 
 				</div>

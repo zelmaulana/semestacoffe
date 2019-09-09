@@ -129,12 +129,12 @@ echo "</pre>";
 						<textarea name="catatan" id="catatan" class="form-control"></textarea><br />
 						<li>Total Menu <span><?php echo $hrinc['aa'] ?></span></li>
 						<li>Total Harga <span>Rp. <?php echo number_format($hrinc['bb'], 0, ",", ".") ?></span></li><br />
-						<a href="?i=chekout"><button type="submit" class="btn-success" <?php if ($bb == 0) {
+						<a href="?i="><button type="button" class="btn btn-warning">Tambah Menu</button></a>
+						<a href="?i=chekout"><button type="submit" class="btn btn-info" <?php if ($bb == 0) {
 																							echo "disabled";
 																						} else {
 																							echo "";
 																						} ?>>Pesan</button></a>
-						<a href="?i="><button type="button" class="btn-warning">Tambah Menu</button></a>
 					</ul>
 
 				</div>

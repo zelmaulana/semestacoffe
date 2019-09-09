@@ -141,7 +141,7 @@ if ($b == 1) {
 											<div class="search_box pull-right">
 												<form action="" method="post">
 													<input type="text" placeholder="Search" name="cari" value="<?php echo $_POST['cari'] ?>" />
-													<button type="submit" style="background-color: orange;" class="btn-primary">Cari</button>
+													<button type="submit" class="btn btn-warning">Cari</button>
 												</form>
 											</div>
 										<?php
@@ -227,7 +227,7 @@ if ($b == 1) {
 										<div class="search_box pull-right">
 											<form action="" method="post">
 												<input type="text" placeholder="Search" name="cari" value="<?php echo $_POST['cari'] ?>" />
-												<button type="submit" style="background-color: orange;" class="btn-primary">Cari</button>
+												<button type="submit" class="btn btn-warning">Cari</button>
 											</form>
 										</div>
 									<?php
@@ -296,13 +296,20 @@ if ($b == 1) {
 							<div class="col-sm-3">
 								<div class="companyinfo">
 									<h2><span>Semesta</span> Coffee</h2>
-									<p>"Menyatukan Kita"</p>
+									<p>"menyatukan kita"</p>
 								</div>
 							</div>
 							<div class="col-sm-3">
 								<div class="address">
 									<img src="images/home/map.png" alt="" />
-									<p>Jl. Tegalsari Dukuhwaluh, Kembaran, Belakang Kampus 1 UMP</p>
+									<p style="text-align:center;">Jl. Tegalsari Dukuhwaluh, Kembaran, Belakang Kampus 1 UMP</p>
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<div class="companyinfo">
+									<h2>Jam Operasional</h2>
+									<p>Senin - Minggu</p>
+									<p>07.00 - 22.00 WIB</p>
 								</div>
 							</div>
 						</div>
