@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 09, 2019 at 04:50 PM
+-- Generation Time: Sep 10, 2019 at 03:38 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -90364,7 +90364,6 @@ INSERT INTO `l_level` (`level_id`, `level_name`) VALUES
 
 CREATE TABLE `l_meja` (
   `id_meja` int(11) NOT NULL,
-  `no_meja` int(11) NOT NULL,
   `nama_meja` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -90372,27 +90371,27 @@ CREATE TABLE `l_meja` (
 -- Dumping data for table `l_meja`
 --
 
-INSERT INTO `l_meja` (`id_meja`, `no_meja`, `nama_meja`) VALUES
-(1, 1, 'Meja 1'),
-(2, 2, 'Meja 2'),
-(3, 3, 'Meja 3'),
-(4, 4, 'Meja 4'),
-(5, 5, 'Meja 5'),
-(6, 6, 'Meja 6'),
-(7, 7, 'Meja 7'),
-(8, 8, 'Meja 8'),
-(9, 9, 'Meja 9'),
-(10, 10, 'Meja 10'),
-(11, 11, 'Meja 11'),
-(12, 12, 'Meja 12'),
-(13, 13, 'Meja 13'),
-(14, 14, 'Meja 14'),
-(15, 15, 'Meja 15'),
-(16, 16, 'Meja 16'),
-(17, 17, 'Meja 17'),
-(18, 18, 'Meja 18'),
-(19, 19, 'Meja 19'),
-(20, 20, 'Meja 20');
+INSERT INTO `l_meja` (`id_meja`, `nama_meja`) VALUES
+(1, 'Meja 1'),
+(2, 'Meja 2'),
+(3, 'Meja 3'),
+(4, 'Meja 4'),
+(5, 'Meja 5'),
+(6, 'Meja 6'),
+(7, 'Meja 7'),
+(8, 'Meja 8'),
+(9, 'Meja 9'),
+(10, 'Meja 10'),
+(11, 'Meja 11'),
+(12, 'Meja 12'),
+(13, 'Meja 13'),
+(14, 'Meja 14'),
+(15, 'Meja 15'),
+(16, 'Meja 16'),
+(17, 'Meja 17'),
+(18, 'Meja 18'),
+(19, 'Meja 19'),
+(20, 'Meja 20');
 
 -- --------------------------------------------------------
 
@@ -91115,6 +91114,7 @@ INSERT INTO `m_alamat` (`akun_id`, `user_id`, `alamat_spesifik`, `desa_id`, `rt`
 CREATE TABLE `m_barang` (
   `brg_id` int(11) NOT NULL,
   `judul` varchar(100) NOT NULL,
+  `estimasi_menu` varchar(255) NOT NULL,
   `penerbit_id` int(11) DEFAULT NULL,
   `thn_terbit` varchar(100) DEFAULT NULL,
   `kota_terbit` varchar(100) DEFAULT NULL,
@@ -91137,27 +91137,28 @@ CREATE TABLE `m_barang` (
 -- Dumping data for table `m_barang`
 --
 
-INSERT INTO `m_barang` (`brg_id`, `judul`, `penerbit_id`, `thn_terbit`, `kota_terbit`, `stok`, `jenis_id`, `kategori_id`, `kategoriacc_id`, `penulis_id`, `harga_beli`, `harga_jual`, `jml_terjual`, `diskon`, `berat`, `jml_halaman`, `image`, `deskripsi`) VALUES
-(5, 'Tubruk (Arabica)', 0, 'Null', 'Null', 100, 1, 1, 0, 0, 6000, 9000, 11, 5.00, 0.00, 0, 'coffee-480x385.jpg', 'Coffee, Water'),
-(7, 'Tubruk (Robusta)', 2, '2016', 'Purwokerto', 100, 1, 1, 0, 4, 6000, 8000, 9, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Coffee, Water'),
-(8, 'V60 (Arabica)', 2, '2016', 'Purwokerto', 100, 1, 1, 0, 5, 6000, 11000, 8, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Using hario V60, has a clean extraction'),
-(9, 'V60 (Robusta)', 2, '2017', 'Purwokerto', 100, 1, 1, 0, 6, 6000, 11000, 3, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Using hario V60, has a clean extraction'),
-(10, 'Espresso (Hot)', 2, '2017', 'Purwokerto', 100, 1, 2, 0, 2, 6000, 10000, 1, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'High pressure of hot water in 30 seconds'),
-(11, 'Espresso (Ice)', 2, '2017', 'Purwokerto', 100, 1, 2, 0, 7, 6000, 11000, 2, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'High pressure of hot water in 30 seconds'),
-(12, 'Americano (Hot)', 2, '2017', 'Purwokerto', 100, 1, 2, 0, 8, 6000, 11000, 2, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Hot water and espresso, light taste and body'),
-(21, 'Americano (Ice)', 2, 'Null', 'Null', 100, 1, 2, 0, 4, 6000, 12000000, 0, 20.00, 0.00, 0, 'coffee-480x385.jpg', 'Hot water and espresso, light taste and body'),
-(22, 'Susu Murni (Hot)', 2, '2019', 'Purwokerto', 100, 1, 3, 0, 4, 6000, 6000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Milk based'),
-(23, 'Susu Murni (Ice)', 2, '2019', 'Purwokerto', 100, 1, 3, 0, 6, 6000, 7000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Milk based'),
-(24, 'Susu Aren (Hot)', 2, '2019', 'Purwokerto', 100, 1, 3, 0, 4, 6000, 10000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Milk based'),
-(25, 'Susu Aren (Ice)', 2, 'Null', 'Null', 100, 1, 3, 0, 2, 6000, 11000, 0, 5.00, 0.00, 0, 'coffee-480x385.jpg', 'Milk based'),
-(26, 'Ayam Senja', 2, 'Null', 'Null', 100, 1, 4, 0, 1, 6000, 15000, 0, 5.00, 0.00, 0, 'coffee-480x385.jpg', 'Food'),
-(27, 'Semesta Noodle', 2, '2019', 'Purwokerto', 100, 1, 4, 0, 6, 6000, 8000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Food'),
-(28, 'Lele Balada', 2, '2019', 'Purwokerto', 100, 1, 4, 0, 2, 6000, 15000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Food'),
-(29, 'French Fries', 2, '2019', 'Purwokerto', 100, 1, 5, 0, 4, 6000, 9000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Snack'),
-(30, 'Oppa Toast', 2, 'Null', 'Null', 100, 1, 5, 0, 6, 6000, 8000, 0, 10.00, 0.00, 0, 'coffee-480x385.jpg', 'Snack'),
-(31, 'Ice Cream', 2, '2019', 'Purwokerto', 100, 1, 5, 0, 1, 6000, 8000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Snack'),
-(32, 'Brownies', 0, 'Null', 'Null', 100, 1, 5, 0, 0, 6000, 10000, 0, 0.00, 0.00, 0, 'brownies.jpg', 'Brownies'),
-(33, 'Singkong Crispy', 0, 'Null', 'Null', 100, 1, 5, 0, 0, 6000, 7000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Singkong Crispy');
+INSERT INTO `m_barang` (`brg_id`, `judul`, `estimasi_menu`, `penerbit_id`, `thn_terbit`, `kota_terbit`, `stok`, `jenis_id`, `kategori_id`, `kategoriacc_id`, `penulis_id`, `harga_beli`, `harga_jual`, `jml_terjual`, `diskon`, `berat`, `jml_halaman`, `image`, `deskripsi`) VALUES
+(5, 'Tubruk (Arabica)', '20 menit', 0, 'Null', 'Null', 100, 1, 1, 0, 0, 6000, 9000, 11, 5.00, 0.00, 0, 'coffee-480x385.jpg', 'Coffee, Water'),
+(7, 'Tubruk (Robusta)', '20 menit', 2, 'Null', 'Null', 97, 1, 1, 0, 4, 6000, 8000, 9, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Coffee, Water'),
+(8, 'V60 (Arabica)', '40 menit', 2, 'Null', 'Null', 100, 1, 1, 0, 5, 6000, 11000, 8, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Using hario V60, has a clean extraction'),
+(9, 'V60 (Robusta)', '20 menit', 2, 'Null', 'Null', 94, 1, 1, 0, 6, 6000, 11000, 3, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Using hario V60, has a clean extraction'),
+(10, 'Espresso (Hot)', '20 menit', 2, 'Null', 'Null', 100, 1, 2, 0, 2, 6000, 10000, 1, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'High pressure of hot water in 30 seconds'),
+(11, 'Espresso (Ice)', '20 menit', 2, 'Null', 'Null', 100, 1, 2, 0, 7, 6000, 11000, 2, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'High pressure of hot water in 30 seconds'),
+(12, 'Americano (Hot)', '20 menit', 2, 'Null', 'Null', 100, 1, 2, 0, 8, 6000, 11000, 2, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Hot water and espresso, light taste and body'),
+(21, 'Americano (Ice)', '40 menit', 2, 'Null', 'Null', 100, 1, 2, 0, 4, 6000, 12000000, 0, 20.00, 0.00, 0, 'coffee-480x385.jpg', 'Hot water and espresso, light taste and body'),
+(22, 'Susu Murni (Hot)', '20 menit', 2, 'Null', 'Null', 100, 1, 3, 0, 4, 6000, 6000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Milk based'),
+(23, 'Susu Murni (Ice)', '20 menit', 2, 'Null', 'Null', 100, 1, 3, 0, 6, 6000, 7000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Milk based'),
+(24, 'Susu Aren (Hot)', '40 menit', 2, 'Null', 'Null', 100, 1, 3, 0, 4, 6000, 10000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Milk based'),
+(25, 'Susu Aren (Ice)', '20 menit', 2, 'Null', 'Null', 97, 1, 3, 0, 2, 6000, 11000, 0, 5.00, 0.00, 0, 'coffee-480x385.jpg', 'Milk based'),
+(26, 'Ayam Senja', '40 menit', 2, 'Null', 'Null', 100, 1, 4, 0, 1, 6000, 15000, 0, 5.00, 0.00, 0, 'coffee-480x385.jpg', 'Food'),
+(27, 'Semesta Noodle', '40 menit', 2, 'Null', 'Null', 100, 1, 4, 0, 6, 6000, 8000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Food'),
+(28, 'Lele Balada', '40 menit', 2, 'Null', 'Null', 100, 1, 4, 0, 2, 6000, 15000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Food'),
+(29, 'French Fries', '20 menit', 2, 'Null', 'Null', 100, 1, 5, 0, 4, 6000, 9000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Snack'),
+(30, 'Oppa Toast', '40 menit', 2, 'Null', 'Null', 100, 1, 5, 0, 6, 6000, 8000, 0, 10.00, 0.00, 0, 'coffee-480x385.jpg', 'Snack'),
+(31, 'Ice Cream', '40 menit', 2, 'Null', 'Null', 100, 1, 5, 0, 1, 6000, 8000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Snack'),
+(32, 'Brownies', '20 menit', 0, 'Null', 'Null', 100, 1, 5, 0, 0, 6000, 10000, 0, 0.00, 0.00, 0, 'brownies.jpg', 'Brownies'),
+(33, 'Singkong Crispy', '20 menit', 0, 'Null', 'Null', 100, 1, 5, 0, 0, 6000, 7000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Singkong Crispy'),
+(34, 'Kopiko', '40 menit', 0, 'Null', 'Null', 100, 1, 1, 0, 0, 6000, 9000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Kopiko');
 
 -- --------------------------------------------------------
 
@@ -91255,7 +91256,7 @@ INSERT INTO `t_keranjang` (`keranjang_id`, `pemesanan_id`, `user_id`, `brg_id`, 
 (120, 88, 14, 5, 0, 1, 168300),
 (138, 0, 15, 5, 0, 1, 8550),
 (140, 0, 14, 9, 0, 1, 11000),
-(142, 0, 14, 25, 0, 1, 10450);
+(144, 0, 14, 25, 0, 1, 10450);
 
 --
 -- Triggers `t_keranjang`
@@ -91323,6 +91324,7 @@ CREATE TABLE `t_pemesanan` (
   `pemesanan_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL DEFAULT '0',
   `ongkos_kirim` varchar(100) NOT NULL DEFAULT '',
+  `id_meja` int(11) NOT NULL,
   `total` varchar(11) NOT NULL DEFAULT '',
   `status_id` int(11) NOT NULL DEFAULT '0',
   `tanggal` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -91334,15 +91336,15 @@ CREATE TABLE `t_pemesanan` (
 -- Dumping data for table `t_pemesanan`
 --
 
-INSERT INTO `t_pemesanan` (`pemesanan_id`, `user_id`, `ongkos_kirim`, `total`, `status_id`, `tanggal`, `bukti_pembayaran`, `jenis_pemesanan_id`) VALUES
-(80, 11, '17000', '170000', 5, '2019-02-26 19:21:26', '20190107_140005.jpg', 1),
-(81, 11, '17000', '62000', 5, '2019-02-27 02:38:17', '20190107_135948.jpg', 1),
-(82, 11, '17000', '72000', 5, '2019-02-27 07:21:57', '20190107_135508.jpg', 1),
-(83, 11, '17000', '72000', 5, '2019-02-27 08:05:02', '20190107_140005.jpg', 1),
-(84, 11, '17000', '74600', 5, '2019-02-27 08:20:19', '20190107_135731.jpg', 1),
-(85, 11, '17000', '178500', 5, '2019-02-27 08:34:34', '20190107_140005.jpg', 1),
-(87, 11, '', '168300', 5, '2019-03-08 15:22:52', '20190107_135525.jpg', 1),
-(88, 14, '', '168300', 5, '2019-03-16 09:31:31', 'hoodie.jpg', 1);
+INSERT INTO `t_pemesanan` (`pemesanan_id`, `user_id`, `ongkos_kirim`, `id_meja`, `total`, `status_id`, `tanggal`, `bukti_pembayaran`, `jenis_pemesanan_id`) VALUES
+(80, 11, '17000', 0, '170000', 5, '2019-02-26 19:21:26', '20190107_140005.jpg', 1),
+(81, 11, '17000', 0, '62000', 5, '2019-02-27 02:38:17', '20190107_135948.jpg', 1),
+(82, 11, '17000', 0, '72000', 5, '2019-02-27 07:21:57', '20190107_135508.jpg', 1),
+(83, 11, '17000', 0, '72000', 5, '2019-02-27 08:05:02', '20190107_140005.jpg', 1),
+(84, 11, '17000', 0, '74600', 5, '2019-02-27 08:20:19', '20190107_135731.jpg', 1),
+(85, 11, '17000', 0, '178500', 5, '2019-02-27 08:34:34', '20190107_140005.jpg', 1),
+(87, 11, '', 0, '168300', 5, '2019-03-08 15:22:52', '20190107_135525.jpg', 1),
+(88, 14, '', 0, '168300', 5, '2019-03-16 09:31:31', 'hoodie.jpg', 1);
 
 --
 -- Triggers `t_pemesanan`
@@ -91615,7 +91617,7 @@ ALTER TABLE `m_alamat`
 -- AUTO_INCREMENT for table `m_barang`
 --
 ALTER TABLE `m_barang`
-  MODIFY `brg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `brg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `m_dropshiper`
@@ -91633,7 +91635,7 @@ ALTER TABLE `m_user`
 -- AUTO_INCREMENT for table `t_keranjang`
 --
 ALTER TABLE `t_keranjang`
-  MODIFY `keranjang_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
+  MODIFY `keranjang_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
 
 --
 -- AUTO_INCREMENT for table `t_pemesanan`

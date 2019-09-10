@@ -114,7 +114,7 @@ $ha = mysqli_fetch_array($sa);
 				<div class="total_area">
 					<ul>
 						No Meja
-						<input style="width: 100px;" type="text" class="form-control" name="nomeja" id="nomeja" disabled />
+						<input style="width: 100px;" type="text" class="form-control" name="nomeja" id="nomeja" disabled value=""/>
 						<br />
 						Catatan Menu
 						<br />

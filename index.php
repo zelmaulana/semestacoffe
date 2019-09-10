@@ -296,20 +296,20 @@ if ($b == 1) {
 							<div class="col-sm-3">
 								<div class="companyinfo">
 									<h2><span>Semesta</span> Coffee</h2>
-									<p>"menyatukan kita"</p>
+									<p style="color: orange;">"menyatukan kita"</p>
 								</div>
 							</div>
 							<div class="col-sm-3">
 								<div class="address">
 									<img src="images/home/map.png" alt="" />
-									<p style="text-align:center;">Jl. Tegalsari Dukuhwaluh, Kembaran, Belakang Kampus 1 UMP</p>
+									<p style="text-align:center; color: orange;">Jl. Tegalsari Dukuhwaluh, Kembaran, Belakang Kampus 1 UMP</p>
 								</div>
 							</div>
 							<div class="col-sm-3">
 								<div class="companyinfo">
-									<h2>Jam Operasional</h2>
-									<p>Senin - Minggu</p>
-									<p>07.00 - 22.00 WIB</p>
+									<h2><span>Jam Operasional</span></h2>
+									<p style="color: orange;">Senin - Minggu</p>
+									<p style="color: orange;">07.00 - 22.00 WIB</p>
 								</div>
 							</div>
 						</div>

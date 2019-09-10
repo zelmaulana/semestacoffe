@@ -1,15 +1,8 @@
 <?php
 $listmeja = getListMeja();
 
-
-
 $cek = getKeranjang($_SESSION["id"]);
-// echo "<pre>";
-// print_r($cek);
-// echo "</pre>";
 ?>
-
-
 
 <section id="cart_items">
 	<div class="container">
@@ -19,10 +12,6 @@ $cek = getKeranjang($_SESSION["id"]);
 	LEFT OUTER JOIN m_barang b on a.brg_id = b.brg_id
 	WHERE a.user_id = '$_SESSION[id]' AND pemesanan_id = '0'");
 			$nker = mysqli_num_rows($sker);
-			//echo "<pre>";
-			//print_r(mysqli_fetch_array($sker));
-			//echo "</pre>";
-
 
 			?>
 			<table class="table table-condensed">
@@ -56,7 +45,7 @@ $cek = getKeranjang($_SESSION["id"]);
 							<td class="cart_price">
 								<?php if ($hker['diskon'] > 0) { 	?>
 									<p style="color:#F00">Rp. <strike><?php echo number_format($hker['harga_jual'], 0, ",", ".") ?></strike></p>
-									<p>Rp. <?php echo number_format($hrg, 0, ",", ".") ?></p>
+									<p>Rp. <?php echo number_format(($hker['total'] / $hker['jumlah_trx']), 0, ",", ".") ?></p>
 								<?php	} else { ?>
 									<p>Rp. <?php echo number_format($hker['harga_jual'], 0, ",", ".") ?></p>
 								<?php	} ?>
@@ -125,8 +114,8 @@ $cek = getKeranjang($_SESSION["id"]);
 						</tr>
 					<?php
 					}
-					?>
-				</tbody> -->
+					?>-->
+				</tbody>
 			</table>
 		</div>
 	</div>
@@ -155,15 +144,29 @@ $cek = getKeranjang($_SESSION["id"]);
 				<div class="total_area">
 					<ul>
 						Pilih No Meja
-						<select style="width: 100px;" class="form-control" id="nomeja" name="nomeja" required>
+						<!-- <select style="width: 100px;" class="form-control" id="nomeja" name="nomeja" required>
 
 							<?php
 							foreach ($listmeja as $lm) {
 								echo '<option value="' . $lm["kdMeja"] . ' ">' . $lm["nmMeja"] . '</option>';
 							}
-							?>
+							?> 
 
+						</select> -->
+
+						<select name="nomeja" id="nomeja" class="form-control" style="width: 100px;" required>
+							<option value="">Pilih</option>
+							<?php
+							$sktgr = mysqli_query($koneksi, "SELECT * FROM l_meja");
+							while ($hktgr = mysqli_fetch_array($sktgr)) {
+								?>
+								<option value="<?php echo $hktgr['id_meja'] ?>"><?php echo $hktgr['nama_meja'] ?></option>
+							<?php
+							}
+							?>
 						</select>
+
+
 						<br />
 						Catatan Menu
 						<br />
