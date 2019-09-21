@@ -1,179 +1,183 @@
 <section id="cart_items">
-		<div class="container">
-			<div class="table-responsive cart_info">
-				<table class="table table-condensed">
-					<thead>
-						<tr class="cart_menu">
-							<td class="image">Item</td>
-							<td class="description"></td>
-							<td class="price">Harga</td>
-							<td class="quantity">Jumlah</td>
-							<td class="total">Total</td>
-							<td></td>
-						</tr>
-					</thead>
-					<tbody>
-                    <?php
+	<div class="container">
+		<div class="table-responsive cart_info">
+			<table class="table table-condensed">
+				<thead>
+					<tr class="cart_menu">
+						<td class="image">Item</td>
+						<td class="description"></td>
+						<td class="price">Harga</td>
+						<td class="quantity">Jumlah</td>
+						<td class="total">Total</td>
+						<td></td>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
 					$sker = mysqli_query($koneksi, "SELECT * FROM t_keranjang a
 										 			LEFT OUTER JOIN m_barang b on a.brg_id = b.brg_id
 													WHERE a.user_id = '$_SESSION[id]' AND pemesanan_id = '$_GET[id]'");
 					$nker = mysqli_num_rows($sker);
-					while ($hker = mysqli_fetch_array($sker)){
+					while ($hker = mysqli_fetch_array($sker)) {
 						$hrg = $hker['total'] / $hker['jumlah_trx'];
-					?>
+						?>
 						<tr>
 							<td class="cart_product">
-								<a href=""><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hker['image']?>" style="max-height:50px" alt=""></a>
+								<a href=""><img src="../<?php echo md5('admin') ?>/dist/img/buku/<?php echo $hker['image'] ?>" style="max-height:50px" alt=""></a>
 							</td>
 							<td class="cart_description">
-								<h4><?php echo $hker['judul']?></h4>
-								<p>Diskon <?php echo $hker['diskon']?>%</p>
+								<h4><?php echo $hker['judul'] ?></h4>
+								<p>Diskon <?php echo $hker['diskon'] ?>%</p>
 							</td>
 							<td class="cart_price">
-							<?php
-							if($hker['diskon'] > 0){
-								?>
-                                <p style="color:#F00">Rp. <strike><?php echo $hker['harga_jual']?></strike></p>
-                                <p>Rp. <?php echo $hrg?></p>
-                                <?php
-							}
-							else{
-								?>
-                                <p>Rp. <?php echo $hker['harga_jual']?></p>
-                                <?php
-							}
-							?>
+								<?php
+									if ($hker['diskon'] > 0) {
+										?>
+									<p style="color:#F00">Rp. <strike><?php echo $hker['harga_jual'] ?></strike></p>
+									<p>Rp. <?php echo $hrg ?></p>
+								<?php
+									} else {
+										?>
+									<p>Rp. <?php echo $hker['harga_jual'] ?></p>
+								<?php
+									}
+									?>
 							</td>
 							<td class="cart_quantity" width="15%">
-									<p class=""><?php echo $hker['jumlah_trx']?></p>
+								<p class=""><?php echo $hker['jumlah_trx'] ?></p>
 							</td>
 							<td class="cart_total">
-								<p class="cart_total_price"><?php echo $hker['total']?></p>
+								<p class="cart_total_price"><?php echo $hker['total'] ?></p>
 							</td>
 						</tr>
-                        <?php
+					<?php
 					}
-						?>
-					</tbody>
-				</table>
-			</div>
+					?>
+				</tbody>
+			</table>
 		</div>
-	</section> <!--/#cart_items-->
-	<?php
-	$val1 = mysqli_query($koneksi, "SELECT * FROM t_pemesanan WHERE pemesanan_id = '$_GET[id]'");
-	$hval1 = mysqli_fetch_array($val1);
-	if($hval1['jenis_pemesanan_id'] == '1'){
-		$sa = mysqli_query($koneksi, "SELECT * FROM m_alamat a
+	</div>
+</section>
+<!--/#cart_items-->
+<?php
+$val1 = mysqli_query($koneksi, "SELECT * FROM t_pemesanan WHERE pemesanan_id = '$_GET[id]'");
+$hval1 = mysqli_fetch_array($val1);
+if ($hval1['jenis_pemesanan_id'] == '1') {
+	$sa = mysqli_query($koneksi, "SELECT * FROM m_alamat a
 									  LEFT OUTER JOIN l_desa b on a.desa_id = b.desa_id
 									  LEFT OUTER JOIN l_kecamatan c on a.kecamatan_id = c.kecamatan_id
 									  LEFT OUTER JOIN l_kabupaten d on a.kabupaten_id = d.kabupaten_id
 									  LEFT OUTER JOIN l_propinsi e on a.propinsi_id = e.propinsi_id
 									  LEFT OUTER JOIN l_ongkir f on a.kabupaten_id = f.kabupaten_id
 									  WHERE a.user_id = '$_SESSION[id]'");
-	}
-	else if($hval1['jenis_pemesanan_id'] == '2'){
-		$sa = mysqli_query($koneksi, "SELECT * FROM m_dropshiper a
+} else if ($hval1['jenis_pemesanan_id'] == '2') {
+	$sa = mysqli_query($koneksi, "SELECT * FROM m_dropshiper a
 									  LEFT OUTER JOIN l_desa b on a.desa_id = b.desa_id
 									  LEFT OUTER JOIN l_kecamatan c on a.kecamatan_id = c.kecamatan_id
 									  LEFT OUTER JOIN l_kabupaten d on a.kabupaten_id = d.kabupaten_id
 									  LEFT OUTER JOIN l_propinsi e on a.propinsi_id = e.propinsi_id
 									  LEFT OUTER JOIN l_ongkir f on a.kabupaten_id = f.kabupaten_id
 									  WHERE a.user_id = '$_SESSION[id]' AND pemesanan_id = '$_GET[id]'");
-	}
-	else{
-	}
-	$na = mysqli_num_rows($sa);
-	$ha = mysqli_fetch_array($sa);
-	?>
-	<section id="do_action">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-6">
+} else { }
+$na = mysqli_num_rows($sa);
+$ha = mysqli_fetch_array($sa);
+?>
+<section id="do_action">
+	<div class="container">
+		<div class="row">
+			<!-- <div class="col-sm-6">
 					<div class="chose_area">
 						<ul class="user_option">
                         <?php
-						if($na == 0){
+						if ($na == 0) {
 							?>
 							<h3 style="color:#E00">Isikan Alamat Terlebih Dahulu!!!</h3>
                             <font>Masuk Ke Menu "Akun", Lalu Isikan Data Alamat dengan lengkap dan benar</font>
                             <?php
-						}
-						else{
-							?>
+							} else {
+								?>
 							<h3>Alamat Tujuan</h3><br />
-                            <?php echo $ha['alamat_spesifik']?> Desa <?php echo $ha['desa_name']?>, RT <?php echo $ha['rt']?> RW <?php echo $ha['rw']?>, Kec. <?php echo $ha['kecamatan_name']?>, <?php echo $ha['kabupaten_name']?>, <?php echo $ha['propinsi_name']?> <?php echo $ha['kode_pos']?>
+                            <?php echo $ha['alamat_spesifik'] ?> Desa <?php echo $ha['desa_name'] ?>, RT <?php echo $ha['rt'] ?> RW <?php echo $ha['rw'] ?>, Kec. <?php echo $ha['kecamatan_name'] ?>, <?php echo $ha['kabupaten_name'] ?>, <?php echo $ha['propinsi_name'] ?> <?php echo $ha['kode_pos'] ?>
                             <p> 
                             <br />
                             <br />
                             <h2 style="color:#E00"> Pengiriman Hanya Melalui JNT</h2>
                             <?php
-						}
+							}
 							?>
                             <br />
                             <br />
-                            <?php 
+                            <?php
 							$rr = mysqli_query($koneksi, "SELECT * FROM t_pemesanan a
 															JOIN l_status b on a.status_id = b.status_id WHERE pemesanan_id = '$_GET[id]'");
 							$rrr = mysqli_fetch_array($rr);
-							$tgl = date('d-m-Y', strtotime( '+6 hours', strtotime($rrr['tanggal'])));
-							$time = date('G:i:s', strtotime( '+6 hours', strtotime($rrr['tanggal'])));
+							$tgl = date('d-m-Y', strtotime('+6 hours', strtotime($rrr['tanggal'])));
+							$time = date('G:i:s', strtotime('+6 hours', strtotime($rrr['tanggal'])));
 							$tgl1 = date('d-m-Y',  strtotime($rrr['tanggal']));
 							$time1 = date('G:i:s', strtotime($rrr['tanggal']));
-							if($rrr['status_id'] == 1){
+							if ($rrr['status_id'] == 1) {
 								?>
                                 <font style="color:#E00">Lakukan Pembayaran Sebelum Tanggal <?php echo $tgl; ?> Pukul: <?php echo $time; ?> WIB </font> <br />
                                 <?php
-							}
-							else{
-								?>
+								} else {
+									?>
                                 <font style="color:#E00">Tanggal Pesan: <?php echo $tgl1; ?> Pukul: <?php echo $time1; ?> WIB </font>  <br />
                                 <?php
-							}
-							if($rrr['status_id'] == 2){
-								?>
+								}
+								if ($rrr['status_id'] == 2) {
+									?>
                             	<font style="">Status Pemesanan:  Lunas (Menunggu Verifikasi Admin)</font>
                                 <?php
-							}
-							else if($rrr['status_id'] == 3){
-								?>
+								} else if ($rrr['status_id'] == 3) {
+									?>
                             	<font style="">Status Pemesanan:  Lunas (Telah di Verifikasi dan Menunggu Pengiriman)</font>
                                 <?php
-							}
-							else{
-								?>
-                            	<font style="">Status Pemesanan:  <?php echo $rrr['status_name'];?></font>
+								} else {
+									?>
+                            	<font style="">Status Pemesanan:  <?php echo $rrr['status_name']; ?></font>
                                 <?php
-							}
-							?>
+								}
+								?>
 						</ul>
 					</div>
-				</div>
-                <?php
-                $srinc = mysqli_query($koneksi, "SELECT SUM(a.jumlah_trx) as aa, SUM(a.total) as bb FROM t_keranjang a
+				</div> -->
+			<?php
+			$srinc = mysqli_query($koneksi, "SELECT SUM(a.jumlah_trx) as aa, SUM(a.total) as bb FROM t_keranjang a
 										 		LEFT OUTER JOIN m_barang b on a.brg_id = b.brg_id
 												WHERE a.user_id = '$_SESSION[id]' AND pemesanan_id = '$_GET[id]'");
-				$hrinc = mysqli_fetch_array($srinc);
-				?>
-				<div class="col-sm-6">
-					<div class="total_area">
-						<ul>
-							<li>Total Barang <span><?php echo $hrinc['aa']?></span></li>
-							<li>Total Belanja <span>Rp. <?php echo $hrinc['bb']?></span></li>
-                            <li>Ongkos Kirim <span>Rp. <?php echo $ha['biaya']?></span></li>
-                            <li>Total Bayar <span>Rp. <?php echo $ha['biaya']+$hrinc['bb']?></span></li>
-                            <?php
-                            if($rrr['status_id'] == 1){
-								?>
-                            	<a href="?i=bayar&idp=<?php echo $_GET['id']?>"><button type="button" class="btn btn-primary" <?php if($na == 0){ echo "disabled"; }else {echo "";}?>>Bayar</button></a>
-                                <?php
-							}
-							else{
-							}
+			$hrinc = mysqli_fetch_array($srinc);
+			$bayar = $ha['biaya'] + $hrinc['bb'];
+			?>
+			<div class="col-sm-6">
+				<div class="total_area">
+					<ul>
+						No Meja
+						<input style="width: 100px;" type="text" class="form-control" name="nomeja" id="nomeja" disabled value="<?php echo $hrinc['mm'] ?>" />
+
+						<br />
+						Catatan Menu
+						<br />
+						<textarea name="catatan" id="catatan" class="form-control" disabled></textarea><br />
+						<li>Total Menu <span><?php echo $hrinc['aa'] ?></span></li>
+						<li>Total Bayar <span>Rp. <?php echo number_format($bayar, 0, ',', '.') ?></span></li>
+						<?php
+						if ($rrr['status_id'] == 1) {
 							?>
-						</ul>
-							
-					</div>
+							<a href="?i=bayar&idp=<?php echo $_GET['id'] ?>"><button type="button" class="btn btn-primary" <?php if ($na == 0) {
+																																	echo "disabled";
+																																} else {
+																																	echo "";
+																																} ?>>Bayar</button></a>
+						<?php
+						} else { }
+						?>
+						<br />
+						<a href="?i="><button type="button" class="btn btn-warning">Kembali</button></a>
+					</ul>
+
 				</div>
 			</div>
 		</div>
-	</section><!--/#do_action-->
+	</div>
+</section>
+<!--/#do_action-->

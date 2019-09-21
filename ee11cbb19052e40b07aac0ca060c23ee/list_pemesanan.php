@@ -18,12 +18,15 @@
 							<?php
 							$sqlnum = mysqli_query($koneksi, "SELECT a.*, b.* FROM t_pemesanan a
 												  			  LEFT OUTER JOIN t_keranjang b on a.pemesanan_id = b.pemesanan_id
-															  WHERE status_id = '1' AND a.user_id = '$_SESSION[id]'");
-							$sqldata1 = mysqli_query($koneksi, "SELECT SUM(b.jumlah_trx) as jml FROM t_pemesanan a
-												  			   LEFT OUTER JOIN t_keranjang b on a.pemesanan_id = b.pemesanan_id
-															   WHERE status_id = '1' AND a.user_id = '$_SESSION[id]'");
+															  WHERE status_id = '2' AND a.user_id = '$_SESSION[id]'");
+
+							$sqldata1 = mysqli_query($koneksi, "SELECT SUM(b.jumlah_trx) as jml FROM t_pemesanan a LEFT OUTER JOIN t_keranjang b on a.pemesanan_id = b.pemesanan_id
+															   WHERE status_id = '2' AND a.user_id = '$_SESSION[id]'");
+
 							$sqldata = mysqli_query($koneksi, "SELECT * FROM t_pemesanan 
-															   WHERE status_id = '1' AND user_id = '$_SESSION[id]'");
+															   WHERE status_id = '2' AND user_id = '$_SESSION[id]'");
+
+							$jml = mysqli_fetch_array($sqldata1);
 							$num = mysqli_num_rows($sqlnum);
 							if ($num == 0) {
 								?>
@@ -45,14 +48,11 @@
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-right">
-													<center>
-														<h2>Tagihan Pembayaran</h2>
-													</center>
-													<p>Total Belanja = Rp. <?php echo $tot ?></p>
-													<p>Ongkos Kirim = Rp. <?php echo $data['ongkos_kirim'] ?></p>
-													<p>Total Bayar = Rp. <?php echo $data['total'] ?></p>
-													<a href="?i=detail-pemesanan&id=<?php echo $data['pemesanan_id'] ?>" class="btn btn-default add-to-cart btn-xs pull-left"><i class="fa fa-eye"></i>Detail Barang</a>
-													<a href="?i=bayar&idp=<?php echo $data['pemesanan_id'] ?>" class="btn btn-default add-to-cart btn-xs "><i class="fa fa-money"></i>Bayar Tagihan</a>
+													<h2>Detail Pesanan</h2>
+													<p>Tanggal = <?php echo $data['tanggal'] ?></p>
+													<p>Total Bayar = Rp. <?php echo number_format($data['total'], 0, ',', '.') ?></p>
+													<a href="?i=detail-pemesanan&id=<?php echo $data['pemesanan_id'] ?>" class="btn btn-default add-to-cart btn-xs pull-right"><i class="fa fa-eye"></i>Detail Menu</a>
+													<!-- <a href="?i=bayar&idp=<?php echo $data['pemesanan_id'] ?>" class="btn btn-default add-to-cart btn-xs "><i class="fa fa-money"></i>Bayar Tagihan</a> -->
 												</div>
 
 											</div>
@@ -67,12 +67,16 @@
 							<?php
 							$sqlnum = mysqli_query($koneksi, "SELECT a.*, b.* FROM t_pemesanan a
 												  			  LEFT OUTER JOIN t_keranjang b on a.pemesanan_id = b.pemesanan_id
-															  WHERE status_id = '2' AND a.user_id = '$_SESSION[id]'");
+															  WHERE status_id = '3' AND a.user_id = '$_SESSION[id]'");
+
 							$sqldata1 = mysqli_query($koneksi, "SELECT SUM(b.jumlah_trx) as jml FROM t_pemesanan a
 												  			   LEFT OUTER JOIN t_keranjang b on a.pemesanan_id = b.pemesanan_id
-															   WHERE status_id = '2' AND a.user_id = '$_SESSION[id]'");
+															   WHERE status_id = '3' AND a.user_id = '$_SESSION[id]'");
+
 							$sqldata = mysqli_query($koneksi, "SELECT * FROM t_pemesanan 
-															   WHERE status_id = '2' AND user_id = '$_SESSION[id]'");
+															   WHERE status_id = '3' AND user_id = '$_SESSION[id]'");
+
+							$jml = mysqli_fetch_array($sqldata1);
 							$num = mysqli_num_rows($sqlnum);
 							if ($num == 0) {
 								?>
@@ -94,13 +98,10 @@
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-right">
-													<center>
-														<h2>Tagihan Pembayaran</h2>
-													</center>
-													<p>Total Belanja = Rp. <?php echo $tot ?></p>
-													<p>Ongkos Kirim = Rp. <?php echo $data['ongkos_kirim'] ?></p>
-													<p>Total Bayar = Rp. <?php echo $data['total'] ?></p>
-													<a href="?i=detail-pemesanan&id=<?php echo $data['pemesanan_id'] ?>" class="btn btn-default add-to-cart btn-xs pull-right"><i class="fa fa-eye"></i>Detail Barang</a>
+													<h2>Menunggu Pesanan</h2>
+													<p>Tanggal = <?php echo $data['tanggal'] ?></p>
+													<p>Total Bayar = Rp. <?php echo number_format($data['total'], 0, ',', '.') ?></p>
+													<a href="?i=detail-pemesanan&id=<?php echo $data['pemesanan_id'] ?>" class="btn btn-default add-to-cart btn-xs pull-right"><i class="fa fa-eye"></i>Detail Menu</a>
 												</div>
 
 											</div>
@@ -220,14 +221,15 @@
 						</div>
 						<div class="tab-pane fade" id="selesai">
 							<?php
-							$sqlnum = mysqli_query($koneksi, "SELECT a.*, b.* FROM t_pemesanan a
-												  			  LEFT OUTER JOIN t_keranjang b on a.pemesanan_id = b.pemesanan_id
-															  WHERE status_id = '5' AND a.user_id = '$_SESSION[id]'");
+							$sqlnum = mysqli_query($koneksi, "SELECT a.*, b.* FROM t_pemesanan a LEFT OUTER JOIN t_keranjang b on a.pemesanan_id = b.pemesanan_id WHERE status_id = '5' AND a.user_id = '$_SESSION[id]'");
+
 							$sqldata1 = mysqli_query($koneksi, "SELECT SUM(b.jumlah_trx) as jml FROM t_pemesanan a
 												  			   LEFT OUTER JOIN t_keranjang b on a.pemesanan_id = b.pemesanan_id
 															   WHERE status_id = '5' AND a.user_id = '$_SESSION[id]'");
-							$sqldata = mysqli_query($koneksi, "SELECT * FROM t_pemesanan
-															   WHERE status_id = '5' AND user_id = '$_SESSION[id]'");
+
+							$sqldata = mysqli_query($koneksi, "SELECT * FROM t_pemesanan WHERE status_id = '5' AND user_id = '$_SESSION[id]' ORDER BY pemesanan_id DESC LIMIT 4");
+
+							$jml = mysqli_fetch_array($sqldata1);
 							$num = mysqli_num_rows($sqlnum);
 							if ($num == 0) {
 								?>
@@ -249,13 +251,10 @@
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-right">
-													<center>
-														<h2>Tagihan Pembayaran</h2>
-													</center>
-													<p>Total Belanja = Rp. <?php echo $tot ?></p>
-													<p>Ongkos Kirim = Rp. <?php echo $data['ongkos_kirim'] ?></p>
-													<p>Total Bayar = Rp. <?php echo $data['total'] ?></p>
-													<a href="?i=detail-pemesanan&id=<?php echo $data['pemesanan_id'] ?>" class="btn btn-default add-to-cart btn-xs pull-right"><i class="fa fa-eye"></i>Detail Barang</a>
+													<h2>History Pesanan</h2>
+													<p>Tanggal = <?php echo $data['tanggal'] ?></p>
+													<p>Total Bayar = Rp. <?php echo number_format($data['total'], 0, ',', '.') ?></p>
+													<a href="?i=detail-pemesanan&id=<?php echo $data['pemesanan_id'] ?>" class="btn btn-default add-to-cart btn-xs pull-right"><i class="fa fa-eye"></i>Detail Menu</a>
 												</div>
 
 											</div>

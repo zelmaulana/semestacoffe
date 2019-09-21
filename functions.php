@@ -36,7 +36,7 @@ function getKeranjang($userid)
 
 
     $sql = "SELECT a.brg_id,b.image,b.judul,a.keranjang_id,b.harga_jual,b.diskon,a.jumlah_trx,a.total, a.id_meja, a.jumlah_trx, a.total FROM t_keranjang a
-   LEFT OUTER JOIN m_barang b on a.brg_id = b.brg_id
+ LEFT OUTER JOIN m_barang b on a.brg_id = b.brg_id
    WHERE a.user_id = '" . $userid . "' AND pemesanan_id = '0'";
 
 

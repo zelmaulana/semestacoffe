@@ -105,30 +105,32 @@ $ha = mysqli_fetch_array($sa);
 					</div>
 				</div> -->
 			<?php
-			$srinc = mysqli_query($koneksi, "SELECT SUM(a.jumlah_trx) as aa, SUM(a.total) as bb FROM t_keranjang a LEFT OUTER JOIN m_barang b on a.brg_id = b.brg_id WHERE a.user_id = '$_SESSION[id]' AND pemesanan_id = '0'");
+			$srinc = mysqli_query($koneksi, "SELECT SUM(a.jumlah_trx) as aa, SUM(a.total) as bb, id_meja as mm FROM t_keranjang a LEFT OUTER JOIN m_barang b on a.brg_id = b.brg_id WHERE a.user_id = '$_SESSION[id]' AND pemesanan_id = '0'");
 
 			$hrinc = mysqli_fetch_array($srinc);
 			$bayar = $ha['biaya'] + $hrinc['bb'];
+
+			print_r($hrinc['mm']);
+
 			?>
 			<div class="col-sm-6">
 				<div class="total_area">
 					<ul>
 						No Meja
-						<input style="width: 100px;" type="text" class="form-control" name="nomeja" id="nomeja" disabled value=""/>
+						<input style="width: 100px;" type="text" class="form-control" name="nomeja" id="nomeja" disabled value="<?php echo $hrinc['mm'] ?>" />
+
 						<br />
 						Catatan Menu
 						<br />
 						<textarea name="catatan" id="catatan" class="form-control" disabled></textarea><br />
 						<li>Total Menu <span><?php echo $hrinc['aa'] ?></span></li>
-						<!-- <li>Total Belanja <span>Rp. <?php echo $hrinc['bb'] ?></span></li>
-                            <li>Ongkos Kirim <span>Rp. <?php echo $ha['biaya'] ?></span></li> -->
 						<li>Total Bayar <span>Rp. <?php echo number_format($bayar, 0, ',', '.') ?></span></li><br />
-						<a href="?i=keranjang"><button type="button" class="btn btn-warning">Kembali ke Keranjang</button></a>
-						<a href="?i=bayar&id=<?php echo md5('byr') ?>"><button type="button" class="btn btn-info" <?php if ($na == 0) {
-																														echo "disabled";
-																													} else {
-																														echo "";
-																													} ?>>Checkout</button></a>
+						<a href="?i=keranjang"><button type="button" class="btn-warning">Kembali ke Keranjang</button></a>
+						<a href="?i=bayar&id=<?php echo md5('byr') ?>"><button type="button" class=" btn-info" <?php if ($na == 0) {
+																													echo "disabled";
+																												} else {
+																													echo "";
+																												} ?>>Checkout</button></a>
 
 					</ul>
 
