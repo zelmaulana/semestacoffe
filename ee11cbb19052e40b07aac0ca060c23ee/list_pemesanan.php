@@ -6,11 +6,11 @@
 					<!--category-tab-->
 					<div class="col-sm-12">
 						<ul class="nav nav-tabs">
-							<li class="active"><a href="#belumbayar" data-toggle="tab">Pesanan</a></li>
-							<li><a href="#lunas" data-toggle="tab">Menunggu</a></li>
+							<li class="active"><a href="#belumbayar" data-toggle="tab">Menunggu Konfirmasi</a></li>
+							<li><a href="#lunas" data-toggle="tab">Pesanan Diproses</a></li>
 							<!-- <li><a href="#proses" data-toggle="tab">Menunggu Pengiriman</a></li>
 								<li><a href="#dikirim" data-toggle="tab">Dikirim</a></li> -->
-							<li><a href="#selesai" data-toggle="tab">Selesai</a></li>
+							<li><a href="#selesai" data-toggle="tab">Pesanan Selesai</a></li>
 						</ul>
 					</div>
 					<div class="tab-content">
@@ -28,6 +28,7 @@
 
 							$jml = mysqli_fetch_array($sqldata1);
 							$num = mysqli_num_rows($sqlnum);
+							$no = 1;
 							if ($num == 0) {
 								?>
 								<div class="col-sm-12">
@@ -49,18 +50,17 @@
 									<div class="col-sm-3">
 										<div class="product-image-wrapper">
 											<div class="single-products">
-												<div class="productinfo text-right">
-													<h2>Detail Pesanan</h2>
+												<div class="productinfo text-left">
+													<h4><?php echo $no ?>. Menunggu Konfirmasi</h4>
 													<p>Tanggal = <?php echo $data['tanggal'] ?></p>
-													<p>Total Bayar = Rp. <?php echo number_format($data['total'], 0, ',', '.') ?></p>
-													<a href="?i=detail-pemesanan&id=<?php echo $data['pemesanan_id'] ?>" class="btn btn-default add-to-cart btn-xs pull-right"><i class="fa fa-eye"></i>Detail Menu</a>
-													<!-- <a href="?i=bayar&idp=<?php echo $data['pemesanan_id'] ?>" class="btn btn-default add-to-cart btn-xs "><i class="fa fa-money"></i>Bayar Tagihan</a> -->
+													<p style="color: red; font-weight: bold;">Total Bayar = Rp. <?php echo number_format($data['total'], 0, ',', '.') ?></p>
+													<a href="?i=detail-pemesanan&id=<?php echo $data['pemesanan_id'] ?>" class="btn btn-warning btn-xs pull-left"><i class="fa fa-eye"></i> Detail Menu</a>
 												</div>
-
 											</div>
 										</div>
 									</div>
 							<?php
+									$no++;
 								}
 							}
 							?>
@@ -80,6 +80,7 @@
 
 							$jml = mysqli_fetch_array($sqldata1);
 							$num = mysqli_num_rows($sqlnum);
+							$no = 1;
 							if ($num == 0) {
 								?>
 								<div class="col-sm-12">
@@ -101,17 +102,22 @@
 									<div class="col-sm-3">
 										<div class="product-image-wrapper">
 											<div class="single-products">
-												<div class="productinfo text-right">
-													<h2>Menunggu Pesanan</h2>
+												<div class="productinfo text-left">
+													<h4><?php echo $no ?>. Pesanan Diproses</h4>
 													<p>Tanggal = <?php echo $data['tanggal'] ?></p>
-													<p>Total Bayar = Rp. <?php echo number_format($data['total'], 0, ',', '.') ?></p>
-													<a href="?i=detail-pemesanan&id=<?php echo $data['pemesanan_id'] ?>" class="btn btn-default add-to-cart btn-xs pull-right"><i class="fa fa-eye"></i>Detail Menu</a>
+
+													<!-- <p>Total Bayar = Rp. <?php echo number_format($data['total'], 0, ',', '.') ?></p>
+													<a href="?i=detail-pemesanan&id=<?php echo $data['pemesanan_id'] ?>" class="btn btn-default add-to-cart btn-xs pull-right"><i class="fa fa-eye"></i>Detail Menu</a> -->
+
+													<p style="color: red; font-weight: bold;">Total Bayar = Rp. <?php echo number_format($data['total'], 0, ',', '.') ?></p>
+													<a href="?i=detail-pemesanan&id=<?php echo $data['pemesanan_id'] ?>" class="btn btn-warning btn-xs pull-left"><i class="fa fa-eye"></i> Detail Menu</a>
 												</div>
 
 											</div>
 										</div>
 									</div>
 							<?php
+									$no++;
 								}
 							}
 							?>
@@ -239,6 +245,7 @@
 
 							$jml = mysqli_fetch_array($sqldata1);
 							$num = mysqli_num_rows($sqlnum);
+							$no = 1;
 							if ($num == 0) {
 								?>
 								<div class="col-sm-12">
@@ -260,17 +267,22 @@
 									<div class="col-sm-3">
 										<div class="product-image-wrapper">
 											<div class="single-products">
-												<div class="productinfo text-right">
-													<h2>History Pesanan</h2>
+												<div class="productinfo text-left">
+													<h4><?php echo $no ?>. Pesanan Selesai</h4>
 													<p>Tanggal = <?php echo $data['tanggal'] ?></p>
-													<p>Total Bayar = Rp. <?php echo number_format($data['total'], 0, ',', '.') ?></p>
-													<a href="?i=detail-pemesanan&id=<?php echo $data['pemesanan_id'] ?>" class="btn btn-default add-to-cart btn-xs pull-right"><i class="fa fa-eye"></i>Detail Menu</a>
+
+													<!-- <p>Total Bayar = Rp. <?php echo number_format($data['total'], 0, ',', '.') ?></p>
+													<a href="?i=detail-pemesanan&id=<?php echo $data['pemesanan_id'] ?>" class="btn btn-default add-to-cart btn-xs pull-right"><i class="fa fa-eye"></i>Detail Menu</a> -->
+
+													<p style="color: red; font-weight: bold;">Total Bayar = Rp. <?php echo number_format($data['total'], 0, ',', '.') ?></p>
+													<a href="?i=detail-pemesanan&id=<?php echo $data['pemesanan_id'] ?>" class="btn btn-warning btn-xs pull-left"><i class="fa fa-eye"></i> Detail Menu</a>
 												</div>
 
 											</div>
 										</div>
 									</div>
 							<?php
+									$no++;
 								}
 							}
 							?>

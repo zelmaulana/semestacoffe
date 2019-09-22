@@ -33,12 +33,12 @@
 								<?php
 									if ($hker['diskon'] > 0) {
 										?>
-									<p style="color:#F00">Rp. <strike><?php echo $hker['harga_jual'] ?></strike></p>
+									<p style="color:#F00">Rp. <strike><?php echo number_format($hker['harga_jual'], 0, ',', '.') ?></strike></p>
 									<p>Rp. <?php echo $hrg ?></p>
 								<?php
 									} else {
 										?>
-									<p>Rp. <?php echo $hker['harga_jual'] ?></p>
+									<p>Rp. <?php echo number_format($hker['harga_jual'], 0, ',', '.') ?></p>
 								<?php
 									}
 									?>
@@ -47,7 +47,7 @@
 								<p class=""><?php echo $hker['jumlah_trx'] ?></p>
 							</td>
 							<td class="cart_total">
-								<p class="cart_total_price"><?php echo $hker['total'] ?></p>
+								<p class="cart_total_price">Rp. <?php echo number_format($hker['total'], 0, ',', '.') ?></p>
 							</td>
 						</tr>
 					<?php
