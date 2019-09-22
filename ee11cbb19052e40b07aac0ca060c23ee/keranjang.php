@@ -23,45 +23,6 @@ $cek = getKeranjang($_SESSION["id"]);
 				</thead>
 				<tbody>
 
-					<!-- <?php foreach ($cek as $hker) {	?>
-						<tr>
-							<td class="cart_product">
-								<a href=""><img src="../<?php echo md5('admin') ?>/dist/img/buku/<?php echo $hker['image'] ?>" style="max-height:50px" alt=""></a>
-
-							</td>
-							<td class="cart_description">
-								<h4><?php echo $hker['judul'] ?></h4>
-								<p>Diskon <?php echo $hker['diskon'] ?>%</p>
-
-							</td>
-							<td class="cart_price">
-								<?php if ($hker['diskon'] > 0) { 	?>
-									<p style="color:#F00">Rp. <strike><?php echo number_format($hker['harga_jual'], 0, ",", ".") ?></strike></p>
-									<p>Rp. <?php echo number_format(($hker['total'] / $hker['jumlah_trx']), 0, ",", ".") ?></p>
-								<?php	} else { ?>
-									<p>Rp. <?php echo number_format($hker['harga_jual'], 0, ",", ".") ?></p>
-								<?php	} ?>
-
-							</td>
-							<td class="cart_quantity" width="15%">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href="?i=<?php echo md5('min_jumlah') ?>&id=<?php echo $hker['keranjang_id'] ?>"> - </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="<?php echo $hker['jumlah_trx'] ?>" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href="?i=<?php echo md5('plus_jumlah') ?>&id=<?php echo $hker['keranjang_id'] ?>"> + </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">Rp. <?php echo number_format($hker['total'], 0, ",", ".") ?></p>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href="?i=<?php echo md5('del_keranjang') ?>&id=<?php echo $hker['keranjang_id'] ?>"><i class="fa fa-times"></i></a>
-
-							</td>
-						</tr>
-						<?php } ?> -->
-
-
-
 					<?php
 
 					$sker = mysqli_query($koneksi, "SELECT * FROM t_keranjang a
@@ -77,7 +38,9 @@ $cek = getKeranjang($_SESSION["id"]);
 								<div class="product-image-wrapper">
 									<div class="single-products">
 										<center>
-											<h4>Keranjang Menu Kosong</h4>
+											<h4>Wah, keranjang menu kakak masih kosong ni..</h4>
+											<p>Daripada dianggurin, mending isi dengan menu-menu spesial dari Semesta Coffee. Yuk, pesan sekarang.</p>
+											<a href="?i=" class="btn btn-info pull-center"><i class="fa fa-shopping-cart"></i> Pesan Menu</a>
 										</center>
 									</div>
 								</div>
@@ -159,16 +122,6 @@ $cek = getKeranjang($_SESSION["id"]);
 				<div class="total_area">
 					<ul>
 						Pilih No Meja
-						<!-- <select style="width: 100px;" class="form-control" id="nomeja" name="nomeja" required>
-
-							<?php
-							foreach ($listmeja as $lm) {
-								echo '<option value="' . $lm["kdMeja"] . ' ">' . $lm["nmMeja"] . '</option>';
-							}
-							?> 
-
-						</select> -->
-
 						<select name="nomeja" id="nomeja" class="form-control" style="width: 100px;" required>
 							<option value="">Pilih</option>
 							<?php
@@ -186,12 +139,16 @@ $cek = getKeranjang($_SESSION["id"]);
 						<textarea name="catatan" id="catatan" class="form-control"></textarea><br />
 						<li>Total Menu <span><?php echo $hrinc['aa'] ?></span></li>
 						<li>Total Harga <span>Rp. <?php echo number_format($hrinc['bb'], 0, ",", ".") ?></span></li><br />
-						<a href="?i="><button type="button" class="btn-warning">Tambah Menu</button></a>
-						<a href="?i=chekout"><button type="submit" class="btn-info" <?php if ($bb == 0) {
-																						echo "disabled";
-																					} else {
-																						echo "";
-																					} ?>>Pesan</button></a>
+						<!-- <a href="?i=chekout"><button type="submit" class="btn-info" <?php if ($bb == 0) {
+																								echo "disabled";
+																							} else {
+																								echo "";
+																							} ?>>Pesan</button></a> -->
+						<input type="button" class="btn-info" name="pesan" id="pesan" onclick="myFunction()" value="Pesan" <?php if ($bb == 0) {
+																																echo "disabled";
+																															} else {
+																																echo "";
+																															} ?> />
 					</ul>
 
 				</div>
@@ -200,3 +157,17 @@ $cek = getKeranjang($_SESSION["id"]);
 	</div>
 </section>
 <!--/#do_action-->
+
+
+<script>
+	function myFunction() {
+		var txt;
+		var r = confirm("Pesanan Kakak Akan Kami Proses, Ingin Lanjut Pesan?");
+		if (r == true) {
+			window.location = "?i=";
+		} else {
+			alert('Terimakasih Pesanan Kakak Kami Proses, Silahkan Melakukan Pembayaran di Kasir ^__^');
+			window.location = "?i=bayar&id=<?php echo md5('byr') ?>";
+		}
+	}
+</script>

@@ -53,8 +53,8 @@
 											<?php
 											}
 											?>
-											<p>Stok : <?php echo $hbuku['stok'] ?> <small>(<?php echo $hbuku['jml_terjual'] ?>)Terjual</small></p><a href="?i=<?php echo md5('beli') ?>&idbrg=<?php echo $hbuku['brg_id'] ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Pesan Menu</a>
-										</div>
+											<p>Stok : <?php echo $hbuku['stok'] ?> <small>(<?php echo $hbuku['jml_terjual'] ?>)Terjual</small></p><a href="?i=<?php echo md5('beli') ?>&idbrg=<?php echo $hbuku['brg_id'] ?>" class="btn btn-warning"><i class="fa fa-shopping-cart"></i> Pesan Menu</a>
+										</div><br />
 
 									</div>
 								</div>
@@ -74,7 +74,7 @@
 												<tr>
 													<td><?php echo $hbuku['kategori_name'] ?></td>
 													<td><?php echo $hbuku['diskon'] ?>%</td>
-													<td><?php echo $hbuku['estimasi_menu'] ?></td>
+													<td><?php echo $hbuku['estimasi_menu'] ?> menit</td>
 													<td><?php echo $hbuku['deskripsi'] ?></td>
 												</tr>
 											</table>

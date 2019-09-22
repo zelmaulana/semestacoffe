@@ -194,8 +194,8 @@ if (empty($_SESSION['id'])) {
 							}
 							?>
 					<script>
-						alert("Dimasukkan Ke Keranjang");
-						window.location = "?i=keranjang";
+						//alert("Dimasukkan Ke Keranjang");
+						window.location = "?i=";
 					</script>
 				<?php
 							break;

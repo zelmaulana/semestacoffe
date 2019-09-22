@@ -10,7 +10,9 @@ if (isset($_POST["daftar"])) {
 			if ($n1 == 0) {
 				session_start();
 				$pass = md5($_POST['password']);
-				mysqli_query($koneksi, "INSERT INTO m_user VALUES ('', '$_POST[nama]', '$pass', '$_POST[nohp]', '$_POST[email]', 'nothing.png', '000000', 'verif', '2')");
+				mysqli_query($koneksi, "INSERT INTO m_user VALUES ('', '$_POST[nama]', '$pass', '$_POST[nohp]', '$_POST[email]', '', '', 'nothing.png', '000000', 'verif', '2')");
+
+				mysqli_query($koneksi, "INSERT INTO m_alamat VALUES ('', '', '', '', '', '', '', '', '')");
 
 				?>
 				<script>

@@ -5,11 +5,13 @@ if (isset($_POST['simpan'])) {
 	$query1 = mysqli_query($koneksi, "SELECT * FROM m_alamat WHERE user_id = '$_SESSION[id]'");
 	$data1 = mysqli_num_rows($query1);
 	if ($data1 == 0) {
-		mysqli_query($koneksi, "UPDATE m_user SET user_nama = '$_POST[nama]' WHERE user_id = '$_SESSION[id]'");
-		mysqli_query($koneksi, "INSERT INTO m_alamat VALUES ('', '$_SESSION[id]', '$_POST[alamat]', '$_POST[kel]', '$_POST[rt]', '$_POST[rw]', '$_POST[kec]', '$_POST[kota]', '$_POST[prop]', '$_POST[kd_pos]')");
+		mysqli_query($koneksi, "UPDATE m_user SET user_nama = '$_POST[nama]', user_ttl = '$_POST[ttl]', user_jeniskelamin = '$_POST[jk]' WHERE user_id = '$_SESSION[id]'");
+
+		mysqli_query($koneksi, "INSERT INTO m_alamat VALUES ('', '$_POST[alamat]', '', '', '', '', '', '', '')");
 	} else {
-		mysqli_query($koneksi, "UPDATE m_user SET user_nama = '$_POST[nama]' WHERE user_id = '$_SESSION[id]'");
-		mysqli_query($koneksi, "UPDATE m_alamat SET alamat_spesifik='$_POST[alamat]', desa_id='$_POST[kel]', rt='$_POST[rt]', rw='$_POST[rw]', kecamatan_id='$_POST[kec]', kabupaten_id='$_POST[kota]', propinsi_id='$_POST[prop]', kode_pos='$_POST[kd_pos]' WHERE user_id = '$_SESSION[id]'");
+		mysqli_query($koneksi, "UPDATE m_user SET user_nama = '$_POST[nama]', user_ttl = '$_POST[ttl]', user_jeniskelamin = '$_POST[jk]'  WHERE user_id = '$_SESSION[id]'");
+
+		mysqli_query($koneksi, "UPDATE m_alamat SET alamat_spesifik='$_POST[alamat]' WHERE user_id = '$_SESSION[id]'");
 	}
 	?>
 	<script>
@@ -19,6 +21,8 @@ if (isset($_POST['simpan'])) {
 <?php
 }
 ?>
+
+
 <section id="cart_items">
 	<div class="container">
 		<div class="table-responsive cart_info">
@@ -32,116 +36,72 @@ if (isset($_POST['simpan'])) {
 				<table class="table table-condensed">
 					<thead>
 						<tr class="cart_menu">
-							<td colspan="7" align="center">Silahkan Lengkapi Data Pribadi Anda untuk Dapatkan Special Diskon dari Kami</td>
+							<td colspan="7" align="center">
+								<h4>Data Akun Anda</h4>
+							</td>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td width="20%">Nama Lengkap</td>
+							<td class="col-sm-3">
+								<h4><u>Biodata</u></h4>
+							</td>
+							<td class="col-sm-0"></td>
+							<td class="col-sm-12"></td>
+						</tr>
+						<tr>
+							<td>Nama Lengkap</td>
 							<td>:</td>
-							<td><input type="text" class="col-sm-12" name="nama" value="<?php echo $huser['user_nama'] ?>" required /></td>
+							<td><input type="text" class="form-control" name="nama" value="<?php echo $huser['user_nama'] ?>" required /></td>
+						</tr>
+						<tr>
+							<td>Tanggal Lahir</td>
+							<td>:</td>
+							<td><input type="date" class="form-control" name="ttl" value="<?php echo $huser['user_ttl'] ?>" required /></td>
+						</tr>
+						<tr>
+							<td>Jenis Kelamin</td>
+							<td>:</td>
+							<td>
+								<input type="radio" name="jk" value="Laki-laki" checked> Laki-laki<br />
+								<input type="radio" name="jk" value="Perempuan"> Perempuan
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<h4><u>Kontak</u></h4>
+							</td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Nomor HP</td>
+							<td>:</td>
+							<td><input type="text" class="form-control" name="nohp" value="<?php echo $huser['user_nohp'] ?>" required /></td>
+						</tr>
+						<tr>
+							<td>Email</td>
+							<td>:</td>
+							<td><input type="text" class="form-control" name="email" value="<?php echo $huser['user_email'] ?>" required /></td>
 						</tr>
 						<tr>
 							<td>Alamat</td>
 							<td>:</td>
-							<td><input type="text" class="col-sm-12" name="alamat" value="<?php echo $huser['alamat_spesifik'] ?>" required /></td>
-						</tr>
-						<tr>
-						<tr id="prop_box">
-							<td>Provinsi</td>
-							<td>:</td>
 							<td>
-								<select name="prop" id="prop" onChange="ajaxkota(this.value)" required>
-									<option value="">Pilih Provinsi</option>
-									<?php
-									$queryProvinsi = mysqli_query($koneksi, "SELECT * FROM l_propinsi ORDER by propinsi_name");
-									while ($dataProvinsi = mysqli_fetch_array($queryProvinsi)) {
-										?><option value="<?php echo $dataProvinsi['propinsi_id'] ?>" <?php
-																											if ($dataProvinsi['propinsi_id'] == $huser['propinsi_id']) {
-																												echo "selected";
-																											}
-																											?>><?php echo $dataProvinsi['propinsi_name'] ?></option>
-									<?php
-									}
-									?>
-								</select>
+								<textarea name="alamat" class="form-control" placeholder="Isikan Alamat Anda" required><?php echo $huser['alamat_spesifik'] ?></textarea>
 							</td>
 						</tr>
-						<tr>
-							<td>Kota/Kabupaten</td>
-							<td>:</td>
-							<td><select name="kota" id="kota" onchange="ajaxkec(this.value)" required>
-									<option value="">Pilih Propinsi Terlebih Dahulu</option>
-									<?php
-									$skota = mysqli_query($koneksi, "SELECT * FROM l_kabupaten WHERE propinsi_id = '$huser[propinsi_id]' ORDER by kabupaten_name");
-									while ($hkota = mysqli_fetch_array($skota)) {
-										?>
-										<option value="<?php echo $hkota['kabupaten_id'] ?>" <?php
-																									if ($hkota['kabupaten_id'] == $huser['kabupaten_id']) {
-																										echo "selected";
-																									}
-																									?>><?php echo $hkota['kabupaten_name'] ?></option>
-									<?php
-									}
-									?>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<td>Kecamatan</td>
-							<td>:</td>
-							<td><select name="kec" id="kec" onChange="ajaxkel(this.value)" required>
-									<option value="">Pilih Kota/Kabupaten Terlebih Dahulu</option>
-									<?php
-									$skec = mysqli_query($koneksi, "SELECT * FROM l_kecamatan WHERE kabupaten_id = '$huser[kabupaten_id]' ORDER by kecamatan_name");
-									while ($hkec = mysqli_fetch_array($skec)) {
-										?>
-										<option value="<?php echo $hkec['kecamatan_id'] ?>" <?php
-																								if ($hkec['kecamatan_id'] == $huser['kecamatan_id']) {
-																									echo "selected";
-																								}
-																								?>><?php echo $hkec['kecamatan_name'] ?></option>
-									<?php
-									}
-									?>
-								</select>
-							</td>
-							<td align="right" width="10%">Kode Pos</td>
-							<td width="10%" id="kode_box"><input type="text" readonly="readonly" class="col-sm-12" name="kd_pos" id="kd_pos" value="<?php echo $huser['kode_pos'] ?>" required /></td>
-						</tr>
-						<tr>
-							<td>Desa</td>
-							<td>:</td>
-							<td><select name="kel" id="kel" onChange="ajaxkd(this.value)" required>
-									<option value="">Pilih Kecamatan Terlebih Dahulu</option>
-									<?php
-									$sdes = mysqli_query($koneksi, "SELECT * FROM l_desa WHERE kecamatan_id = '$huser[kecamatan_id]' ORDER BY desa_name asc");
-									while ($hdes = mysqli_fetch_array($sdes)) {
 
-										?>
-										<option value="<?php echo $hdes['desa_id'] ?>" <?php
-																							if ($hdes['desa_id'] == $huser['desa_id']) {
-																								echo "selected";
-																							}
-																							?>><?php echo $hdes['desa_name'] ?></option>
-
-									<?php
-									}
-									?>
-								</select>
+						<tr>
+							<td></td>
+							<td></td>
+							<td><br />
+								<input type="submit" name="simpan" id="simpan" class="btn btn-info" value="SIMPAN" />&nbsp;<a href="?i="><input type="button" name="kembali" id="kembali" class="btn btn-warning" value="KEMBALI" /></a>
 							</td>
-							<td align="right">RT</td>
-							<td width="10%"><input type="text" class="col-sm-12" name="rt" value="<?php echo $huser['rt'] ?>" required /></td>
-							<td align="right">RW</td>
-							<td width="10%"><input type="text" class="col-sm-12" name="rw" value="<?php echo $huser['rw'] ?>" required /></td>
 						</tr>
+
 					</tbody>
 
-					<tr>
-						<td>
-						<input type="submit" name="simpan" id="simpan" class="btn btn-info" value="SIMPAN" />&nbsp;<a href="?i="><input type="button" name="kembali" id="kembali" class="btn btn-warning" value="KEMBALI" /></a>
-						</td>
-					</tr>
 				</table>
 			</form>
 		</div>

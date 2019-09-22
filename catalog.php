@@ -117,7 +117,7 @@
 														<p><?php echo $hbarang['judul']?></p>
 														<p><small>(Klik Gambar Melihat Detail Menu)</small></p>
 														<!-- <p>(<?php echo $hbarang['kategori_name']?>)</p> -->
-														<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Pesan</a>
+														<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-warning"><i class="fa fa-shopping-cart"></i> Pesan</a>
 													</div>
 													
 												</div>
@@ -160,7 +160,7 @@
 														<p><?php echo $hbarang['judul']?></p>
 														<p><small>(Klik Gambar Melihat Detail Menu)</small></p>
 														<!-- <p>(<?php echo $hbarang['kategori_name']?>)</p> -->
-														<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Pesan</a>
+														<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-warning"><i class="fa fa-shopping-cart"></i> Pesan</a>
 													</div>
 													
 												</div>
@@ -205,7 +205,7 @@
 														<p><?php echo $hbarang['judul']?></p>
 														<p><small>(Klik Gambar Melihat Detail Menu)</small></p>
 														<!-- <p>(<?php echo $hbarang['kategori_name']?>)</p> -->
-														<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Pesan</a>
+														<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-warning"><i class="fa fa-shopping-cart"></i> Pesan</a>
 													</div>
 													
 												</div>
@@ -256,7 +256,7 @@
 															<p><?php echo $hbarang['judul']?></p> 
 															<p><small>(Klik Gambar Melihat Detail Menu)</small></p>
 															<!-- <p>(<?php echo $hbarang['kategori_name']?>)</p> -->
-                                                            <a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Pesan</a>
+                                                            <a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-warning"><i class="fa fa-shopping-cart"></i> Pesan</a>
                                                         </div>
                                                         
                                                     </div>
@@ -299,7 +299,7 @@
 															<p><?php echo $hbarang['judul']?></p> 
 															<p><small>(Klik Gambar Melihat Detail Menu)</small></p>
 															<!-- <p>(<?php echo $hbarang['kategori_name']?>)</p> -->
-                                                            <a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Pesan</a>
+                                                            <a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-warning"><i class="fa fa-shopping-cart"></i> Pesan</a>
                                                         </div>
                                                         
                                                     </div>
@@ -344,7 +344,7 @@
 															<p><?php echo $hbarang['judul']?></p> 
 															<p><small>(Klik Gambar Melihat Detail Menu)</small></p>
 															<!-- <p>(<?php echo $hbarang['kategori_name']?>)</p> -->
-                                                            <a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Pesan</a>
+                                                            <a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-warning"><i class="fa fa-shopping-cart"></i> Pesan</a>
                                                         </div>
                                                         
                                                     </div>
@@ -444,7 +444,7 @@
 															<p><?php echo $hbarang['judul']?></p> 
 															<p><small>(Klik Gambar Melihat Detail Menu)</small></p>
 															<!-- <p>(<?php echo $hbarang['kategori_name']?>)</p> -->
-													<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Pesan</a>
+													<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-warning"><i class="fa fa-shopping-cart"></i> Pesan</a>
 												</div>
 												
 											</div>
@@ -487,7 +487,7 @@
 															<p><?php echo $hbarang['judul']?></p> 
 															<p><small>(Klik Gambar Melihat Detail Menu)</small></p>
 															<!-- <p>(<?php echo $hbarang['kategori_name']?>)</p> -->
-													<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Pesan</a>
+													<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-warning"><i class="fa fa-shopping-cart"></i> Pesan</a>
 												</div>
 												
 											</div>
@@ -532,7 +532,7 @@
 															<p><?php echo $hbarang['judul']?></p> 
 															<p><small>(Klik Gambar Melihat Detail Menu)</small></p>
 															<!-- <p>(<?php echo $hbarang['kategori_name']?>)</p> -->
-													<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Pesan</a>
+													<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-warning"><i class="fa fa-shopping-cart"></i> Pesan</a>
 												</div>
 												
 											</div>

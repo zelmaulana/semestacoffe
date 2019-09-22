@@ -63,7 +63,7 @@
                     <td><?php echo $hasil['user_nohp'] ?></td>
                   </tr>
                   <tr>
-                    <th>Total</th>
+                    <th>Harga Total</th>
                     <th>:</th>
                     <td>Rp. <?php echo $hasil['total'] ?></td>
                   </tr>
@@ -75,21 +75,11 @@
                   <tr>
                     <th>Alamat</th>
                     <th>:</th>
-                    <td><?php echo $hasil['alamat_spesifik'] ?>, Desa/Kelurahan <?php echo $hasil['desa_name'] ?>, RT <?php echo $hasil['rt'] ?> RW <?php echo $hasil['rw'] ?>, Kec. <?php echo $hasil['kecamatan_name'] ?>, Kab. <?php echo $hasil['kabupaten_name'] ?>, <?php echo $hasil['propinsi_name'] ?></td>
+                    <td><?php echo $hasil['alamat_spesifik'] ?></td>
                   </tr>
                 </thead>
               </table>
             </div>
-            <!-- <div class="col-sm-4">
-              <table>
-                <tr>
-                  <th>Bukti Pembayaran</th>
-                </tr>
-                <tr>
-                  <td><img src="dist/img/buktiBayar/<?php echo $hasil['bukti_pembayaran'] ?>" style="width:150px"></td>
-                </tr>
-              </table>
-            </div> -->
           </div>
           <div class="box-body table-responsive">
             <h3>Detail Menu</h3>
@@ -98,7 +88,7 @@
                 <tr>
                   <th>No</th>
                   <th>Kategori Menu</th>
-                  <th>Nama</th>
+                  <th>Menu</th>
                   <th>Jumlah Beli</th>
                   <th>Harga</th>
                   <th>Total</th>

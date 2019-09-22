@@ -91,71 +91,15 @@ if (isset($_POST['simpan'])) {
 									</div>
 								</div>
 								<div class="form-group">
-									<label>Estimasi Menu (Waktu)</label>
+									<label>Estimasi Menu (Waktu/Menit)</label>
 									<div class="input-group date">
 										<div class="input-group-addon">
 											<i class="fa fa-shekel"></i>
 										</div>
-										<input type="text" class="form-control" name="estimasi" placeholder="Isi Disini" required>
+										<input type="number" class="form-control" name="estimasi" placeholder="Isi Disini" required>
 
 									</div>
 								</div>
-								<!-- <div class="form-group">
-								<label>Penerbit</label>
-								<div class="input-group date">
-									<div class="input-group-addon">
-										<i class="fa fa-shekel"></i>
-									</div>
-									<select name="penerbit" class="form-control select2" required>
-										<option value="">==Penerbit==</option>
-										<?php
-										$spenerbit = mysqli_query($koneksi, "SELECT * FROM l_penerbit");
-										while ($hpenerbit = mysqli_fetch_array($spenerbit)) {
-											?>
-											<option value="<?php echo $hpenerbit['penerbit_id'] ?>"><?php echo $hpenerbit['penerbit_name'] ?></option>
-                          				  <?php
-											}
-											?>
-                 					 </select>
-								</div>
-							</div> -->
-								<!-- <div class="form-group">
-								<label>Tahun Terbit</label>
-								<div class="input-group date">
-									<div class="input-group-addon">
-										<i class="fa fa-shekel"></i>
-									</div>
-									<input type="number" class="form-control" name="thn_terbit" placeholder="Isi Disini" required>
-								</div>
-							</div> -->
-								<!-- <div class="form-group">
-								<label>Kota Terbit</label>
-								<div class="input-group date">
-									<div class="input-group-addon">
-										<i class="fa fa-shekel"></i>
-									</div>
-									<input type="text" class="form-control" name="kota_terbit" placeholder="Isi Disini" required>
-								</div>
-							</div> -->
-								<!-- <div class="form-group">
-								<label>Penulis</label>
-								<div class="input-group date">
-									<div class="input-group-addon">
-										<i class="fa fa-shekel"></i>
-									</div>
-									<select name="penulis" class="form-control select2" required>
-										<option value="">==Penulis==</option>
-										<?php
-										$spenulis = mysqli_query($koneksi, "SELECT * FROM l_penulis");
-										while ($hpenulis = mysqli_fetch_array($spenulis)) {
-											?>
-											<option value="<?php echo $hpenulis['penulis_id'] ?>"><?php echo $hpenulis['penulis_name'] ?></option>
-                          				  <?php
-											}
-											?>
-                 					 </select>
-								</div>
-							</div> -->
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
@@ -194,24 +138,6 @@ if (isset($_POST['simpan'])) {
 										<input type="text" class="form-control" name="diskon" placeholder="Isi Disini" required>
 									</div>
 								</div>
-								<!-- <div class="form-group">
-								<label>Berat</label>
-								<div class="input-group date">
-									<div class="input-group-addon">
-										<i class="fa fa-shekel"></i>
-									</div>
-									<input type="number" class="form-control" name="berat" placeholder="Isi Disini"  required>
-								</div>
-							</div> -->
-								<!-- <div class="form-group">
-								<label>Jumlah Halaman</label>
-								<div class="input-group date">
-									<div class="input-group-addon">
-										<i class="fa fa-shekel"></i>
-									</div>
-									<input type="number" class="form-control" name="jumlah_halaman" placeholder="Isi Disini" required >
-								</div>
-							</div> -->
 								<button type="submit" class="btn btn-primary" name="simpan" id="submit">Simpan</button>
 								<a href="?i=<?php echo md5('v_buku') ?>"><button type="button" class="btn btn-primary">Cancel</button> </a>
 							</div>

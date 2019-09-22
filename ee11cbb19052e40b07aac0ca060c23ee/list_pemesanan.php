@@ -34,7 +34,9 @@
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<center>
-												<h2>Tidak Ada Data</h2>
+												<h3>Belum Ada Daftar Transaksi</h3>
+												<p>Mulai pesan menu dan cek daftar transaksi Anda disini.</p>
+												<a href="?i=" class="btn btn-info pull-center"><i class="fa fa-shopping-cart"></i> Pesan Menu</a>
 											</center>
 										</div>
 									</div>
@@ -84,7 +86,9 @@
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<center>
-												<h2>Tidak Ada Data</h2>
+												<h3>Belum Ada Daftar Transaksi</h3>
+												<p>Mulai pesan menu dan cek daftar transaksi Anda disini.</p>
+												<a href="?i=" class="btn btn-info pull-center"><i class="fa fa-shopping-cart"></i> Pesan Menu</a>
 											</center>
 										</div>
 									</div>
@@ -129,7 +133,9 @@
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<center>
-												<h2>Tidak Ada Data</h2>
+												<h3>Belum Ada Daftar Transaksi</h3>
+												<p>Mulai pesan menu dan cek daftar transaksi Anda disini.</p>
+												<a href="?i=" class="btn btn-info pull-center"><i class="fa fa-shopping-cart"></i> Pesan Menu</a>
 											</center>
 										</div>
 									</div>
@@ -178,7 +184,9 @@
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<center>
-												<h2>Tidak Ada Data</h2>
+												<h3>Belum Ada Daftar Transaksi</h3>
+												<p>Mulai pesan menu dan cek daftar transaksi Anda disini.</p>
+												<a href="?i=" class="btn btn-info pull-center"><i class="fa fa-shopping-cart"></i> Pesan Menu</a>
 											</center>
 										</div>
 									</div>
@@ -237,7 +245,9 @@
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<center>
-												<h2>Tidak Ada Data</h2>
+												<h3>Belum Ada Daftar Transaksi</h3>
+												<p>Mulai pesan menu dan cek daftar transaksi Anda disini.</p>
+												<a href="?i=" class="btn btn-info pull-center"><i class="fa fa-shopping-cart"></i> Pesan Menu</a>
 											</center>
 										</div>
 									</div>

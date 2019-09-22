@@ -29,9 +29,8 @@
                 <tr>
                   <th>No</th>
                   <th>Nama Pemesan</th>
-                  <th>No.HP</th>
-                  <th>Total</th>
-                  <th>No Meja</th>
+                  <th>Total Harga</th>
+                  <th>Nomor Meja</th>
                   <th>Tanggal Pemesanan</th>
                   <th>Action</th>
                 </tr>
@@ -39,20 +38,23 @@
               <tbody>
                 <?php
                 $no = 1;
-                $sql = mysqli_query($koneksi, "SELECT DISTINCT b.pemesanan_id, a.*, b.user_id, c.* FROM t_pemesanan a
-									LEFT OUTER JOIN t_keranjang b on a.pemesanan_id = b.pemesanan_id
-									LEFT OUTER JOIN m_user c on b.user_id = c.user_id
-								   WHERE a.status_id = '2'");
+                // $sql = mysqli_query($koneksi, "SELECT DISTINCT b.pemesanan_id, a.*, b.user_id, c.*, d.* FROM t_pemesanan a  LEFT OUTER JOIN t_keranjang b on a.pemesanan_id = b.pemesanan_id
+                // 	                  LEFT OUTER JOIN m_user c on b.user_id = c.user_id 
+                //                     LEFT OUTER JOIN m_barang d on b.brg_id = d.brg_id 
+                //                     WHERE a.status_id = '2'");
+                $sql = mysqli_query($koneksi, "SELECT DISTINCT b.pemesanan_id, a.*, b.user_id, c.* FROM       t_pemesanan a
+									  LEFT OUTER JOIN t_keranjang b on a.pemesanan_id = b.pemesanan_id
+									  LEFT OUTER JOIN m_user c on b.user_id = c.user_id
+                    WHERE a.status_id = '2'");
+
                 while ($hasil = mysqli_fetch_assoc($sql)) {
                   ?>
 
                   <tr>
                     <td><?php echo $no ?></td>
                     <td><?php echo $hasil['user_nama'] ?></td>
-                    <td><?php echo $hasil['user_nohp'] ?></td>
                     <td><?php echo $hasil['total'] ?></td>
                     <td><?php echo $hasil['id_meja'] ?></td>
-                    <!-- <td><a target="_new" style="margin-left:0cm" style="background:url(../<?php echo md5('admin') ?>/dist/img/buktiBayar/<?php echo $hasil['bukti_pembayaran'] ?>)" title="Display Picture" href="../<?php echo md5('admin') ?>/dist/img/buktiBayar/<?php echo $hasil['bukti_pembayaran'] ?>"><?php echo $hasil['bukti_pembayaran'] ?></a></td> -->
                     <td><?php echo date('d-m-Y', strtotime($hasil['tanggal'])) ?> <?php echo date('G:i:s', strtotime($hasil['tanggal'])) ?></td>
                     <td><a href="?i=<?php echo md5('dtl-pemesanan') ?>&id=<?php echo $hasil['pemesanan_id'] ?>">
                         <button type="button" class="btn btn-primary fa fa-eye"> Detail Pemesanan</button></a>
@@ -82,9 +84,8 @@
                 <tr>
                   <th>No</th>
                   <th>Nama Pemesan</th>
-                  <th>No.HP</th>
-                  <th>Total</th>
-                  <th>No Meja</th>
+                  <th>Total Harga</th>
+                  <th>Nomor Meja</th>
                   <th>Tanggal Pemesanan</th>
                   <th>Action</th>
                 </tr>
@@ -92,24 +93,31 @@
               <tbody>
                 <?php
                 $no = 1;
+                // $sql = mysqli_query($koneksi, "SELECT a.*, b.*, c.*, d.* FROM t_pemesanan a
+                //    LEFT OUTER JOIN m_user c on a.user_id = c.user_id
+                //    LEFT OUTER JOIN t_keranjang b on a.pemesanan_id = b.pemesanan_id
+                //    LEFT OUTER JOIN m_barang d on b.brg_id = d.brg_id
+                //    WHERE a.status_id = '3'");
+
                 $sql = mysqli_query($koneksi, "SELECT a.*, c.* FROM t_pemesanan a
-								   LEFT OUTER JOIN m_user c on a.user_id = c.user_id
-								   WHERE a.status_id = '3'");
+                  LEFT OUTER JOIN m_user c on a.user_id = c.user_id
+                  WHERE a.status_id = '3'");
+
                 while ($hasil = mysqli_fetch_assoc($sql)) {
                   ?>
-
                   <tr>
                     <td><?php echo $no ?></td>
                     <td><?php echo $hasil['user_nama'] ?></td>
-                    <td><?php echo $hasil['user_nohp'] ?></td>
                     <td><?php echo $hasil['total'] ?></td>
                     <td><?php echo $hasil['id_meja'] ?></td>
-                    <!-- <td><a target="_new" style="margin-left:0cm" style="background:url(../<?php echo md5('admin') ?>/dist/img/buktiBayar/<?php echo $hasil['bukti_pembayaran'] ?>)" title="Display Picture" href="../<?php echo md5('admin') ?>/dist/img/buktiBayar/<?php echo $hasil['bukti_pembayaran'] ?>"><?php echo $hasil['bukti_pembayaran'] ?></a></td> -->
                     <td><?php echo date('d-m-Y', strtotime($hasil['tanggal'])) ?> <?php echo date('G:i:s', strtotime($hasil['tanggal'])) ?></td>
                     <td><a href="?i=<?php echo md5('dtl-pemesanan') ?>&id=<?php echo $hasil['pemesanan_id'] ?>">
                         <button type="button" class="btn btn-primary fa fa-eye"> Detail Pemesanan</button></a>
                       <a href="?i=<?php echo md5('btl-verif') ?>&id=<?php echo $hasil['pemesanan_id'] ?>">
                         <button type="button" class="btn btn-danger fa fa-check"> Batal Verifikasi</button></a>
+
+                      <!-- <button type="submit" class="btn btn-info fa fa-check" name="simpan" id="simpan">Dikirim</button> -->
+
                       <a href="?i=<?php echo md5('resi') ?>&id=<?php echo $hasil['pemesanan_id'] ?>">
                         <button type="button" class="btn btn-info fa fa-check"> Telah Dikirim</button></a>
                     </td>

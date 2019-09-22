@@ -27,7 +27,7 @@
                 <tr>
                   <th>No</th>
                   <th>Nama Pemesan</th>
-                  <th>Total</th>
+                  <th>Total Harga</th>
                   <th>Nomor Meja</th>
                   <th>Tanggal Pemesanan</th>
                   <th>Action</th>
@@ -47,13 +47,13 @@
                     <td><?php echo $no ?></td>
                     <td><?php echo $hasil['user_nama'] ?></td>
                     <td>Rp. <?php echo $hasil['total'] ?></td>
-                    <td><?php echo $hasil['no_resi'] ?></td>
+                    <td><?php echo $hasil['id_meja'] ?></td>
                     <td><?php echo date('d-m-Y', strtotime($hasil['tanggal'])) ?> <?php echo date('G:i:s', strtotime($hasil['tanggal'])) ?></td>
                     <td><a href="?i=<?php echo md5('dtl-pemesanan') ?>&id=<?php echo $hasil['pemesanan_id'] ?>">
                         <button type="button" class="btn btn-primary fa fa-eye"> Detail Pemesanan</button></a>
-                      <a href="?i=<?php echo md5('u_resi') ?>&id=<?php echo $hasil['resi_id'] ?>">
+                      <!-- <a href="?i=<?php echo md5('u_resi') ?>&id=<?php echo $hasil['resi_id'] ?>">
                         <button type="button" class="btn btn-info fa fa-edit"> Ubah No Meja</button></a>
-                      <!-- <a href="http://www.jet.co.id/track" target="new">
+                      <a href="http://www.jet.co.id/track" target="new">
                         <button type="button" class="btn btn-primary fa fa-eye"> Cek Resi</button></a> -->
                       <a href="?i=<?php echo md5('sampai') ?>&id=<?php echo $hasil['pemesanan_id'] ?>">
                         <button type="button" class="btn btn-success fa fa-check"> Selesai</button></a>

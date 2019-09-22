@@ -30,7 +30,7 @@
 			$max = mysqli_fetch_array($maxq);
 			?>
 			<script>
-				alert('Terimakasih Pesanan Anda Kami Terima, Silahkan Melakukan Pembayaran di Kasir');
+				//alert('Terimakasih Pesanan Anda Kami Terima, Silahkan Melakukan Pembayaran di Kasir');
 				window.location = "?i=list_pemesanan";
 			</script>
 		<?php

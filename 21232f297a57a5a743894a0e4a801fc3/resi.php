@@ -1,9 +1,9 @@
 <?php
 if (isset($_POST['simpan'])) {
-	$val = mysqli_query($koneksi, "SELECT * FROM l_resi WHERE no_resi = '$_POST[resi]'");
+	$val = mysqli_query($koneksi, "SELECT * FROM t_pemesanan WHERE id_meja = '$_GET[id_meja]'");
 	$num = mysqli_num_rows($val);
 	if ($num == 0) {
-		mysqli_query($koneksi, "INSERT INTO l_resi VALUES ('', '$_GET[id]', '$_POST[resi]')");
+		//mysqli_query($koneksi, "INSERT INTO l_resi VALUES ('', '$_GET[id]', '$_POST[resi]')");
 		mysqli_query($koneksi, "UPDATE t_pemesanan SET status_id = '4' WHERE pemesanan_id = '$_GET[id]'");
 		?>
 		<script>
