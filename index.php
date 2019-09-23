@@ -51,7 +51,7 @@ if ($b == 1) {
 		<link href="css/animate.css" rel="stylesheet">
 		<link href="css/main.css" rel="stylesheet">
 		<link href="css/responsive.css" rel="stylesheet">
-		<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+		<!-- <script type="text/javascript" src="jquery-1.9.1.min.js"></script> -->
 		<!--[if lt IE 9]>
             <script src="js/html5shiv.js"></script>
             <script src="js/respond.min.js"></script>
@@ -61,6 +61,7 @@ if ($b == 1) {
 		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
 		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
 		<link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+		<script src="assets/sweetalert2/sweetalert2.all.min.js"></script>
 	</head>
 
 	<body class="hold-transition login-page" style="background-color:#FFF">
@@ -277,8 +278,22 @@ if ($b == 1) {
 					case md5('beli'):
 						?>
 					<script>
-						alert("Anda Belum Login, Silahkan Login Terlebih Dahulu.");
-						window.location = "?i=<?php echo md5('login') ?>";
+						Swal.fire({
+							title: 'Kakak, Kamu belum Login ',
+							animation: false,
+							customClass: {
+								popup: 'animated tada'
+							},
+							text: "login dulu yaaa",
+							type: 'warning',
+							showCancelButton: false,
+							confirmButtonColor: '#FFA500',
+							confirmButtonText: 'Yaa, login'
+						}).then((result) => {
+							if (result.value) {
+								window.location = "?i=<?php echo md5('login') ?>";
+							}
+						})
 					</script>
 			<?php
 						break;
@@ -330,6 +345,7 @@ if ($b == 1) {
 			<!-- /.login-box -->
 			<!-- jQuery 2.2.3 -->
 			<script src="js/jquery.js"></script>
+
 			<script src="js/price-range.js"></script>
 			<script src="js/jquery.scrollUp.min.js"></script>
 			<script src="js/bootstrap.min.js"></script>

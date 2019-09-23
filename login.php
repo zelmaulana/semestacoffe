@@ -30,16 +30,44 @@ if (isset($_POST["login"])) {
 									} else {
 										?>
 					<script>
-						alert("Password Anda Salah, Coba Lagi!");
-						window.location = "";
+						Swal.fire({
+							title: 'Kakak, password kamu salah',
+							animation: false,
+							customClass: {
+								popup: 'animated tada'
+							},
+							text: "coba lagi yaa",
+							type: 'warning',
+							showCancelButton: false,
+							confirmButtonColor: '#FFA500',
+							confirmButtonText: 'Yaa,'
+						}).then((result) => {
+							if (result.value) {
+								window.location = "";
+							}
+						})
 					</script>
 				<?php
 								}
 							} else {
 								?>
 				<script>
-					alert("Username Tidak Terdaftar, Coba Lagi!");
-					window.location = "";
+					Swal.fire({
+						title: 'Kakak, Username kamu tidak terdaftar',
+						animation: false,
+						customClass: {
+							popup: 'animated tada'
+						},
+						text: "daftar dulu yah",
+						type: 'warning',
+						showCancelButton: false,
+						confirmButtonColor: '#FFA500',
+						confirmButtonText: 'Yaa,'
+					}).then((result) => {
+						if (result.value) {
+							window.location = "";
+						}
+					})
 				</script>
 <?php
 			}
