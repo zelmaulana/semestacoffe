@@ -27,6 +27,17 @@ function getListMeja()
     return $listMeja;
 }
 
+function getJenisKelamin()
+{
+    $jeniskelamin = [
+        ['kd' => 'P', 'nama' => 'Cewe'],
+        ['kd' => 'L', 'nama' => 'Cowo']
+    ];
+    return $jeniskelamin;
+}
+
+
+
 
 function getKeranjang($userid)
 {

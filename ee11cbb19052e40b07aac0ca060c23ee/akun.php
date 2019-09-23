@@ -15,8 +15,24 @@ if (isset($_POST['simpan'])) {
 	}
 	?>
 	<script>
-		alert("Berhasil Disimpan");
-		window.location = "?i=<?php echo $_GET['i'] ?>";
+		//alert("Berhasil Disimpan");
+		Swal.fire({
+			title: 'Yeaay, Profile kamu berhasil disimpan',
+			animation: false,
+			customClass: {
+				popup: 'animated tada'
+			},
+			text: "",
+			type: 'warning',
+			showCancelButton: false,
+			confirmButtonColor: '#FFA500',
+			confirmButtonText: 'Muach,'
+		}).then((result) => {
+			if (result.value) {
+				//window.location = "?i=<?php echo $_GET['i'] ?>";
+				window.location = "?i=beranda";
+			}
+		})
 	</script>
 <?php
 }
@@ -27,10 +43,16 @@ if (isset($_POST['simpan'])) {
 	<div class="container">
 		<div class="table-responsive cart_info">
 			<?php
+
+			$jeniskelamin = getJenisKelamin();
+
 			$suser = mysqli_query($koneksi, "SELECT * FROM m_alamat a
 								  			 LEFT OUTER JOIN m_user b on a.user_id = b.user_id
 											 WHERE a.user_id = '$_SESSION[id]'");
 			$huser = mysqli_fetch_array($suser);
+			/*echo "<pre>";
+			print_r($jeniskelamin);
+			echo "</pre>";*/
 			?>
 			<form action="" method="post">
 				<table class="table table-condensed">
@@ -63,8 +85,23 @@ if (isset($_POST['simpan'])) {
 							<td>Jenis Kelamin</td>
 							<td>:</td>
 							<td>
-								<input type="radio" name="jk" value="Laki-laki" checked> Laki-laki<br />
-								<input type="radio" name="jk" value="Perempuan"> Perempuan
+
+								<?php
+								if (!empty($jeniskelamin)) {
+									foreach ($jeniskelamin as $jk) {
+
+										if ($jk["kd"] == $huser["user_jeniskelamin"]) {
+											$checked = " checked";
+										} else {
+											$checked = " ";
+										}
+										?>
+										<input type="radio" id="jk" name="jk" value="<?php echo $jk["kd"];  ?>" <?php echo $checked; ?>> <?php echo $jk["nama"];  ?>
+								<?php	}
+								}
+								?>
+								<!-- <input type="radio" name="jk" value="Laki-laki" > Laki-laki<br />
+								<input type="radio" name="jk" value="Perempuan"> Perempuan -->
 							</td>
 						</tr>
 						<tr>
