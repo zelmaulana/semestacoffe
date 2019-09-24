@@ -6,15 +6,15 @@
 					<!--category-tab-->
 					<div class="col-sm-12">
 						<ul class="nav nav-tabs">
-							<li class="active"><a href="#belumbayar" data-toggle="tab">Menunggu Konfirmasi</a></li>
-							<li><a href="#lunas" data-toggle="tab">Pesanan Diproses</a></li>
+							<li class="active"><a href="#pesanan" data-toggle="tab">Daftar Pesanan</a></li>
+							<li><a href="#proses" data-toggle="tab">Pesanan Diproses</a></li>
 							<!-- <li><a href="#proses" data-toggle="tab">Menunggu Pengiriman</a></li>
 								<li><a href="#dikirim" data-toggle="tab">Dikirim</a></li> -->
 							<li><a href="#selesai" data-toggle="tab">Pesanan Selesai</a></li>
 						</ul>
 					</div>
 					<div class="tab-content">
-						<div class="tab-pane fade active in" id="belumbayar">
+						<div class="tab-pane fade active in" id="pesanan">
 							<?php
 							$sqlnum = mysqli_query($koneksi, "SELECT a.*, b.* FROM t_pemesanan a
 												  			  LEFT OUTER JOIN t_keranjang b on a.pemesanan_id = b.pemesanan_id
@@ -51,7 +51,7 @@
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-left">
-													<h4><?php echo $no ?>. Menunggu Konfirmasi</h4>
+													<h4><?php echo $no ?>. Menunggu Proses</h4>
 													<p>Tanggal = <?php echo $data['tanggal'] ?></p>
 													<p style="color: red; font-weight: bold;">Total Bayar = Rp. <?php echo number_format($data['total'], 0, ',', '.') ?></p>
 													<a href="?i=detail-pemesanan&id=<?php echo $data['pemesanan_id'] ?>" class="btn btn-warning btn-xs pull-left"><i class="fa fa-eye"></i> Detail Menu</a>
@@ -65,7 +65,7 @@
 							}
 							?>
 						</div>
-						<div class="tab-pane fade" id="lunas">
+						<div class="tab-pane fade" id="proses">
 							<?php
 							$sqlnum = mysqli_query($koneksi, "SELECT a.*, b.* FROM t_pemesanan a
 												  			  LEFT OUTER JOIN t_keranjang b on a.pemesanan_id = b.pemesanan_id
@@ -111,6 +111,8 @@
 
 													<p style="color: red; font-weight: bold;">Total Bayar = Rp. <?php echo number_format($data['total'], 0, ',', '.') ?></p>
 													<a href="?i=detail-pemesanan&id=<?php echo $data['pemesanan_id'] ?>" class="btn btn-warning btn-xs pull-left"><i class="fa fa-eye"></i> Detail Menu</a>
+													&nbsp;
+													<a href="tel:+62 8564 2988 418" class="btn btn-success btn-xs pull left"><i class="fa fa-phone"></i> Call Barista</a>
 												</div>
 
 											</div>

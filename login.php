@@ -31,7 +31,7 @@ if (isset($_POST["login"])) {
 										?>
 					<script>
 						Swal.fire({
-							title: 'Kakak, password kamu salah',
+							title: 'Kakak, Password Kamu Salah',
 							animation: false,
 							customClass: {
 								popup: 'animated tada'
@@ -40,10 +40,10 @@ if (isset($_POST["login"])) {
 							type: 'warning',
 							showCancelButton: false,
 							confirmButtonColor: '#FFA500',
-							confirmButtonText: 'Yaa,'
+							confirmButtonText: 'Yaa'
 						}).then((result) => {
 							if (result.value) {
-								window.location = "";
+								window.location = "?i=<?php echo md5('login') ?>";
 							}
 						})
 					</script>
@@ -53,7 +53,7 @@ if (isset($_POST["login"])) {
 								?>
 				<script>
 					Swal.fire({
-						title: 'Kakak, Username kamu tidak terdaftar',
+						title: 'Kakak, Username Kamu Tidak Terdaftar',
 						animation: false,
 						customClass: {
 							popup: 'animated tada'
@@ -62,10 +62,10 @@ if (isset($_POST["login"])) {
 						type: 'warning',
 						showCancelButton: false,
 						confirmButtonColor: '#FFA500',
-						confirmButtonText: 'Yaa,'
+						confirmButtonText: 'Yaa'
 					}).then((result) => {
 						if (result.value) {
-							window.location = "";
+							window.location = "?i=<?php echo md5('regis') ?>";
 						}
 					})
 				</script>
@@ -89,7 +89,9 @@ if (isset($_POST["login"])) {
 					</center>
 					<form action="" method="post">
 						<input type="email" name="email" class="form-control" placeholder="Alamat Email" required />
-						<input type="password" name="password" class="form-control" placeholder="Password" required />
+						<input type="password" name="password" id="password" class="form-control" placeholder="Password" required />
+						<i class="fa fa-eye-slash"></i> Show password
+						<!-- <input type="checkbox" onclick="showPassword()">Show Password -->
 						<button type="submit" name="login" class="btn btn-warning">Login</button>
 						<a href="?i=<?php echo md5('resetpass') ?>" style="color:#D00"><br>Lupa Password</a><br>Belum Punya Akun? Daftar <a href="?i=<?php echo md5('regis') ?>">Disini</a>
 					</form>
@@ -99,3 +101,14 @@ if (isset($_POST["login"])) {
 		</div>
 	</div>
 </section>
+
+<script type="text/javascript">
+	function showPassword() {
+		var x = document.getElementById("password");
+		if (x.type === "password") {
+			x.type = "text";
+		} else {
+			x.type = "password";
+		}
+	}
+</script>

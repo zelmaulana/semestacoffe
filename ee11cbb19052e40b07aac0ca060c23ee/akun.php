@@ -17,20 +17,19 @@ if (isset($_POST['simpan'])) {
 	<script>
 		//alert("Berhasil Disimpan");
 		Swal.fire({
-			title: 'Yeaay, Profile kamu berhasil disimpan',
+			title: 'Yeaay, Profile Kamu Berhasil Disimpan',
 			animation: false,
 			customClass: {
 				popup: 'animated tada'
 			},
 			text: "",
-			type: 'warning',
+			type: 'success',
 			showCancelButton: false,
 			confirmButtonColor: '#FFA500',
-			confirmButtonText: 'Muach,'
+			confirmButtonText: 'Okey'
 		}).then((result) => {
 			if (result.value) {
-				//window.location = "?i=<?php echo $_GET['i'] ?>";
-				window.location = "?i=beranda";
+				window.location = "?i=saya";
 			}
 		})
 	</script>

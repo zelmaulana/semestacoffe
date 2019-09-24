@@ -23,18 +23,19 @@
 						?>
 						<tr>
 							<td class="cart_product">
-								<a href=""><img src="../<?php echo md5('admin') ?>/dist/img/buku/<?php echo $hker['image'] ?>" style="max-height:50px" alt=""></a>
+								<a href=""><img class="img img-responsive" src="../<?php echo md5('admin') ?>/dist/img/buku/<?php echo $hker['image'] ?>" style="align-content: left; max-width: 50px;"></a>
 							</td>
 							<td class="cart_description">
-								<h4><?php echo $hker['judul'] ?></h4>
-								<p>Diskon <?php echo $hker['diskon'] ?>%</p>
+								<h4>&nbsp;&nbsp;&nbsp;<?php echo $hker['judul'] ?></h4>
+								<p><br /></p>
+								<!-- <p>Diskon <?php echo $hker['diskon'] ?>%</p> -->
 							</td>
 							<td class="cart_price">
 								<?php
 									if ($hker['diskon'] > 0) {
 										?>
 									<p style="color:#F00">Rp. <strike><?php echo number_format($hker['harga_jual'], 0, ',', '.') ?></strike></p>
-									<p>Rp. <?php echo $hrg ?></p>
+									<p>Rp. <?php echo number_format($hrg, 0, ',', '.') ?></p>
 								<?php
 									} else {
 										?>
@@ -44,7 +45,7 @@
 									?>
 							</td>
 							<td class="cart_quantity" width="15%">
-								<p class=""><?php echo $hker['jumlah_trx'] ?></p>
+								<p style="align-content: right;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<?php echo $hker['jumlah_trx'] ?>)</p>
 							</td>
 							<td class="cart_total">
 								<p class="cart_total_price">Rp. <?php echo number_format($hker['total'], 0, ',', '.') ?></p>
@@ -172,7 +173,7 @@ $ha = mysqli_fetch_array($sa);
 						} else { }
 						?>
 						<br />
-						<a href="?i="><button type="button" class="btn btn-warning">Kembali</button></a>
+						<a href="?i=list_pemesanan"><button type="button" class="btn btn-warning">Kembali</button></a>
 					</ul>
 
 				</div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 22, 2019 at 03:23 PM
+-- Generation Time: Sep 24, 2019 at 08:24 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -91107,9 +91107,10 @@ CREATE TABLE `m_alamat` (
 
 INSERT INTO `m_alamat` (`user_id`, `alamat_spesifik`, `desa_id`, `rt`, `rw`, `kecamatan_id`, `kabupaten_id`, `propinsi_id`, `kode_pos`) VALUES
 (1, '', '', '', '', '', '', '', ''),
-(2, 'Purwokerto Utara', '', '', '', '', '', '', ''),
+(2, 'Purwokerto utara', '', '', '', '', '', '', ''),
 (3, '', '', '', '', '', '', '', ''),
-(4, '', '', '', '', '', '', '', '');
+(4, '', '', '', '', '', '', '', ''),
+(5, 'Purbalingga', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -91144,18 +91145,18 @@ CREATE TABLE `m_barang` (
 --
 
 INSERT INTO `m_barang` (`brg_id`, `judul`, `estimasi_menu`, `penerbit_id`, `thn_terbit`, `kota_terbit`, `stok`, `jenis_id`, `kategori_id`, `kategoriacc_id`, `penulis_id`, `harga_beli`, `harga_jual`, `jml_terjual`, `diskon`, `berat`, `jml_halaman`, `image`, `deskripsi`) VALUES
-(5, 'Tubruk (Arabica)', '20 menit', 0, 'Null', 'Null', 88, 1, 1, 0, 0, 6000, 9000, 13, 5.00, 0.00, 0, 'coffee-480x385.jpg', 'Coffee, Water'),
-(7, 'Tubruk (Robusta)', '20 menit', 2, 'Null', 'Null', 95, 1, 1, 0, 4, 6000, 8000, 9, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Coffee, Water'),
-(8, 'V60 (Arabica)', '40 menit', 2, 'Null', 'Null', 89, 1, 1, 0, 5, 6000, 11000, 9, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Using hario V60, has a clean extraction'),
-(9, 'V60 (Robusta)', '20 menit', 2, 'Null', 'Null', 89, 1, 1, 0, 6, 6000, 11000, 4, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Using hario V60, has a clean extraction'),
-(10, 'Espresso (Hot)', '20 menit', 2, 'Null', 'Null', 100, 1, 2, 0, 2, 6000, 10000, 1, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'High pressure of hot water in 30 seconds'),
+(5, 'Tubruk (Arabica)', '20 menit', 0, 'Null', 'Null', 87, 1, 1, 0, 0, 6000, 9000, 13, 5.00, 0.00, 0, 'coffee-480x385.jpg', 'Coffee, Water'),
+(7, 'Tubruk (Robusta)', '20 menit', 2, 'Null', 'Null', 95, 1, 1, 0, 4, 6000, 8000, 10, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Coffee, Water'),
+(8, 'V60 (Arabica)', '40 menit', 2, 'Null', 'Null', 86, 1, 1, 0, 5, 6000, 11000, 13, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Using hario V60, has a clean extraction'),
+(9, 'V60 (Robusta)', '20 menit', 2, 'Null', 'Null', 0, 1, 1, 0, 6, 6000, 11000, 4, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Using hario V60, has a clean extraction'),
+(10, 'Espresso (Hot)', '20 menit', 2, 'Null', 'Null', 99, 1, 2, 0, 2, 6000, 10000, 1, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'High pressure of hot water in 30 seconds'),
 (11, 'Espresso (Ice)', '20 menit', 2, 'Null', 'Null', 100, 1, 2, 0, 7, 6000, 11000, 2, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'High pressure of hot water in 30 seconds'),
 (12, 'Americano (Hot)', '20 menit', 2, 'Null', 'Null', 100, 1, 2, 0, 8, 6000, 11000, 2, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Hot water and espresso, light taste and body'),
 (21, 'Americano (Ice)', '40 menit', 2, 'Null', 'Null', 100, 1, 2, 0, 4, 6000, 12000000, 0, 20.00, 0.00, 0, 'coffee-480x385.jpg', 'Hot water and espresso, light taste and body'),
-(22, 'Susu Murni (Hot)', '20 menit', 2, 'Null', 'Null', 99, 1, 3, 0, 4, 6000, 6000, 1, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Milk based'),
-(23, 'Susu Murni (Ice)', '20 menit', 2, 'Null', 'Null', 100, 1, 3, 0, 6, 6000, 7000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Milk based'),
+(22, 'Susu Murni (Hot)', '20 menit', 2, 'Null', 'Null', 97, 1, 3, 0, 4, 6000, 6000, 1, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Milk based'),
+(23, 'Susu Murni (Ice)', '20 menit', 2, 'Null', 'Null', 99, 1, 3, 0, 6, 6000, 7000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Milk based'),
 (24, 'Susu Aren (Hot)', '40 menit', 2, 'Null', 'Null', 99, 1, 3, 0, 4, 6000, 10000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Milk based'),
-(25, 'Susu Aren (Ice)', '20 menit', 2, 'Null', 'Null', 91, 1, 3, 0, 2, 6000, 11000, 1, 5.00, 0.00, 0, 'coffee-480x385.jpg', 'Milk based'),
+(25, 'Susu Aren (Ice)', '20 menit', 2, 'Null', 'Null', 90, 1, 3, 0, 2, 6000, 11000, 1, 5.00, 0.00, 0, 'coffee-480x385.jpg', 'Milk based'),
 (26, 'Ayam Senja', '40 menit', 2, 'Null', 'Null', 100, 1, 4, 0, 1, 6000, 15000, 0, 5.00, 0.00, 0, 'coffee-480x385.jpg', 'Food'),
 (27, 'Semesta Noodle', '40 menit', 2, 'Null', 'Null', 100, 1, 4, 0, 6, 6000, 8000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Food'),
 (28, 'Lele Balada', '40 menit', 2, 'Null', 'Null', 100, 1, 4, 0, 2, 6000, 15000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Food'),
@@ -91165,7 +91166,7 @@ INSERT INTO `m_barang` (`brg_id`, `judul`, `estimasi_menu`, `penerbit_id`, `thn_
 (32, 'Brownies', '20 menit', 0, 'Null', 'Null', 99, 1, 5, 0, 0, 6000, 10000, 1, 0.00, 0.00, 0, 'brownies.jpg', 'Brownies'),
 (33, 'Singkong Crispy', '20 menit', 0, 'Null', 'Null', 100, 1, 5, 0, 0, 6000, 7000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Singkong Crispy'),
 (34, 'Kopiko', '40 menit', 0, 'Null', 'Null', 100, 1, 1, 0, 0, 6000, 9000, 0, 0.00, 0.00, 0, 'coffee-480x385.jpg', 'Kopiko'),
-(35, 'Www', '3', 0, 'Null', 'Null', 6, 1, 1, 0, 0, 7000, 15000, 0, 10.00, 0.00, 0, 'coffee-480x385.jpg', 'Okok');
+(35, 'Www', '3', 0, 'Null', 'Null', 0, 1, 1, 0, 0, 7000, 15000, 0, 10.00, 0.00, 0, 'coffee-480x385.jpg', 'Okok');
 
 -- --------------------------------------------------------
 
@@ -91226,9 +91227,10 @@ CREATE TABLE `m_user` (
 
 INSERT INTO `m_user` (`user_id`, `user_nama`, `user_password`, `user_nohp`, `user_email`, `user_jeniskelamin`, `user_ttl`, `user_image`, `no_verif`, `status`, `level_id`) VALUES
 (1, 'Administrator', 'e10adc3949ba59abbe56e057f20f883e', '085642988418', 'semesta@gmail.com', '', '0000-00-00', 'nothing.png', '000000', 'verif', 1),
-(2, 'Lukni Maulana', 'e10adc3949ba59abbe56e057f20f883e', '085642988418', 'lukni94@gmail.com', 'Perempuan', '1994-07-05', 'nothing.png', '000000', 'verif', 2),
+(2, 'Lukni Maulana', 'e10adc3949ba59abbe56e057f20f883e', '085642988418', 'lukni94@gmail.com', 'L', '1994-07-05', 'nothing.png', '000000', 'verif', 2),
 (3, 'Aris', 'e10adc3949ba59abbe56e057f20f883e', '085642988418', 'aris@gmail.com', '', '0000-00-00', 'nothing.png', '000000', 'verif', 2),
-(4, 'Fajar', 'e10adc3949ba59abbe56e057f20f883e', '085642988418', 'fajar@gmail.com', '', '0000-00-00', 'nothing.png', '000000', 'verif', 2);
+(4, 'Fajar', 'e10adc3949ba59abbe56e057f20f883e', '085642988418', 'fajar@gmail.com', '', '0000-00-00', 'nothing.png', '000000', 'verif', 2),
+(5, 'Faiza', '27f428cd1909a15d598963a0b722d6b5', '083863689378', 'faizahweb@gmail.com', 'Perempuan', '1994-06-21', 'nothing.png', '000000', 'verif', 2);
 
 -- --------------------------------------------------------
 
@@ -91251,14 +91253,11 @@ CREATE TABLE `t_keranjang` (
 --
 
 INSERT INTO `t_keranjang` (`keranjang_id`, `pemesanan_id`, `user_id`, `brg_id`, `id_meja`, `jumlah_trx`, `total`) VALUES
-(1, 1, 3, 5, 0, 7, 59850),
-(2, 1, 3, 24, 0, 1, 10000),
-(3, 1, 3, 8, 0, 2, 22000),
-(4, 2, 3, 8, 0, 2, 22000),
-(13, 3, 2, 8, 0, 4, 44000),
-(14, 3, 2, 7, 0, 1, 8000),
-(15, 4, 2, 8, 0, 4, 44000),
-(16, 4, 2, 7, 0, 1, 8000);
+(1, 1, 2, 8, 0, 2, 22000),
+(2, 1, 2, 25, 0, 1, 10450),
+(3, 2, 2, 8, 0, 1, 11000),
+(4, 2, 2, 23, 0, 1, 7000),
+(5, 3, 2, 5, 0, 2, 17100);
 
 --
 -- Triggers `t_keranjang`
@@ -91339,10 +91338,9 @@ CREATE TABLE `t_pemesanan` (
 --
 
 INSERT INTO `t_pemesanan` (`pemesanan_id`, `user_id`, `ongkos_kirim`, `id_meja`, `total`, `status_id`, `tanggal`, `bukti_pembayaran`, `jenis_pemesanan_id`) VALUES
-(1, 3, '', 0, '91850', 2, '2019-09-22 10:02:16', 'NULL', 1),
-(2, 3, '', 0, '22000', 3, '2019-09-22 10:05:33', 'NULL', 1),
-(3, 2, '', 0, '19000', 3, '2019-09-22 14:32:12', 'NULL', 1),
-(4, 2, '', 0, '52000', 4, '2019-09-22 14:35:09', 'NULL', 1);
+(1, 2, '', 0, '32450', 3, '2019-09-24 08:32:38', 'NULL', 1),
+(2, 2, '', 0, '18000', 2, '2019-09-24 08:43:14', 'NULL', 1),
+(3, 2, '', 0, '8550', 2, '2019-09-24 08:46:43', 'NULL', 1);
 
 --
 -- Triggers `t_pemesanan`
@@ -91609,7 +91607,7 @@ ALTER TABLE `l_status`
 -- AUTO_INCREMENT for table `m_alamat`
 --
 ALTER TABLE `m_alamat`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `m_barang`
@@ -91627,19 +91625,19 @@ ALTER TABLE `m_dropshiper`
 -- AUTO_INCREMENT for table `m_user`
 --
 ALTER TABLE `m_user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `t_keranjang`
 --
 ALTER TABLE `t_keranjang`
-  MODIFY `keranjang_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `keranjang_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `t_pemesanan`
 --
 ALTER TABLE `t_pemesanan`
-  MODIFY `pemesanan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `pemesanan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

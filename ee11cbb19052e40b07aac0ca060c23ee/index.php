@@ -37,8 +37,25 @@ while ($ac = mysqli_fetch_array($ab)) {
 if (empty($_SESSION['id'])) {
 	?>
 	<script>
-		window.location = "../";
-		alert("Silahkan Login Terlebih Dahulu!!!");
+		// window.location = "../";
+		// alert("Silahkan Login Terlebih Dahulu!!!");
+
+		Swal.fire({
+			title: 'Silahkan login dulu yaa kak,',
+			animation: false,
+			customClass: {
+				popup: 'animated tada'
+			},
+			text: "",
+			type: 'warning',
+			showCancelButton: false,
+			confirmButtonColor: '#FFA500',
+			confirmButtonText: 'Yaa, login'
+		}).then((result) => {
+			if (result.value) {
+				window.location = "../";
+			}
+		})
 	</script>
 	<?php
 	} else {
@@ -196,7 +213,24 @@ if (empty($_SESSION['id'])) {
 							?>
 					<script>
 						//alert("Dimasukkan Ke Keranjang");
-						window.location = "?i=";
+						//window.location = "?i=";
+
+						Swal.fire({
+							title: 'Yeaay, menu berhasil ditambahkan ke keranjang',
+							animation: false,
+							customClass: {
+								popup: 'animated tada'
+							},
+							text: "",
+							type: 'success',
+							showCancelButton: false,
+							confirmButtonColor: '#FFA500',
+							confirmButtonText: 'Okey'
+						}).then((result) => {
+							if (result.value) {
+								window.location = "?i=";
+							}
+						})
 					</script>
 				<?php
 							break;
@@ -264,8 +298,25 @@ if (empty($_SESSION['id'])) {
 							mysqli_query($koneksi, "UPDATE t_pemesanan SET status_id = '5' WHERE pemesanan_id = '$_GET[id]'");
 							?>
 					<script>
-						alert("Terimakasih, Semoga Anda Puas Dengan Pelayanan Kami.");
-						window.location = "?i=";
+						// alert("Terimakasih, Semoga Anda Puas Dengan Pelayanan Kami.");
+						// window.location = "?i=";
+
+						Swal.fire({
+							title: 'Terimakasih kakak, ditunggu kedatangannya lagi yaa',
+							animation: false,
+							customClass: {
+								popup: 'animated tada'
+							},
+							text: "",
+							type: 'success',
+							showCancelButton: false,
+							confirmButtonColor: '#FFA500',
+							confirmButtonText: 'Okey'
+						}).then((result) => {
+							if (result.value) {
+								window.location = "?i=";
+							}
+						})
 					</script>
 				<?php
 							break;

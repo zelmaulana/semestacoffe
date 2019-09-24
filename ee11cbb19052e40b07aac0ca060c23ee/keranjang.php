@@ -18,7 +18,6 @@ $cek = getKeranjang($_SESSION["id"]);
 						<td class="price">Harga</td>
 						<td class="quantity">Jumlah</td>
 						<td class="total">Total</td>
-						<td></td>
 					</tr>
 				</thead>
 				<tbody>
@@ -54,11 +53,12 @@ $cek = getKeranjang($_SESSION["id"]);
 								?>
 							<tr>
 								<td class="cart_product">
-									<a href=""><img src="../<?php echo md5('admin') ?>/dist/img/buku/<?php echo $hker['image'] ?>" style="max-height:50px" alt=""></a>
+									<a href=""><img class="img img-responsive" src="../<?php echo md5('admin') ?>/dist/img/buku/<?php echo $hker['image'] ?>" style="align-content: left; max-width: 50px;"></a>
 								</td>
 								<td class="cart_description">
-									<h4><?php echo $hker['judul'] ?></h4>
-									<p>Diskon <?php echo $hker['diskon'] ?>%</p>
+									<h4>&nbsp;&nbsp;&nbsp;<?php echo $hker['judul'] ?></h4>
+									<p><br /></p>
+									<!-- <p>Diskon <?php echo $hker['diskon'] ?>%</p> -->
 								</td>
 
 								<td class="cart_price">
@@ -85,8 +85,11 @@ $cek = getKeranjang($_SESSION["id"]);
 								<td class="cart_total">
 									<p class="cart_total_price">Rp. <?php echo number_format($hker['total'], 0, ",", ".") ?></p>
 								</td>
+
+							</tr>
+							<tr>
 								<td class="cart_delete">
-									<a class="cart_quantity_delete" href="?i=<?php echo md5('del_keranjang') ?>&id=<?php echo $hker['keranjang_id'] ?>"><i class="fa fa-times"></i></a>
+									<a href="?i=<?php echo md5('del_keranjang') ?>&id=<?php echo $hker['keranjang_id'] ?>"><i class="fa fa-trash-o"></i> Hapus</a>
 								</td>
 							</tr>
 					<?php
@@ -144,11 +147,11 @@ $cek = getKeranjang($_SESSION["id"]);
 																							} else {
 																								echo "";
 																							} ?>>Pesan</button></a> -->
-						<input type="button" class="btn-info" name="pesan" id="pesan" onclick="myFunction()" value="Pesan" <?php if ($bb == 0) {
-																																echo "disabled";
-																															} else {
-																																echo "";
-																															} ?> />
+						<input type="button" class="btn btn-info" name="pesan" id="pesan" onclick="myFunction()" value="Pesan" <?php if ($bb == 0) {
+																																	echo "disabled";
+																																} else {
+																																	echo "";
+																																} ?> />
 					</ul>
 
 				</div>
@@ -161,13 +164,49 @@ $cek = getKeranjang($_SESSION["id"]);
 
 <script>
 	function myFunction() {
-		var txt;
-		var r = confirm("Pesanan Kakak Akan Kami Proses, Ingin Lanjut Pesan?");
-		if (r == true) {
-			window.location = "?i=";
-		} else {
-			alert('Terimakasih Pesanan Kakak Kami Proses, Silahkan Melakukan Pembayaran di Kasir ^__^');
-			window.location = "?i=bayar&id=<?php echo md5('byr') ?>";
-		}
+		Swal.fire({
+			title: 'Pesanan kakak akan kami proses, mau pesan lagi??',
+			animation: true,
+			customClass: {
+				popup: 'animated tada'
+			},
+			text: "pilih proses untuk lanjut",
+			type: 'success',
+			showCancelButton: true,
+			cancelButtonColor: '#1E90FF',
+			cancelButtonText: 'Proses',
+			confirmButtonColor: '#FFA500',
+			confirmButtonText: 'Yaa'
+		}).then((result) => {
+			if (result.value) {
+				window.location = "?i=";
+			} else {
+				Swal.fire({
+					title: 'Terimakasih, Pesanan Kakak Kami Proses Yaa',
+					animation: false,
+					customClass: {
+						popup: 'animated tada'
+					},
+					text: "silahkan bayar di kasir yaa kak",
+					type: 'success',
+					showCancelButton: false,
+					confirmButtonColor: '#FFA500',
+					confirmButtonText: 'Okey'
+				}).then((result) => {
+					if (result.value) {
+						window.location = "?i=bayar&id=<?php echo md5('byr') ?>";
+					}
+				})
+			}
+		})
+
+		// if (r == true) {
+		// 	window.location = "?i=";
+		// } else {
+		// 	// alert('Terimakasih Pesanan Kakak Kami Proses, Silahkan Melakukan Pembayaran di Kasir ^__^');
+		// 	// window.location = "?i=bayar&id=<?php echo md5('byr') ?>";
+
+
+		// }
 	}
 </script>

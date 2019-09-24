@@ -279,7 +279,7 @@ if ($b == 1) {
 						?>
 					<script>
 						Swal.fire({
-							title: 'Kakak, Kamu belum Login ',
+							title: 'Kakak, Kamu Belum Login',
 							animation: false,
 							customClass: {
 								popup: 'animated tada'

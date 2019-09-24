@@ -16,8 +16,25 @@ if (isset($_POST["daftar"])) {
 
 				?>
 				<script>
-					alert("Pendaftaran Berhasil, Silahkan Login Dengan Akun Anda.");
-					window.location = "?i=<?php echo md5('login') ?>";
+					// alert("Pendaftaran Akun Kakak Berhasil, Silahkan Login Yaa Kak");
+					// window.location = "?i=<?php echo md5('login') ?>";
+
+					Swal.fire({
+						title: 'Pendaftaran Akun Kakak Berhasil',
+						animation: false,
+						customClass: {
+							popup: 'animated tada'
+						},
+						text: "silahkan login dulu yaaa",
+						type: 'success',
+						showCancelButton: false,
+						confirmButtonColor: '#FFA500',
+						confirmButtonText: 'Yaa, login'
+					}).then((result) => {
+						if (result.value) {
+							window.location = "?i=<?php echo md5('login') ?>";
+						}
+					})
 				</script>
 			<?php
 
@@ -25,16 +42,50 @@ if (isset($_POST["daftar"])) {
 					} else {
 						?>
 			<script>
-				alert("Konfirmasi Password Anda Salah, Silahkan Ulang Kembali!");
-				window.location = "?i=<?php echo md5('regis') ?>";
+				// alert("Konfirmasi Password Anda Salah, Silahkan Ulang Kembali!");
+				// window.location = "?i=<?php echo md5('regis') ?>";
+
+				Swal.fire({
+					title: 'Konfirmasi Password Kakak Salah',
+					animation: false,
+					customClass: {
+						popup: 'animated tada'
+					},
+					text: "silahkan ulang lagi yaaa",
+					type: 'warning',
+					showCancelButton: false,
+					confirmButtonColor: '#FFA500',
+					confirmButtonText: 'Yaa, ulang'
+				}).then((result) => {
+					if (result.value) {
+						window.location = "?i=<?php echo md5('regis') ?>";
+					}
+				})
 			</script>
 		<?php
 				}
 			} else {
 				?>
 		<script>
-			alert("Email Sudah Terdaftar, Silahkan Login Dengan Akun Anda.");
-			window.location = "?i=<?php echo md5('login') ?>";
+			// alert("Email Sudah Terdaftar, Silahkan Login Dengan Akun Anda.");
+			// window.location = "?i=<?php echo md5('login') ?>";
+
+			Swal.fire({
+				title: 'Sorry Email Sudah Terdaftar Yaa',
+				animation: false,
+				customClass: {
+					popup: 'animated tada'
+				},
+				text: "silahkan login dengan akun kamu yaaa",
+				type: 'warning',
+				showCancelButton: false,
+				confirmButtonColor: '#FFA500',
+				confirmButtonText: 'Yaa, login'
+			}).then((result) => {
+				if (result.value) {
+					window.location = "?i=<?php echo md5('login') ?>";
+				}
+			})
 		</script>
 	<?php
 		}
@@ -74,8 +125,10 @@ if (isset($_POST["daftar"])) {
 								}
 							</script>
 							<input type="email" name="email" class="form-control" placeholder="Alamat E-Mail" required />
-							<input type="password" name="password" class="form-control" placeholder="Password" minlength="6" required />
-							<input type="password" name="upass" class="form-control" placeholder="Ulangi Password" minlength="6" required />
+							<input type="password" name="password" id="password" class="form-control" placeholder="Password" minlength="6" required />
+							<input type="password" name="upass" id="upass" class="form-control" placeholder="Ulangi Password" minlength="6" required />
+							<i class="fa fa-eye-slash"></i> Show password
+							<!-- <input type="checkbox" style="" onclick="showPassword()">Show Password -->
 							<button type="submit" name="daftar" id="daftar" class="btn btn-warning">Daftar</button>
 							<input type="text" id="error" style="background-color:white; color:red;" readonly>Sudah Punya Akun? <a href="?i=<?php echo md5('login') ?>">Login</a>
 						</form>
@@ -88,3 +141,14 @@ if (isset($_POST["daftar"])) {
 <?php
 }
 ?>
+
+<script type="text/javascript">
+	function showPassword() {
+		var x = document.getElementById("password");
+		if (x.type === "password") {
+			x.type = "text";
+		} else {
+			x.type = "password";
+		}
+	}
+</script>

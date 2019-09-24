@@ -23,7 +23,7 @@
 								<div class="">
 									<div class="single-products">
 										<div class="productinfo text-right">
-											<img class="img img-responsive" src="../<?php echo md5('admin') ?>/dist/img/buku/<?php echo $hbuku['image'] ?>" alt="" style="width:;height:200px;" />
+											<img class="img img-responsive" src="../<?php echo md5('admin') ?>/dist/img/buku/<?php echo $hbuku['image'] ?>" style="align-content: center;" />
 										</div>
 
 									</div>
@@ -34,6 +34,7 @@
 									<div class="single-products">
 										<div class="text-center">
 											<h2><?php echo $hbuku['judul'] ?></h2>
+											<p>(Estimasi Waktu Pesan: <?php echo $hbuku['estimasi_menu'] ?> menit)</p>
 											<?php
 											$diskon = $hbuku['diskon'] / 100;
 											if ($diskon > 0) {
@@ -53,7 +54,18 @@
 											<?php
 											}
 											?>
-											<p>Stok : <?php echo $hbuku['stok'] ?> <small>(<?php echo $hbuku['jml_terjual'] ?>)Terjual</small></p><a href="?i=<?php echo md5('beli') ?>&idbrg=<?php echo $hbuku['brg_id'] ?>" class="btn btn-warning"><i class="fa fa-shopping-cart"></i> Pesan Menu</a>
+											<p>Stok : <?php echo $hbuku['stok'] ?> <small>(<?php echo $hbuku['jml_terjual'] ?>)Terjual</small></p>
+
+											<a href="?i=<?php echo md5('beli') ?>&idbrg=<?php echo $hbuku['brg_id'] ?>" class="btn btn-warning" <?php if ($hbuku['stok'] == 0) {
+																																					echo "disabled";
+																																				} else {
+																																					echo "";
+																																				} ?>><i class="fa fa-shopping-cart"></i>
+												<?php if ($hbuku['stok'] == 0) {
+													echo "Menu Habis";
+												} else {
+													echo "Pesan Menu";
+												} ?> </a>
 										</div><br />
 
 									</div>
@@ -66,16 +78,18 @@
 											<h2></h2>
 											<table class="table">
 												<tr>
-													<th>Kategori Menu</th>
-													<th>Diskon</th>
-													<th>Estimasi Waktu Pesan</th>
+													<!-- <th>Kategori Menu</th>
+													<th>Diskon</th> 
+													<th>Estimasi Waktu Pesan</th> -->
 													<th>Deskripsi Menu</th>
 												</tr>
 												<tr>
-													<td><?php echo $hbuku['kategori_name'] ?></td>
-													<td><?php echo $hbuku['diskon'] ?>%</td>
-													<td><?php echo $hbuku['estimasi_menu'] ?> menit</td>
-													<td><?php echo $hbuku['deskripsi'] ?></td>
+													<!-- <td><?php echo $hbuku['kategori_name'] ?></td>
+													<td><?php echo $hbuku['diskon'] ?>%</td> 
+													<td><?php echo $hbuku['estimasi_menu'] ?></td> -->
+													<td>
+														<textarea class="form-control" readonly><?php echo $hbuku['deskripsi'] ?></textarea>
+													</td>
 												</tr>
 											</table>
 										</div>
