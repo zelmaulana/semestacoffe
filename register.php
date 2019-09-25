@@ -127,8 +127,13 @@ if (isset($_POST["daftar"])) {
 							<input type="email" name="email" class="form-control" placeholder="Alamat E-Mail" required />
 							<input type="password" name="password" id="password" class="form-control" placeholder="Password" minlength="6" required />
 							<input type="password" name="upass" id="upass" class="form-control" placeholder="Ulangi Password" minlength="6" required />
-							<i class="fa fa-eye-slash"></i> Show password
-							<!-- <input type="checkbox" style="" onclick="showPassword()">Show Password -->
+							<!-- <i class="fa fa-eye-slash"></i> Show password -->
+							<table>
+								<tr>
+									<td><input type="checkbox" style="width: 15px; height: 15px;" onclick="showPassword()"></td>
+									<td>&nbsp;Show Password</td>
+								</tr>
+							</table>
 							<button type="submit" name="daftar" id="daftar" class="btn btn-warning">Daftar</button>
 							<input type="text" id="error" style="background-color:white; color:red;" readonly>Sudah Punya Akun? <a href="?i=<?php echo md5('login') ?>">Login</a>
 						</form>
@@ -145,10 +150,13 @@ if (isset($_POST["daftar"])) {
 <script type="text/javascript">
 	function showPassword() {
 		var x = document.getElementById("password");
-		if (x.type === "password") {
+		var z = document.getElementById("upass");
+		if (x.type === "password" && z.type === "password") {
 			x.type = "text";
+			z.type = "text";
 		} else {
 			x.type = "password";
+			z.type = "password";
 		}
 	}
 </script>

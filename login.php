@@ -90,8 +90,13 @@ if (isset($_POST["login"])) {
 					<form action="" method="post">
 						<input type="email" name="email" class="form-control" placeholder="Alamat Email" required />
 						<input type="password" name="password" id="password" class="form-control" placeholder="Password" required />
-						<i class="fa fa-eye-slash"></i> Show password
-						<!-- <input type="checkbox" onclick="showPassword()">Show Password -->
+						<!-- <i class="fa fa-eye-slash"></i> Show password -->
+						<table>
+							<tr>
+								<td><input type="checkbox" style="width: 15px; height: 15px;" onclick="showPassword()"></td>
+								<td>&nbsp;Show Password</td>
+							</tr>
+						</table>
 						<button type="submit" name="login" class="btn btn-warning">Login</button>
 						<a href="?i=<?php echo md5('resetpass') ?>" style="color:#D00"><br>Lupa Password</a><br>Belum Punya Akun? Daftar <a href="?i=<?php echo md5('regis') ?>">Disini</a>
 					</form>
