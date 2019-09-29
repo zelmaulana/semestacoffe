@@ -93,7 +93,7 @@
 											<div class="product-image-wrapper">
 											<div class="single-products">
 													<div class="productinfo text-center">
-														<a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['image']?>" alt="" style="width:auto;height:80px" /></a>
+														<a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['image']?>" alt="" style="width:auto;height:100px" /></a>
 														<?php
 														$diskon = $hbarang['diskon'] / 100;
 														if($diskon > 0){
@@ -145,7 +145,7 @@
 											<div class="product-image-wrapper">
 											<div class="single-products">
 													<div class="productinfo text-center">
-														<a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['buku_image']?>" alt="" style="width:auto;height:80px" /></a>
+														<a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['buku_image']?>" alt="" style="width:auto;height:100px" /></a>
 														<?php
 														$diskon = $hbarang['diskon'] / 100;
 														if($diskon > 0){
@@ -199,7 +199,7 @@
 											<div class="product-image-wrapper">
 											<div class="single-products">
 													<div class="productinfo text-center">
-														<a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['buku_image']?>" alt="" style="width:auto;height:80px" /></a>
+														<a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['buku_image']?>" alt="" style="width:auto;height:100px" /></a>
 														<?php
 														$diskon = $hbarang['diskon'] / 100;
 														if($diskon > 0){
@@ -257,7 +257,7 @@
                                                 <div class="product-image-wrapper">
 												<div class="single-products">
                                                         <div class="productinfo text-center">
-														<a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['image']?>" alt="" style="width:auto;height:80px" /></a>
+														<a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['image']?>" alt="" style="width:auto;height:100px" /></a>
                                                             <?php
 														$diskon = $hbarang['diskon'] / 100;
 														if($diskon > 0){
@@ -309,7 +309,7 @@
                                                 <div class="product-image-wrapper">
 												<div class="single-products">
                                                         <div class="productinfo text-center">
-														<a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['image']?>" alt="" style="width:auto;height:80px" /></a>
+														<a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['image']?>" alt="" style="width:auto;height:100px" /></a>
                                                             <?php
 														$diskon = $hbarang['diskon'] / 100;
 														if($diskon > 0){
@@ -363,7 +363,7 @@
                                                 <div class="product-image-wrapper">
 												<div class="single-products">
                                                         <div class="productinfo text-center">
-														<a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['image']?>" alt="" style="width:auto;height:80px" /></a>
+														<a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['image']?>" alt="" style="width:auto;height:100px" /></a>
                                                         <?php
 														$diskon = $hbarang['diskon'] / 100;
 														if($diskon > 0){
@@ -466,7 +466,7 @@
 										<div class="product-image-wrapper">
 										<div class="single-products">
 												<div class="productinfo text-center">
-												<a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['image']?>" alt="" style="width:auto;height:80px" /></a>
+												<a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['image']?>" alt="" style="width:auto;height:100px" /></a>
 													<?php
 														$diskon = $hbarang['diskon'] / 100;
 														if($diskon > 0){
@@ -518,7 +518,7 @@
 										<div class="product-image-wrapper">
 										<div class="single-products">
 												<div class="productinfo text-center">
-												<a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['image']?>" alt="" style="width:auto;height:80px" /></a>
+												<a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['image']?>" alt="" style="width:auto;height:100px" /></a>
 													<?php
 														$diskon = $hbarang['diskon'] / 100;
 														if($diskon > 0){
@@ -572,7 +572,7 @@
 										<div class="product-image-wrapper">
 										<div class="single-products">
 												<div class="productinfo text-center">
-												<a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['image']?>" alt="" style="width:auto;height:80px" /></a>
+												<a href="?i=detail-barang&id=<?php echo $hbarang['brg_id']?>"><img src="../<?php echo md5('admin')?>/dist/img/buku/<?php echo $hbarang['image']?>" alt="" style="width:auto;height:100px" /></a>
 													<?php
 														$diskon = $hbarang['diskon'] / 100;
 														if($diskon > 0){

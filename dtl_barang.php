@@ -23,7 +23,7 @@
 								<div class="">
 									<div class="single-products">
 										<div class="productinfo text-right">
-											<img class="img img-responsive" src="<?php echo md5('admin') ?>/dist/img/buku/<?php echo $hbuku['image'] ?>" alt="" style="width:;height:200px;" />
+											<img class="img img-responsive" src="<?php echo md5('admin') ?>/dist/img/buku/<?php echo $hbuku['image'] ?>" alt="" style="align-content: center;" />
 										</div>
 
 									</div>

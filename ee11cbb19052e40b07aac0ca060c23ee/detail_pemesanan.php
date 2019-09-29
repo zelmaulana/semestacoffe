@@ -143,9 +143,9 @@ $ha = mysqli_fetch_array($sa);
 					</div>
 				</div> -->
 			<?php
-			$srinc = mysqli_query($koneksi, "SELECT SUM(a.jumlah_trx) as aa, SUM(a.total) as bb FROM t_keranjang a
-										 		LEFT OUTER JOIN m_barang b on a.brg_id = b.brg_id
-												WHERE a.user_id = '$_SESSION[id]' AND pemesanan_id = '$_GET[id]'");
+			$srinc = mysqli_query($koneksi, "SELECT SUM(a.jumlah_trx) as aa, SUM(a.total) as bb, a.id_meja as meja FROM t_keranjang a LEFT OUTER JOIN m_barang b on a.brg_id = b.brg_id
+			WHERE a.user_id = '$_SESSION[id]' AND pemesanan_id = '$_GET[id]'");
+
 			$hrinc = mysqli_fetch_array($srinc);
 			$bayar = $ha['biaya'] + $hrinc['bb'];
 			?>
@@ -153,7 +153,7 @@ $ha = mysqli_fetch_array($sa);
 				<div class="total_area">
 					<ul>
 						No Meja
-						<input style="width: 100px;" type="text" class="form-control" name="nomeja" id="nomeja" disabled value="<?php echo $hrinc['mm'] ?>" />
+						<input style="width: 100px;" type="text" class="form-control" name="nomeja" id="nomeja" disabled value="<?php echo $hrinc['	meja'] ?>" />
 
 						<br />
 						Catatan Menu

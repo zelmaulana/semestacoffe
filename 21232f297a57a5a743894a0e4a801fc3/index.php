@@ -30,7 +30,7 @@ if (empty($_SESSION['id'])) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Semesta "Manyatukan Kita"</title>
-    <link rel="icon" type="image/png" href="../images/ump.png">
+    <link rel="icon" type="image/png" href="../images/logo_fav.png">
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
@@ -98,14 +98,14 @@ if (empty($_SESSION['id'])) {
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="dist/img/<?php echo $row['user_image']; ?>" class="user-image" alt="User Image">
+                  <img src="../images/logo_fav.png" class="user-image" alt="User Image">
                   <span class="hidden-xs"><?php echo $row['user_nama']; ?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
 
-                    <img src="dist/img/<?php echo $row['user_image']; ?>" class="img-circle" alt="User Image" width="50px">
+                    <img src="../images/logo_fav.png" class="img-circle" alt="User Image" width="50px">
 
                     <p>
                       <?php echo $row['user_nama']; ?>
@@ -132,7 +132,7 @@ if (empty($_SESSION['id'])) {
                   <!-- Sidebar user panel -->
                   <div class="user-panel">
                     <div class="pull-left image">
-                      <img src="dist/img/<?php echo $row['user_image']; ?>" class="img-circle" alt="User Image">
+                      <img src="../images/logo_fav.png" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
                       <p><?php echo $row['user_nama']; ?></p>

@@ -5,11 +5,11 @@ if (isset($_POST['simpan'])) {
 	$query1 = mysqli_query($koneksi, "SELECT * FROM m_alamat WHERE user_id = '$_SESSION[id]'");
 	$data1 = mysqli_num_rows($query1);
 	if ($data1 == 0) {
-		mysqli_query($koneksi, "UPDATE m_user SET user_nama = '$_POST[nama]', user_ttl = '$_POST[ttl]', user_jeniskelamin = '$_POST[jk]' WHERE user_id = '$_SESSION[id]'");
+		mysqli_query($koneksi, "UPDATE m_user SET user_nama = '$_POST[nama]', user_nohp = '$_POST[nohp]', user_email = '$_POST[email]', user_ttl = '$_POST[ttl]', user_jeniskelamin = '$_POST[jk]' WHERE user_id = '$_SESSION[id]'");
 
 		mysqli_query($koneksi, "INSERT INTO m_alamat VALUES ('', '$_POST[alamat]', '', '', '', '', '', '', '')");
 	} else {
-		mysqli_query($koneksi, "UPDATE m_user SET user_nama = '$_POST[nama]', user_ttl = '$_POST[ttl]', user_jeniskelamin = '$_POST[jk]'  WHERE user_id = '$_SESSION[id]'");
+		mysqli_query($koneksi, "UPDATE m_user SET user_nama = '$_POST[nama]', user_nohp = '$_POST[nohp]', user_email = '$_POST[email]', user_ttl = '$_POST[ttl]', user_jeniskelamin = '$_POST[jk]'  WHERE user_id = '$_SESSION[id]'");
 
 		mysqli_query($koneksi, "UPDATE m_alamat SET alamat_spesifik='$_POST[alamat]' WHERE user_id = '$_SESSION[id]'");
 	}

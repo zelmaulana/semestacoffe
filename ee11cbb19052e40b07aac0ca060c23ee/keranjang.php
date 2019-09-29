@@ -139,9 +139,9 @@ $cek = getKeranjang($_SESSION["id"]);
 						<br />
 						Catatan Menu
 						<br />
-						<textarea name="catatan" id="catatan" class="form-control"></textarea><br />
+						<textarea name="catatan" id="catatan" class="form-control" placeholder="Contoh: Toping, Varian Rasa"></textarea><br />
 						<li>Total Menu <span><?php echo $hrinc['aa'] ?></span></li>
-						<li>Total Harga <span>Rp. <?php echo number_format($hrinc['bb'], 0, ",", ".") ?></span></li><br />
+						<li>Total Bayar <span>Rp. <?php echo number_format($hrinc['bb'], 0, ",", ".") ?></span></li><br />
 						<!-- <a href="?i=chekout"><button type="submit" class="btn-info" <?php if ($bb == 0) {
 																								echo "disabled";
 																							} else {
@@ -170,11 +170,11 @@ $cek = getKeranjang($_SESSION["id"]);
 			customClass: {
 				popup: 'animated tada'
 			},
-			text: "pilih proses untuk lanjut",
+			text: "pilih proses untuk lanjut checkout",
 			type: 'success',
 			showCancelButton: true,
 			cancelButtonColor: '#1E90FF',
-			cancelButtonText: 'Proses',
+			cancelButtonText: 'Proses Checkout',
 			confirmButtonColor: '#FFA500',
 			confirmButtonText: 'Yaa'
 		}).then((result) => {
@@ -200,13 +200,6 @@ $cek = getKeranjang($_SESSION["id"]);
 			}
 		})
 
-		// if (r == true) {
-		// 	window.location = "?i=";
-		// } else {
-		// 	// alert('Terimakasih Pesanan Kakak Kami Proses, Silahkan Melakukan Pembayaran di Kasir ^__^');
-		// 	// window.location = "?i=bayar&id=<?php echo md5('byr') ?>";
 
-
-		// }
 	}
 </script>

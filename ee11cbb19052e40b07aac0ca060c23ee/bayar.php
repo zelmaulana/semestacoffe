@@ -5,9 +5,12 @@
 		if ($_GET['id'] == $a) {
 			$sqlex = mysqli_query($koneksi, "SELECT * FROM t_keranjang a
 								  			 LEFT OUTER JOIN m_barang b on a.brg_id = b.brg_id
+											 LEFT OUTER JOIN l_meja c on a.id_meja = c.id_meja
 											 WHERE user_id = '$_SESSION[id]' AND pemesanan_id = '0'");
 			while ($etc = mysqli_fetch_array($sqlex)) {
 				mysqli_query($koneksi, "UPDATE m_barang SET stok = stok-'$etc[jumlah_trx]' WHERE brg_id = '$etc[brg_id]'");
+
+				mysqli_query($koneksi, "UPDATE t_keranjang SET id_meja = '$_GET[nomeja]' WHERE id_meja = '$etc[id_meja]' ");
 			}
 			$sa = mysqli_query($koneksi, "SELECT * FROM m_alamat a
 										  LEFT OUTER JOIN l_desa b on a.desa_id = b.desa_id

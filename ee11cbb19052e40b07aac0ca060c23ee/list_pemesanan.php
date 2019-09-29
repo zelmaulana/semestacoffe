@@ -24,7 +24,7 @@
 															   WHERE status_id = '2' AND a.user_id = '$_SESSION[id]'");
 
 							$sqldata = mysqli_query($koneksi, "SELECT * FROM t_pemesanan 
-															   WHERE status_id = '2' AND user_id = '$_SESSION[id]'");
+															   WHERE status_id = '2' AND user_id = '$_SESSION[id]' ORDER BY pemesanan_id DESC");
 
 							$jml = mysqli_fetch_array($sqldata1);
 							$num = mysqli_num_rows($sqlnum);
@@ -76,7 +76,7 @@
 															   WHERE status_id = '3' AND a.user_id = '$_SESSION[id]'");
 
 							$sqldata = mysqli_query($koneksi, "SELECT * FROM t_pemesanan 
-															   WHERE status_id = '3' AND user_id = '$_SESSION[id]'");
+															   WHERE status_id = '3' AND user_id = '$_SESSION[id]' ORDER BY pemesanan_id DESC");
 
 							$jml = mysqli_fetch_array($sqldata1);
 							$num = mysqli_num_rows($sqlnum);
