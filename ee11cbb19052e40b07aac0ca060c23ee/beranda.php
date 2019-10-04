@@ -115,7 +115,7 @@
 														}
 														?>
 														<p><?php echo $hbarang['judul']?></p>
-														<p><small>(Klik Gambar Melihat Detail Menu)</small></p>
+														<!-- <p><small>(Klik Gambar Melihat Detail Menu)</small></p> -->
 														<!-- <p>(<?php echo $hbarang['kategori_name']?>)</p> -->
 														<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-warning" <?php if ($hbarang['stok'] == 0) {
 																																									echo "disabled";
@@ -488,9 +488,9 @@
 														}
 														?>
 															<p><?php echo $hbarang['judul']?></p> 
-															<p><small>(Klik Gambar Melihat Detail Menu)</small></p>
+															<p><small>( else !$_GET["id"])</small></p>
 															<!-- <p>(<?php echo $hbarang['kategori_name']?>)</p> -->
-													<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-warning" <?php if ($hbarang['stok'] == 0) {
+													<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>&jual=<?php echo $hbarang['harga_jual']?>" class="btn btn-warning" <?php if ($hbarang['stok'] == 0) {
 																																									echo "disabled";
 																																								} else {
 																																									echo "";

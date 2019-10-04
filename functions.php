@@ -46,9 +46,9 @@ function getKeranjang($userid)
     $response = array();
 
 
-    $sql = "SELECT a.brg_id,b.image,b.judul,a.keranjang_id,b.harga_jual,b.diskon,a.jumlah_trx,a.total, a.id_meja, a.jumlah_trx, a.total FROM t_keranjang a
+    $sql = "SELECT a.brg_id,b.image,b.judul,a.keranjang_id,b.harga_jual,b.diskon,a.jumlah_trx,a.total, a.jumlah_trx, a.total FROM t_keranjang a
  LEFT OUTER JOIN m_barang b on a.brg_id = b.brg_id
-   WHERE a.user_id = '" . $userid . "' AND pemesanan_id = '0'";
+   WHERE a.user_id = '" . $userid . "'  and  ip = '" . getRealIpAddr() . "' ";
 
 
     $result = mysqli_query($koneksi, $sql);
@@ -63,4 +63,78 @@ function getKeranjang($userid)
 
     mysqli_close($koneksi);
     return $response;
+}
+
+
+
+function getRealIpAddr()
+{
+    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+        $ip = $_SERVER['HTTP_CLIENT_IP'];
+    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    } else {
+        $ip = $_SERVER['REMOTE_ADDR'];
+    }
+    return $ip;
+}
+
+
+function simpanPemesanan($userid)
+{
+    include 'koneksi.php';
+
+
+    $sql = " INSERT INTO t_pemesanan (user_id,id_meja,time,total,status_id)  ";
+    $sql .= " SELECT  " . $userid . ", '" . $_POST["nomeja"] . "',  " . time() . ", '" . getTotal($userid) . "' ,1 ";
+
+
+    if (mysqli_query($koneksi, $sql)) {
+        echo "New record created successfully";
+
+        ubah_pemesananid($userid);
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($koneksi);
+    }
+
+    mysqli_close($koneksi);
+}
+
+function ubah_pemesananid($userid)
+{
+    //return null;
+    include 'koneksi.php';
+
+    $sql = "UPDATE t_keranjang SET pemesanan_id='2' WHERE  ip = '" . getRealIpAddr() . "' and  user_id = '" . $userid . "'  ";
+
+    if ($koneksi->query($sql) === TRUE) {
+        // echo "Record updated successfully";
+    } else {
+        // echo "Error updating record: " . $conn->error;
+    }
+
+    mysqli_close($koneksi);
+    // ubah status pesanan disni
+    // update pemesanan_id = 2
+
+    // $newURL = '?i=beranda';
+    // header('Location: ' . $newURL);
+}
+
+function getTotal($userid)
+{
+    include 'koneksi.php';
+    $sql = " SELECT SUM(total) as 'TOTAL' FROM t_keranjang WHERE user_id = '" . $userid . "' and ip = '" . getRealIpAddr() . "' and pemesanan_id = 0 ";
+    $result = mysqli_query($koneksi, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $response = $row;
+    return $response["TOTAL"];
+    mysqli_close($koneksi);
+}
+
+function update_kodepemesanan_keranjang()
+{
+    include 'koneksi.php';
+    $sql_update = " UPDATE t_keranjang SET    ";
+    mysqli_close($koneksi);
 }

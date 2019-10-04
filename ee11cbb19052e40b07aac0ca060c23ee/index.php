@@ -1,4 +1,6 @@
 <?php
+
+
 session_start();
 error_reporting(0);
 //include 'functions.php';
@@ -131,7 +133,7 @@ if (empty($_SESSION['id'])) {
 								<div class="shop-menu pull-right">
 									<ul class="nav navbar-nav">
 										<?php
-												$sker = mysqli_query($koneksi, "SELECT * FROM t_keranjang WHERE user_id = '$_SESSION[id]' AND pemesanan_id = '0'");
+												$sker = mysqli_query($koneksi, "SELECT * FROM t_keranjang WHERE user_id = '$_SESSION[id]' AND ip  = '" . getRealIpAddr() . "'  and pemesanan_id = 1");
 												$nker = mysqli_num_rows($sker);
 												$sker1 = mysqli_query($koneksi, "SELECT * FROM t_pemesanan a WHERE a.status_id < '5' AND a.user_id = '$_SESSION[id]'");
 												$nker1 = mysqli_num_rows($sker1);
@@ -202,18 +204,37 @@ if (empty($_SESSION['id'])) {
 							require_once('dtl_barang.php');
 							break;
 						case md5('beli'):
-							$sker = mysqli_query($koneksi, "SELECT * FROM t_keranjang WHERE user_id = '$_SESSION[id]' AND brg_id = '$_GET[idbrg]' AND pemesanan_id='0'");
-							$nker = mysqli_num_rows($sker);
-							$hker = mysqli_fetch_array($sker);
-							if ($nker == 0) {
-								mysqli_query($koneksi, "INSERT INTO t_keranjang VALUES('','','$_SESSION[id]', '$_GET[idbrg]', '0', '1','')");
+
+							$sql =  "SELECT * FROM t_keranjang WHERE user_id = '$_SESSION[id]' AND brg_id = '$_GET[idbrg]' AND ip = '" . getRealIpAddr() . "' ";
+
+							//print_r($sql);
+							$sker = mysqli_query($koneksi, $sql);
+							$num_row = mysqli_num_rows($sker);
+							//print_r($num_row);
+
+							if ($num_row > 0) {
+								$data = mysqli_fetch_array($sker);
+								//print_r($data);
+
+								$sql_update = " UPDATE t_keranjang SET    ";
+								$sql_update .= " jumlah_trx =  " . $data["jumlah_trx"] . " + 1 ,";
+								$sql_update .= " total =  (" . $data["jumlah_trx"] . " + 1) * '" . $_GET["jual"] . "'";
+								$sql_update .= "  WHERE user_id = '" . $_SESSION["id"] . "' ";
+								$sql_update .= "  AND ip =  '" . getRealIpAddr() . "' ";
+
+
+								mysqli_query($koneksi, $sql_update);
 							} else {
-								mysqli_query($koneksi, "UPDATE t_keranjang SET jumlah_trx=$hker[jumlah_trx]+1 WHERE user_id = '$_SESSION[id]' AND brg_id = '$_GET[idbrg]' ");
+
+								$sql_insert = " INSERT INTO t_keranjang(user_id,brg_id,jumlah_trx,hargabarang,ip,total) ";
+								$sql_insert .= " VALUES('" . $_SESSION["id"] . "','" . $_GET["idbrg"] . "', 1 ,'" . $_GET["jual"] . "', '" . getRealIpAddr() . "', ('" . $_GET["jual"] . "'*1)) ";
+								mysqli_query($koneksi, $sql_insert);
+								//print_r($sql_insert);
 							}
 							?>
 					<script>
-						//alert("Dimasukkan Ke Keranjang");
-						//window.location = "?i=";
+						// alert("Dimasukkan Ke Keranjang");
+						// window.location = "?i=";
 
 						Swal.fire({
 							title: 'Yeaay, menu berhasil ditambahkan ke keranjang',

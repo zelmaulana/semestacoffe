@@ -1,7 +1,10 @@
 <?php
 $listmeja = getListMeja();
 
-$cek = getKeranjang($_SESSION["id"]);
+// $cek = getKeranjang($_SESSION["id"]);
+// echo "<pre>";
+// print_r($cek);
+// echo "</pre>";
 ?>
 
 <section id="cart_items">
@@ -26,8 +29,9 @@ $cek = getKeranjang($_SESSION["id"]);
 
 					$sker = mysqli_query($koneksi, "SELECT * FROM t_keranjang a
 					LEFT OUTER JOIN m_barang b on a.brg_id = b.brg_id
-					WHERE a.user_id = '$_SESSION[id]' AND pemesanan_id = '0'");
+					WHERE a.user_id = '$_SESSION[id]' AND ip = '" . getRealIpAddr() . "' and  pemesanan_id = 1");
 
+					//print_r($sker);
 					$nker = mysqli_num_rows($sker);
 
 					if ($nker == 0) {
@@ -123,36 +127,41 @@ $cek = getKeranjang($_SESSION["id"]);
 			?>
 			<div class="col-sm-6">
 				<div class="total_area">
-					<ul>
-						Pilih No Meja
-						<select name="nomeja" id="nomeja" class="form-control" style="width: 100px;" required>
-							<option value="">Pilih</option>
-							<?php
-							$sktgr = mysqli_query($koneksi, "SELECT * FROM l_meja");
-							while ($hktgr = mysqli_fetch_array($sktgr)) {
+					<form method="POST" action="cek_proses.php">
+
+						<input class="user" type="hidden" name="user" value="<?php echo $_SESSION['id']; ?>" autocomplete="off">
+
+						<ul>
+							Pilih No Meja
+							<select name="nomeja" id="nomeja" class="form-control" style="width: 100px;" required>
+								<option value="">Pilih</option>
+								<?php
+								$sktgr = mysqli_query($koneksi, "SELECT * FROM l_meja");
+								while ($hktgr = mysqli_fetch_array($sktgr)) {
+									?>
+									<option value="<?php echo $hktgr['id_meja'] ?>"><?php echo $hktgr['nama_meja'] ?></option>
+								<?php
+								}
 								?>
-								<option value="<?php echo $hktgr['id_meja'] ?>"><?php echo $hktgr['nama_meja'] ?></option>
-							<?php
-							}
-							?>
-						</select>
-						<br />
-						Catatan Menu
-						<br />
-						<textarea name="catatan" id="catatan" class="form-control" placeholder="Contoh: Toping, Varian Rasa"></textarea><br />
-						<li>Total Menu <span><?php echo $hrinc['aa'] ?></span></li>
-						<li>Total Bayar <span>Rp. <?php echo number_format($hrinc['bb'], 0, ",", ".") ?></span></li><br />
-						<!-- <a href="?i=chekout"><button type="submit" class="btn-info" <?php if ($bb == 0) {
-																								echo "disabled";
-																							} else {
-																								echo "";
-																							} ?>>Pesan</button></a> -->
-						<input type="button" class="btn btn-info" name="pesan" id="pesan" onclick="myFunction()" value="Pesan" <?php if ($bb == 0) {
-																																	echo "disabled";
-																																} else {
-																																	echo "";
-																																} ?> />
-					</ul>
+							</select>
+							<br />
+							Catatan Menu
+							<br />
+							<textarea name="catatan" id="catatan" class="form-control" placeholder="Contoh: Toping, Varian Rasa"></textarea><br />
+							<li>Total Menu <span><?php echo $hrinc['aa'] ?></span></li>
+							<li>Total Bayar <span>Rp. <?php echo number_format($hrinc['bb'], 0, ",", ".") ?></span></li><br />
+							<!-- <a href="?i=chekout"><button type="submit" class="btn-info" <?php if ($bb == 0) {
+																									echo "disabled";
+																								} else {
+																									echo "";
+																								} ?>>Pesan</button></a> -->
+							<input type="submit" class="btn btn-info" name="pesan" id="pesan" value="Pesan" <?php /*if ($bb == 0) {
+																												echo "disabled";
+																											} else {
+																												echo "";
+																											} */ ?> />
+						</ul>
+					</form>
 
 				</div>
 			</div>
