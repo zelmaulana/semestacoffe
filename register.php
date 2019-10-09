@@ -20,16 +20,16 @@ if (isset($_POST["daftar"])) {
 					// window.location = "?i=<?php echo md5('login') ?>";
 
 					Swal.fire({
-						title: 'Pendaftaran Akun Kakak Berhasil',
+						title: 'Selamat Akunmu berhasil dibuat,',
 						animation: false,
 						customClass: {
 							popup: 'animated tada'
 						},
-						text: "silahkan login dulu yaaa",
+						text: "silahkan masuk",
 						type: 'success',
 						showCancelButton: false,
 						confirmButtonColor: '#FFA500',
-						confirmButtonText: 'Yaa, login'
+						confirmButtonText: 'Oke'
 					}).then((result) => {
 						if (result.value) {
 							window.location = "?i=<?php echo md5('login') ?>";
@@ -46,16 +46,16 @@ if (isset($_POST["daftar"])) {
 				// window.location = "?i=<?php echo md5('regis') ?>";
 
 				Swal.fire({
-					title: 'Konfirmasi Password Kakak Salah',
+					title: 'Konfirmasi Password Salah,',
 					animation: false,
 					customClass: {
 						popup: 'animated tada'
 					},
-					text: "silahkan ulang lagi yaaa",
+					text: "silahkan ulang lagi",
 					type: 'warning',
 					showCancelButton: false,
 					confirmButtonColor: '#FFA500',
-					confirmButtonText: 'Yaa, ulang'
+					confirmButtonText: 'Oke'
 				}).then((result) => {
 					if (result.value) {
 						window.location = "?i=<?php echo md5('regis') ?>";
@@ -71,19 +71,19 @@ if (isset($_POST["daftar"])) {
 			// window.location = "?i=<?php echo md5('login') ?>";
 
 			Swal.fire({
-				title: 'Sorry Email Sudah Terdaftar Yaa',
+				title: 'Maaf email ini sudah terdaftar,',
 				animation: false,
 				customClass: {
 					popup: 'animated tada'
 				},
-				text: "silahkan login dengan akun kamu yaaa",
+				text: "silahkan coba lagi",
 				type: 'warning',
 				showCancelButton: false,
 				confirmButtonColor: '#FFA500',
-				confirmButtonText: 'Yaa, login'
+				confirmButtonText: 'Oke'
 			}).then((result) => {
 				if (result.value) {
-					window.location = "?i=<?php echo md5('login') ?>";
+					window.location = "?i=<?php echo md5('regis') ?>";
 				}
 			})
 		</script>
@@ -99,7 +99,7 @@ if (isset($_POST["daftar"])) {
 					<div class="login-form">
 						<!--login form-->
 						<center>
-							<h2 style="font-weight: bold; color: orange;">Isi Data Diri Anda Dengan Benar</h2>
+							<h2 style="font-weight: bold; color: orange;">Lengkapi Data Sobat</h2>
 						</center>
 						<form action="" method="post">
 							<input type="text" name="nama" class="form-control" placeholder="Nama Lengkap" required />
@@ -135,7 +135,7 @@ if (isset($_POST["daftar"])) {
 								</tr>
 							</table>
 							<button type="submit" name="daftar" id="daftar" class="btn btn-warning">Daftar</button>
-							<input type="text" id="error" style="background-color:white; color:red;" readonly>Sudah Punya Akun? <a href="?i=<?php echo md5('login') ?>">Login</a>
+							<input type="text" id="error" style="background-color:white; color:red;" readonly>Sudah Punya Akun? <a href="?i=<?php echo md5('login') ?>">Masuk</a>
 						</form>
 					</div>
 					<!--/login form-->

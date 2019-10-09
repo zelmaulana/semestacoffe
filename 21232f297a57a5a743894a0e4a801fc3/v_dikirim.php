@@ -18,16 +18,15 @@
       <div class="col-xs-12">
         <div class="box">
           <div class="box-header">
-            <h3 class="box-title">Data Proses Pesanan Menu</h3>
+            <h2 class="box-title">Data Proses Pesanan</h2>
           </div>
           <!-- /.box-header -->
           <div class="box-body table-responsive">
-            <table id="example1" class="table table table-bordered table-striped" style="font-size:12px">
+            <table id="example1" class="table table table-bordered table-striped" style="font-size:13px">
               <thead>
                 <tr>
                   <th>No</th>
                   <th>Nama Pemesan</th>
-                  <th>Total Harga</th>
                   <th>Nomor Meja</th>
                   <th>Tanggal Pemesanan</th>
                   <th>Action</th>
@@ -38,7 +37,6 @@
                 $no = 1;
                 $sql = mysqli_query($koneksi, "SELECT * FROM t_pemesanan a
 								   LEFT OUTER JOIN m_user c on a.user_id = c.user_id
-								   LEFT OUTER JOIN l_resi d on a.pemesanan_id = d.pemesanan_id
 								   WHERE a.status_id = '4'");
                 while ($hasil = mysqli_fetch_assoc($sql)) {
                   ?>
@@ -46,11 +44,10 @@
                   <tr>
                     <td><?php echo $no ?></td>
                     <td><?php echo $hasil['user_nama'] ?></td>
-                    <td>Rp. <?php echo $hasil['total'] ?></td>
                     <td><?php echo $hasil['id_meja'] ?></td>
-                    <td><?php echo date('d-m-Y', strtotime($hasil['tanggal'])) ?> <?php echo date('G:i:s', strtotime($hasil['tanggal'])) ?></td>
+                    <td><?php echo date('d-m-Y', strtotime($hasil['tanggal'])) ?> / <?php echo date('G:i:s', strtotime($hasil['tanggal'])) ?></td>
                     <td><a href="?i=<?php echo md5('dtl-pemesanan') ?>&id=<?php echo $hasil['pemesanan_id'] ?>">
-                        <button type="button" class="btn btn-primary fa fa-eye"> Detail Pemesanan</button></a>
+                        <button type="button" class="btn btn-primary fa fa-eye"> Detail</button></a>
                       <!-- <a href="?i=<?php echo md5('u_resi') ?>&id=<?php echo $hasil['resi_id'] ?>">
                         <button type="button" class="btn btn-info fa fa-edit"> Ubah No Meja</button></a>
                       <a href="http://www.jet.co.id/track" target="new">

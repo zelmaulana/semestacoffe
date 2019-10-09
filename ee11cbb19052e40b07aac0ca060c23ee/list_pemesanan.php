@@ -37,7 +37,7 @@
 											<center>
 												<h3>Belum Ada Daftar Transaksi</h3>
 												<p>Mulai pesan menu dan cek daftar transaksi Anda disini.</p>
-												<a href="?i=" class="btn btn-info pull-center"><i class="fa fa-shopping-cart"></i> Pesan Menu</a>
+												<a href="?i=" class="btn btn-info pull-center"><i class="fa fa-shopping-cart"></i> Pesan Sekarang</a>
 											</center>
 										</div>
 									</div>
@@ -52,7 +52,8 @@
 											<div class="single-products">
 												<div class="productinfo text-left">
 													<h4><?php echo $no ?>. Menunggu Proses</h4>
-													<p>Tanggal = <?php echo $data['tanggal'] ?></p>
+													<p>Tanggal = <?php echo date('d-m-Y', strtotime($data['tanggal'])) ?> / <?php echo date('G:i:s', strtotime($data['tanggal'])) ?></p>
+
 													<p style="color: red; font-weight: bold;">Total Bayar = Rp. <?php echo number_format($data['total'], 0, ',', '.') ?></p>
 													<a href="?i=detail-pemesanan&id=<?php echo $data['pemesanan_id'] ?>" class="btn btn-warning btn-xs pull-left"><i class="fa fa-eye"></i> Detail Menu</a>
 												</div>
@@ -89,7 +90,7 @@
 											<center>
 												<h3>Belum Ada Daftar Transaksi</h3>
 												<p>Mulai pesan menu dan cek daftar transaksi Anda disini.</p>
-												<a href="?i=" class="btn btn-info pull-center"><i class="fa fa-shopping-cart"></i> Pesan Menu</a>
+												<a href="?i=" class="btn btn-info pull-center"><i class="fa fa-shopping-cart"></i> Pesan Sekarang</a>
 											</center>
 										</div>
 									</div>
@@ -104,7 +105,7 @@
 											<div class="single-products">
 												<div class="productinfo text-left">
 													<h4><?php echo $no ?>. Pesanan Diproses</h4>
-													<p>Tanggal = <?php echo $data['tanggal'] ?></p>
+													<p>Tanggal = <?php echo date('d-m-Y', strtotime($data['tanggal'])) ?> / <?php echo date('G:i:s', strtotime($data['tanggal'])) ?></p>
 
 													<!-- <p>Total Bayar = Rp. <?php echo number_format($data['total'], 0, ',', '.') ?></p>
 													<a href="?i=detail-pemesanan&id=<?php echo $data['pemesanan_id'] ?>" class="btn btn-default add-to-cart btn-xs pull-right"><i class="fa fa-eye"></i>Detail Menu</a> -->
@@ -143,7 +144,7 @@
 											<center>
 												<h3>Belum Ada Daftar Transaksi</h3>
 												<p>Mulai pesan menu dan cek daftar transaksi Anda disini.</p>
-												<a href="?i=" class="btn btn-info pull-center"><i class="fa fa-shopping-cart"></i> Pesan Menu</a>
+												<a href="?i=" class="btn btn-info pull-center"><i class="fa fa-shopping-cart"></i> Pesan Sekarang</a>
 											</center>
 										</div>
 									</div>
@@ -194,7 +195,7 @@
 											<center>
 												<h3>Belum Ada Daftar Transaksi</h3>
 												<p>Mulai pesan menu dan cek daftar transaksi Anda disini.</p>
-												<a href="?i=" class="btn btn-info pull-center"><i class="fa fa-shopping-cart"></i> Pesan Menu</a>
+												<a href="?i=" class="btn btn-info pull-center"><i class="fa fa-shopping-cart"></i> Pesan Sekarang</a>
 											</center>
 										</div>
 									</div>
@@ -256,7 +257,7 @@
 											<center>
 												<h3>Belum Ada Daftar Transaksi</h3>
 												<p>Mulai pesan menu dan cek daftar transaksi Anda disini.</p>
-												<a href="?i=" class="btn btn-info pull-center"><i class="fa fa-shopping-cart"></i> Pesan Menu</a>
+												<a href="?i=" class="btn btn-info pull-center"><i class="fa fa-shopping-cart"></i> Pesan Sekarang</a>
 											</center>
 										</div>
 									</div>
@@ -271,7 +272,7 @@
 											<div class="single-products">
 												<div class="productinfo text-left">
 													<h4><?php echo $no ?>. Pesanan Selesai</h4>
-													<p>Tanggal = <?php echo $data['tanggal'] ?></p>
+													<p>Tanggal = <?php echo date('d-m-Y', strtotime($data['tanggal'])) ?> / <?php echo date('G:i:s', strtotime($data['tanggal'])) ?></p>
 
 													<!-- <p>Total Bayar = Rp. <?php echo number_format($data['total'], 0, ',', '.') ?></p>
 													<a href="?i=detail-pemesanan&id=<?php echo $data['pemesanan_id'] ?>" class="btn btn-default add-to-cart btn-xs pull-right"><i class="fa fa-eye"></i>Detail Menu</a> -->

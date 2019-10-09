@@ -31,16 +31,16 @@ if (isset($_POST["login"])) {
 										?>
 					<script>
 						Swal.fire({
-							title: 'Kakak, Password Kamu Salah',
+							title: 'Maaf password kamu salah,',
 							animation: false,
 							customClass: {
 								popup: 'animated tada'
 							},
-							text: "coba lagi yaa",
+							text: "silahkan ulangi lagi",
 							type: 'warning',
 							showCancelButton: false,
 							confirmButtonColor: '#FFA500',
-							confirmButtonText: 'Yaa'
+							confirmButtonText: 'Oke'
 						}).then((result) => {
 							if (result.value) {
 								window.location = "?i=<?php echo md5('login') ?>";
@@ -53,16 +53,16 @@ if (isset($_POST["login"])) {
 								?>
 				<script>
 					Swal.fire({
-						title: 'Kakak, Username Kamu Tidak Terdaftar',
+						title: 'Maaf username kamu tidak terdaftar,',
 						animation: false,
 						customClass: {
 							popup: 'animated tada'
 						},
-						text: "daftar dulu yah",
+						text: "silahkan daftar",
 						type: 'warning',
 						showCancelButton: false,
 						confirmButtonColor: '#FFA500',
-						confirmButtonText: 'Yaa'
+						confirmButtonText: 'Oke'
 					}).then((result) => {
 						if (result.value) {
 							window.location = "?i=<?php echo md5('regis') ?>";
@@ -85,7 +85,7 @@ if (isset($_POST["login"])) {
 				<div class="login-form">
 					<!--login form-->
 					<center>
-						<h2 style="font-weight: bold; color: orange;">Masuk Dengan Akun Anda</h2>
+						<h2 style="font-weight: bold; color: orange;">Masuk ke Akun Kamu</h2>
 					</center>
 					<form action="" method="post">
 						<input type="email" name="email" class="form-control" placeholder="Alamat Email" required />
@@ -97,8 +97,14 @@ if (isset($_POST["login"])) {
 								<td>&nbsp;Show Password</td>
 							</tr>
 						</table>
-						<button type="submit" name="login" class="btn btn-warning">Login</button>
-						<a href="?i=<?php echo md5('resetpass') ?>" style="color:#D00"><br>Lupa Password</a><br>Belum Punya Akun? Daftar <a href="?i=<?php echo md5('regis') ?>">Disini</a>
+						<table>
+							<tr>
+								<td><button type="submit" name="login" class="btn btn-warning">Masuk</button></td>
+								<td>&nbsp;&nbsp;&nbsp;</td>
+								<td><a href="?i=<?php echo md5('regis') ?>"><button type="button" name="regis" class="btn btn-warning">Daftar</button></a></td>
+							</tr>
+						</table>
+						<a href="?i=<?php echo md5('resetpass') ?>" style="color:#D00"><br>Lupa Password</a><br>Belum Punya Akun? <a href="?i=<?php echo md5('regis') ?>">Daftar</a>
 					</form>
 				</div>
 				<!--/login form-->

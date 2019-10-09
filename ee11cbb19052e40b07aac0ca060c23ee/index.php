@@ -39,25 +39,25 @@ while ($ac = mysqli_fetch_array($ab)) {
 if (empty($_SESSION['id'])) {
 	?>
 	<script>
-		// window.location = "../";
-		// alert("Silahkan Login Terlebih Dahulu!!!");
+		window.location = "../";
+		alert("Silahkan Login Terlebih Dahulu!!!");
 
-		Swal.fire({
-			title: 'Silahkan login dulu yaa kak,',
-			animation: false,
-			customClass: {
-				popup: 'animated tada'
-			},
-			text: "",
-			type: 'warning',
-			showCancelButton: false,
-			confirmButtonColor: '#FFA500',
-			confirmButtonText: 'Yaa, login'
-		}).then((result) => {
-			if (result.value) {
-				window.location = "../";
-			}
-		})
+		// Swal.fire({
+		// 	title: 'Silahkan login dulu yaa kak,',
+		// 	animation: false,
+		// 	customClass: {
+		// 		popup: 'animated tada'
+		// 	},
+		// 	text: "",
+		// 	type: 'warning',
+		// 	showCancelButton: false,
+		// 	confirmButtonColor: '#FFA500',
+		// 	confirmButtonText: 'Yaa, login'
+		// }).then((result) => {
+		// 	if (result.value) {
+		// 		window.location = "../";
+		// 	}
+		// })
 	</script>
 	<?php
 	} else {
@@ -139,12 +139,12 @@ if (empty($_SESSION['id'])) {
 												$nker1 = mysqli_num_rows($sker1);
 												?>
 										<li><a href="?i=beranda"><i class="fa fa-home"></i> Beranda</a></li>
-										<li><a href="?i=list_pemesanan"><i class="fa fa-book"></i> List Pemesanan
+										<li><a href="?i=list_pemesanan"><i class="fa fa-book"></i> Pesanan
 												<span class="label label-warning"><?php echo $nker1 ?></span></a></li>
 										<li><a href="?i=keranjang"><i class="fa fa-shopping-cart"></i> Keranjang
 												<span class="label label-warning"><?php echo $nker ?></span></a></li>
-										<li><a href="?i=saya"><i class="fa fa-user"></i> Saya</a></li>
-										<li><a href="../logout.php"><i class="fa  fa-arrow-circle-right"></i> Logout</a></li>
+										<li><a href="?i=saya"><i class="fa fa-user"></i> Akun</a></li>
+										<li><a href="../logout.php"><i class="fa  fa-arrow-circle-right"></i> Keluar</a></li>
 									</ul>
 								</div>
 							</div>
@@ -159,7 +159,7 @@ if (empty($_SESSION['id'])) {
 						<div class="row">
 							<div class="col-sm-9">
 							</div>
-							<div class="col-sm-3">
+							<div class="col-sm-12">
 								<?php
 										switch ($_GET['i']) {
 											case 'detail-barang':
@@ -184,7 +184,7 @@ if (empty($_SESSION['id'])) {
 												?>
 										<div class="search_box pull-right">
 											<form action="" method="post">
-												<input type="text" placeholder="Search" name="cari" value="<?php echo $_POST['cari'] ?>" />
+												<input type="text" style="width: 215px" placeholder="Search" name="cari" value="<?php echo $_POST['cari'] ?>" />
 												<button type="submit" class="btn btn-warning">Cari</button>
 											</form>
 										</div>
@@ -237,16 +237,16 @@ if (empty($_SESSION['id'])) {
 						// window.location = "?i=";
 
 						Swal.fire({
-							title: 'Yeaay, menu berhasil ditambahkan ke keranjang',
+							title: 'Yeay, berhasil ditambahkan ke keranjang,',
 							animation: false,
 							customClass: {
 								popup: 'animated tada'
 							},
-							text: "",
+							text: "Selanjutnya lihat di menu keranjang",
 							type: 'success',
 							showCancelButton: false,
 							confirmButtonColor: '#FFA500',
-							confirmButtonText: 'Okey'
+							confirmButtonText: 'Oke'
 						}).then((result) => {
 							if (result.value) {
 								window.location = "?i=";
@@ -365,8 +365,8 @@ if (empty($_SESSION['id'])) {
 								<div class="col-sm-3">
 									<div class="companyinfo">
 										<h2><span>Jam Operasional</span></h2>
-										<p style="color: orange;">Senin - Minggu</p>
-										<p style="color: orange;">07.00 - 22.00 WIB</p>
+										<p style="color: orange;">Setiap Hari</p>
+										<p style="color: orange;">09.00 - 24.00 WIB</p>
 									</div>
 								</div>
 							</div>

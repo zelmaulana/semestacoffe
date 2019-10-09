@@ -43,7 +43,7 @@ $listmeja = getListMeja();
 										<center>
 											<h4>Wah, keranjang menu kakak masih kosong ni..</h4>
 											<p>Daripada dianggurin, mending isi dengan menu-menu spesial dari Semesta Coffee. Yuk, pesan sekarang.</p>
-											<a href="?i=" class="btn btn-info pull-center"><i class="fa fa-shopping-cart"></i> Pesan Menu</a>
+											<a href="?i=" class="btn btn-info pull-center"><i class="fa fa-shopping-cart"></i> Pesan Sekarang</a>
 										</center>
 									</div>
 								</div>
@@ -53,6 +53,8 @@ $listmeja = getListMeja();
 						} else {
 
 							while ($hker = mysqli_fetch_array($sker)) {
+								$diskon = $hker['diskon'] / 100;
+
 								$hrg = $hker['total'] / $hker['jumlah_trx'];
 								?>
 							<tr>
@@ -68,9 +70,11 @@ $listmeja = getListMeja();
 								<td class="cart_price">
 									<?php
 											if ($hker['diskon'] > 0) {
+												$harga = $hker['harga_jual'] * $diskon;
+												$hrgadiskon = $hker['harga_jual'] - $harga;
 												?>
 										<p style="color:#F00">Rp. <strike><?php echo number_format($hker['harga_jual'], 0, ",", ".") ?></strike></p>
-										<p>Rp. <?php echo number_format(($hker['total'] / $hker['jumlah_trx']), 0, ",", ".") ?></p>
+										<p>Rp. <?php echo number_format($hargadiskon, 0, ",", ".") ?></p>
 									<?php
 											} else {
 												?>
@@ -119,9 +123,9 @@ $listmeja = getListMeja();
 					</div>
 				</div> -->
 			<?php
-			$srinc = mysqli_query($koneksi, "SELECT SUM(a.jumlah_trx) as aa, SUM(a.total) as bb FROM t_keranjang a LEFT OUTER JOIN m_barang b on a.brg_id = b.brg_id	WHERE a.user_id = '$_SESSION[id]' AND pemesanan_id = '0'");
+			$srinc = mysqli_query($koneksi, "SELECT a.jumlah_trx as aa, a.total as bb FROM t_keranjang a LEFT OUTER JOIN m_barang b on a.brg_id = b.brg_id	WHERE a.user_id = '$_SESSION[id]' AND pemesanan_id = '1'");
 
-			$aa = mysqli_query($koneksi, "SELECT * FROM t_keranjang WHERE user_id = '$_SESSION[id]' AND pemesanan_id = '0'");
+			$aa = mysqli_query($koneksi, "SELECT * FROM t_keranjang WHERE user_id = '$_SESSION[id]' AND pemesanan_id = '1'");
 			$bb = mysqli_num_rows($aa);
 			$hrinc = mysqli_fetch_array($srinc);
 			?>
@@ -147,7 +151,7 @@ $listmeja = getListMeja();
 							<br />
 							Catatan Menu
 							<br />
-							<textarea name="catatan" id="catatan" class="form-control" placeholder="Contoh: Toping, Varian Rasa"></textarea><br />
+							<textarea name="catatan" id="catatan" class="form-control" placeholder="Contoh: Toping, Varian Rasa" required></textarea><br />
 							<li>Total Menu <span><?php echo $hrinc['aa'] ?></span></li>
 							<li>Total Bayar <span>Rp. <?php echo number_format($hrinc['bb'], 0, ",", ".") ?></span></li><br />
 							<!-- <a href="?i=chekout"><button type="submit" class="btn-info" <?php if ($bb == 0) {
@@ -155,7 +159,7 @@ $listmeja = getListMeja();
 																								} else {
 																									echo "";
 																								} ?>>Pesan</button></a> -->
-							<input type="submit" class="btn btn-info" name="pesan" id="pesan" value="Pesan" <?php /*if ($bb == 0) {
+							<input type="submit" class="btn btn-info" name="pesan" id="pesan" value="Pesan Sekarang" <?php /*if ($bb == 0) {
 																												echo "disabled";
 																											} else {
 																												echo "";
@@ -174,33 +178,33 @@ $listmeja = getListMeja();
 <script>
 	function myFunction() {
 		Swal.fire({
-			title: 'Pesanan kakak akan kami proses, mau pesan lagi??',
+			title: 'Mau tambah menu lagi?',
 			animation: true,
 			customClass: {
 				popup: 'animated tada'
 			},
-			text: "pilih proses untuk lanjut checkout",
+			text: "Tidak, langsung proses",
 			type: 'success',
 			showCancelButton: true,
 			cancelButtonColor: '#1E90FF',
-			cancelButtonText: 'Proses Checkout',
+			cancelButtonText: 'Tidak',
 			confirmButtonColor: '#FFA500',
-			confirmButtonText: 'Yaa'
+			confirmButtonText: 'Ya'
 		}).then((result) => {
 			if (result.value) {
 				window.location = "?i=";
 			} else {
 				Swal.fire({
-					title: 'Terimakasih, Pesanan Kakak Kami Proses Yaa',
+					title: 'Pesanan sedang di proses, mohon menunggu',
 					animation: false,
 					customClass: {
 						popup: 'animated tada'
 					},
-					text: "silahkan bayar di kasir yaa kak",
+					text: "lihat di menu pesanan untuk mengetahui status pesanan",
 					type: 'success',
 					showCancelButton: false,
 					confirmButtonColor: '#FFA500',
-					confirmButtonText: 'Okey'
+					confirmButtonText: 'Oke'
 				}).then((result) => {
 					if (result.value) {
 						window.location = "?i=bayar&id=<?php echo md5('byr') ?>";

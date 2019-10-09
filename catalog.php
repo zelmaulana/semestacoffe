@@ -125,7 +125,7 @@
 														<?php if ($hbarang['stok'] == 0) {
 															echo "Menu Habis";
 														} else {
-															echo "Pesan Menu";
+															echo "Pesan Sekarang";
 														} ?></a>
 													</div>
 													
@@ -177,7 +177,7 @@
 														<?php if ($hbarang['stok'] == 0) {
 															echo "Menu Habis";
 														} else {
-															echo "Pesan Menu";
+															echo "Pesan Sekarang";
 														} ?></a>
 													</div>
 													
@@ -231,7 +231,7 @@
 														<?php if ($hbarang['stok'] == 0) {
 															echo "Menu Habis";
 														} else {
-															echo "Pesan Menu";
+															echo "Pesan Sekarang";
 														} ?></a>
 													</div>
 													
@@ -291,7 +291,7 @@
 															<?php if ($hbarang['stok'] == 0) {
 																echo "Menu Habis";
 															} else {
-																echo "Pesan Menu";
+																echo "Pesan Sekarang";
 															} ?></a>
                                                         </div>
                                                         
@@ -343,7 +343,7 @@
 															<?php if ($hbarang['stok'] == 0) {
 																echo "Menu Habis";
 															} else {
-																echo "Pesan Menu";
+																echo "Pesan Sekarang";
 															} ?></a>
                                                         </div>
                                                         
@@ -397,7 +397,7 @@
 															<?php if ($hbarang['stok'] == 0) {
 																echo "Menu Habis";
 															} else {
-																echo "Pesan Menu";
+																echo "Pesan Sekarang";
 															} ?></a>
                                                         </div>
                                                         
@@ -506,7 +506,7 @@
 														<?php if ($hbarang['stok'] == 0) {
 															echo "Menu Habis";
 														} else {
-															echo "Pesan Menu";
+															echo "Pesan Sekarang";
 														} ?></a>
 												</div>
 												
@@ -558,7 +558,7 @@
 														<?php if ($hbarang['stok'] == 0) {
 															echo "Menu Habis";
 														} else {
-															echo "Pesan Menu";
+															echo "Pesan Sekarang";
 														} ?></a>
 												</div>
 												
@@ -612,7 +612,7 @@
 														<?php if ($hbarang['stok'] == 0) {
 															echo "Menu Habis";
 														} else {
-															echo "Pesan Menu";
+															echo "Pesan Sekarang";
 														} ?></a>
 												</div>
 												

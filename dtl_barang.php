@@ -64,7 +64,7 @@
 												<?php if ($hbuku['stok'] == 0) {
 													echo "Menu Habis";
 												} else {
-													echo "Pesan Menu";
+													echo "Pesan Sekarang";
 												} ?> </a>
 										</div><br />
 

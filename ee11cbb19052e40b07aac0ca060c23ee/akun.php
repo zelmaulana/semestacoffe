@@ -17,7 +17,7 @@ if (isset($_POST['simpan'])) {
 	<script>
 		//alert("Berhasil Disimpan");
 		Swal.fire({
-			title: 'Yeaay, Profile Kamu Berhasil Disimpan',
+			title: 'Data kamu berhasil disimpan',
 			animation: false,
 			customClass: {
 				popup: 'animated tada'
@@ -26,7 +26,7 @@ if (isset($_POST['simpan'])) {
 			type: 'success',
 			showCancelButton: false,
 			confirmButtonColor: '#FFA500',
-			confirmButtonText: 'Okey'
+			confirmButtonText: 'Oke'
 		}).then((result) => {
 			if (result.value) {
 				window.location = "?i=saya";
@@ -65,7 +65,7 @@ if (isset($_POST['simpan'])) {
 					<tbody>
 						<tr>
 							<td class="col-sm-3">
-								<h4><u>Biodata</u></h4>
+								<h4><u>Data Diri</u></h4>
 							</td>
 							<td class="col-sm-0"></td>
 							<td class="col-sm-12"></td>

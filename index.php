@@ -116,8 +116,8 @@ if ($b == 1) {
 														$nker = mysqli_num_rows($sker);
 														?>
 											<li><a href="?i=beranda"><i class="fa fa-home"></i> Beranda</a></li>
-											<li><a href="?i=<?php echo md5('login') ?>"><i class="fa  fa-arrow-circle-right"></i> Login</a></li>
-											<li><a href="?i=<?php echo md5('regis') ?>"><i class="fa  fa-user"></i> Register</a></li>
+											<li><a href="?i=<?php echo md5('login') ?>"><i class="fa  fa-arrow-circle-right"></i> Masuk</a></li>
+											<li><a href="?i=<?php echo md5('regis') ?>"><i class="fa  fa-user"></i> Daftar</a></li>
 										</ul>
 									</div>
 								</div>
@@ -202,8 +202,8 @@ if ($b == 1) {
 												$nker = mysqli_num_rows($sker);
 												?>
 										<li><a href="?i=beranda"><i class="fa fa-home"></i> Beranda</a></li>
-										<li><a href="?i=<?php echo md5('login') ?>"><i class="fa  fa-arrow-circle-right"></i> Login</a></li>
-										<li><a href="?i=<?php echo md5('regis') ?>"><i class="fa  fa-user"></i> Register</a></li>
+										<li><a href="?i=<?php echo md5('login') ?>"><i class="fa  fa-arrow-circle-right"></i> Masuk</a></li>
+										<li><a href="?i=<?php echo md5('regis') ?>"><i class="fa  fa-user"></i> Daftar</a></li>
 									</ul>
 								</div>
 							</div>
@@ -218,7 +218,7 @@ if ($b == 1) {
 						<div class="row">
 							<div class="col-sm-9">
 							</div>
-							<div class="col-sm-3">
+							<div class="col-sm-12">
 								<?php
 										switch ($_GET['i']) {
 											case 'detail-barang':
@@ -227,7 +227,7 @@ if ($b == 1) {
 												?>
 										<div class="search_box pull-right">
 											<form action="" method="post">
-												<input type="text" placeholder="Search" name="cari" value="<?php echo $_POST['cari'] ?>" />
+												<input type="text" style="width: 215px" placeholder="Search" name="cari" value="<?php echo $_POST['cari'] ?>" />
 												<button type="submit" class="btn btn-warning">Cari</button>
 											</form>
 										</div>
@@ -279,16 +279,20 @@ if ($b == 1) {
 						?>
 					<script>
 						Swal.fire({
-							title: 'Kakak, Kamu Belum Login',
-							animation: false,
+							title: 'Mau pesan mudah?',
+							imageUrl: 'https://semestaku.com/images/logo_header.png',
+							imageWidth: 120,
+							imageHeight: 35,
+							imageAlt: 'Custom image',
+							animation: true,
 							customClass: {
 								popup: 'animated tada'
 							},
-							text: "login dulu yaaa",
-							type: 'warning',
+							text: "Masuk aja dulu",
+							type: 'success',
 							showCancelButton: false,
 							confirmButtonColor: '#FFA500',
-							confirmButtonText: 'Yaa, login'
+							confirmButtonText: 'Oke'
 						}).then((result) => {
 							if (result.value) {
 								window.location = "?i=<?php echo md5('login') ?>";
@@ -323,8 +327,8 @@ if ($b == 1) {
 							<div class="col-sm-3">
 								<div class="companyinfo">
 									<h2><span>Jam Operasional</span></h2>
-									<p style="color: orange;">Senin - Minggu</p>
-									<p style="color: orange;">07.00 - 22.00 WIB</p>
+									<p style="color: orange;">Setiap Hari</p>
+									<p style="color: orange;">09.00 - 24.00 WIB</p>
 								</div>
 							</div>
 						</div>

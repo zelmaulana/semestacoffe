@@ -18,18 +18,15 @@
       <div class="col-xs-12">
         <div class="box">
           <div class="box-header">
-            <h3 class="box-title">Data Pesanan Menu</h3>
+            <h2 class="box-title">Data Pesanan Masuk</h2>
           </div>
-          <br>
           <!-- /.box-header -->
           <div class="box-body table-responsive">
-            <h3>Belum Diverifikasi</h3>
             <table id="example1" class="table table table-bordered table-striped" style="font-size:13px">
               <thead>
                 <tr>
                   <th>No</th>
                   <th>Nama Pemesan</th>
-                  <th>Total Harga</th>
                   <th>Nomor Meja</th>
                   <th>Tanggal Pemesanan</th>
                   <th>Action</th>
@@ -38,10 +35,7 @@
               <tbody>
                 <?php
                 $no = 1;
-                // $sql = mysqli_query($koneksi, "SELECT DISTINCT b.pemesanan_id, a.*, b.user_id, c.*, d.* FROM t_pemesanan a  LEFT OUTER JOIN t_keranjang b on a.pemesanan_id = b.pemesanan_id
-                // 	                  LEFT OUTER JOIN m_user c on b.user_id = c.user_id 
-                //                     LEFT OUTER JOIN m_barang d on b.brg_id = d.brg_id 
-                //                     WHERE a.status_id = '2'");
+
                 $sql = mysqli_query($koneksi, "SELECT DISTINCT b.pemesanan_id, a.*, b.user_id, c.* FROM       t_pemesanan a
 									  LEFT OUTER JOIN t_keranjang b on a.pemesanan_id = b.pemesanan_id
 									  LEFT OUTER JOIN m_user c on b.user_id = c.user_id
@@ -53,13 +47,12 @@
                   <tr>
                     <td><?php echo $no ?></td>
                     <td><?php echo $hasil['user_nama'] ?></td>
-                    <td><?php echo $hasil['total'] ?></td>
                     <td><?php echo $hasil['id_meja'] ?></td>
-                    <td><?php echo date('d-m-Y', strtotime($hasil['tanggal'])) ?> <?php echo date('G:i:s', strtotime($hasil['tanggal'])) ?></td>
+                    <td><?php echo date('d-m-Y', strtotime($hasil['tanggal'])) ?> / <?php echo date('G:i:s', strtotime($hasil['tanggal'])) ?></td>
                     <td><a href="?i=<?php echo md5('dtl-pemesanan') ?>&id=<?php echo $hasil['pemesanan_id'] ?>">
-                        <button type="button" class="btn btn-primary fa fa-eye"> Detail Pemesanan</button></a>
-                      <a href="?i=<?php echo md5('verif') ?>&id=<?php echo $hasil['pemesanan_id'] ?>">
-                        <button type="button" class="btn btn-info fa fa-check"> Verifikasi</button></a>
+                        <button type="button" class="btn btn-primary fa fa-eye"> Detail</button></a>
+                      <a href="?i=<?php echo md5('proses-kirim') ?>&id=<?php echo $hasil['pemesanan_id'] ?>">
+                        <button type="button" class="btn btn-info fa fa-check"> Proses</button></a>
                     </td>
                   </tr>
                   <script type="text/javascript" language="javascript">
@@ -77,8 +70,8 @@
               </tbody>
             </table>
           </div>
-          <div class="box-body table-responsive">
-            <h3>Sudah Diverifikasi</h3>
+          <!-- <div class="box-body table-responsive">
+            <h3>Pesanan Diproses</h3>
             <table id="example2" class="table table table-bordered table-striped" style="font-size:13px">
               <thead>
                 <tr>
@@ -93,11 +86,6 @@
               <tbody>
                 <?php
                 $no = 1;
-                // $sql = mysqli_query($koneksi, "SELECT a.*, b.*, c.*, d.* FROM t_pemesanan a
-                //    LEFT OUTER JOIN m_user c on a.user_id = c.user_id
-                //    LEFT OUTER JOIN t_keranjang b on a.pemesanan_id = b.pemesanan_id
-                //    LEFT OUTER JOIN m_barang d on b.brg_id = d.brg_id
-                //    WHERE a.status_id = '3'");
 
                 $sql = mysqli_query($koneksi, "SELECT a.*, c.* FROM t_pemesanan a
                   LEFT OUTER JOIN m_user c on a.user_id = c.user_id
@@ -112,14 +100,11 @@
                     <td><?php echo $hasil['id_meja'] ?></td>
                     <td><?php echo date('d-m-Y', strtotime($hasil['tanggal'])) ?> <?php echo date('G:i:s', strtotime($hasil['tanggal'])) ?></td>
                     <td><a href="?i=<?php echo md5('dtl-pemesanan') ?>&id=<?php echo $hasil['pemesanan_id'] ?>">
-                        <button type="button" class="btn btn-primary fa fa-eye"> Detail Pemesanan</button></a>
+                        <button type="button" class="btn btn-primary fa fa-eye"> Detail</button></a>
                       <a href="?i=<?php echo md5('btl-verif') ?>&id=<?php echo $hasil['pemesanan_id'] ?>">
-                        <button type="button" class="btn btn-danger fa fa-check"> Batal Verifikasi</button></a>
-
-                      <!-- <button type="submit" class="btn btn-info fa fa-check" name="simpan" id="simpan">Dikirim</button> -->
-
-                      <a href="?i=<?php echo md5('resi') ?>&id=<?php echo $hasil['pemesanan_id'] ?>">
-                        <button type="button" class="btn btn-info fa fa-check"> Telah Dikirim</button></a>
+                        <button type="button" class="btn btn-danger fa fa-check"> Batal Proses</button></a>
+                      <a href="?i=<?php echo md5('proses-kirim') ?>&id=<?php echo $hasil['pemesanan_id'] ?>">
+                        <button type="button" class="btn btn-info fa fa-check"> Proses Kirim</button></a>
                     </td>
                   </tr>
                   <script type="text/javascript" language="javascript">
@@ -136,7 +121,7 @@
                 ?>
               </tbody>
             </table>
-          </div>
+          </div> -->
           <!-- /.box-body -->
         </div>
         <!-- /.box -->

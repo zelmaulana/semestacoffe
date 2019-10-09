@@ -15,6 +15,8 @@ if (empty($_SESSION['id'])) {
   $h1 = mysqli_num_rows($s1);
   $s2 = mysqli_query($koneksi, "SELECT * FROM t_pemesanan WHERE status_id = '4'");
   $h2 = mysqli_num_rows($s2);
+  $s3 = mysqli_query($koneksi, "SELECT * FROM t_pemesanan WHERE status_id = '5'");
+  $h3 = mysqli_num_rows($s3);
   $a = mysqli_query($koneksi, "SELECT * FROM m_user WHERE user_id = '$_SESSION[id]'");
   $h = mysqli_fetch_array($a);
   if ($h['level_id'] != 1) {
@@ -64,6 +66,7 @@ if (empty($_SESSION['id'])) {
     <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <script src="../assets/sweetalert2/sweetalert2.all.min.js"></script>
 
     <script type="text/javascript" src="jquery-1.9.1.min.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -117,7 +120,7 @@ if (empty($_SESSION['id'])) {
                     <div class="pull-left">
                     </div>
                     <div class="pull-right">
-                      <a href="../logout.php" class="btn btn-default btn-flat">Sign out</a>
+                      <a href="../logout.php" class="btn btn-default btn-flat">Keluar</a>
                     </div>
                   </li>
                 </ul>
@@ -143,11 +146,11 @@ if (empty($_SESSION['id'])) {
                   <ul class="sidebar-menu">
                     <li class="header">MAIN NAVIGATION</li>
                     <li class="treeview">
-                      <a href="?page=">
+                      <a href="?i=">
                         <i class="fa fa-home"></i> <span>Home</span>
                         <!-- <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span> -->
+                          <i class="fa fa-angle-left pull-right"></i>
+                        </span> -->
                       </a>
                     </li>
                     <li class="treeview">
@@ -158,20 +161,20 @@ if (empty($_SESSION['id'])) {
                         </span>
                         <ul class="treeview-menu">
                           <li><a href="?i=<?php echo md5('v_admin') ?>"><i class="fa fa-user"></i>Admin</a></li>
-                          <li><a href="?i=<?php echo md5('v_user') ?>"><i class="fa fa-user"></i>User</a></li>
+                          <li><a href="?i=<?php echo md5('v_user') ?>"><i class="fa fa-user"></i>Pelanggan</a></li>
                         </ul>
                       </a>
                     </li>
                     <li class="treeview">
                       <a href="#">
-                        <i class="fa fa-sitemap"></i> <span>Data Lookup</span>
+                        <i class="fa fa-sitemap"></i> <span>Data Kategori Menu</span>
                         <span class="pull-right-container">
                           <i class="fa fa-angle-left pull-right"></i>
                         </span>
                         <ul class="treeview-menu">
                           <!-- <li><a href="?i=<?php echo md5('v_penerbit') ?>"><i class="fa fa-book"></i>Data Penerbit</a></li>
             <li><a href="?i=<?php echo md5('v_penulis') ?>"><i class="fa fa-book"></i>Data Penulis</a></li> -->
-                          <li><a href="?i=<?php echo md5('l_kategori') ?>"><i class="fa fa-book"></i>Lookup Kategori Menu</a></li>
+                          <li><a href="?i=<?php echo md5('l_kategori') ?>"><i class="fa fa-book"></i>Kategori Menu</a></li>
                           <!-- <li><a href="?i=<?php echo md5('l_kategori_acc') ?>"><i class="fa fa-book"></i>Lookup Kategori Acc</a></li> -->
                         </ul>
                       </a>
@@ -195,12 +198,12 @@ if (empty($_SESSION['id'])) {
                         <span class="pull-right-container">
                           <i class="fa fa-angle-double-down"></i>
                         </span>
-                    <li><a href="?i=<?php echo md5('perlu-dikirim') ?>"><i class="fa fa-bell"></i>Pesanan Masuk <sup style="color:#FF3"><i class="fa fa-bell"></i><?php echo $h1 ?></sup></a></li>
-                    <li><a href="?i=<?php echo md5('dikirim') ?>"><i class="fa fa-bell"></i>Proses <sup style="color:#FF3"><i class="fa fa-bell"></i><?php echo $h2 ?></sup></a></li>
-                    <li><a href="?i=<?php echo md5('selesai') ?>"><i class="fa fa-bell"></i>Selesai</a></li>
+                    <li><a href="?i=<?php echo md5('perlu-dikirim') ?>"><i class="fa fa-bell"></i>Pesanan Masuk <sup style="color:#FF3"><i class="fa fa-bell"></i> <?php echo $h1 ?></sup></a></li>
+                    <li><a href="?i=<?php echo md5('dikirim') ?>"><i class="fa fa-bell"></i>Proses <sup style="color:#FF3"><i class="fa fa-bell"></i> <?php echo $h2 ?></sup></a></li>
+                    <li><a href="?i=<?php echo md5('selesai') ?>"><i class="fa fa-bell"></i>Selesai <sup style="color:#FF3"><i class="fa fa-bell"></i> <?php echo $h3 ?></sup></a></li>
                     </a>
                     </li>
-                    <li class="treeview">
+                    <!-- <li class="treeview">
                       <a href="#">
                         <i class="fa fa-area-chart"></i> <span>Laporan</span>
                         <span class="pull-right-container">
@@ -211,7 +214,7 @@ if (empty($_SESSION['id'])) {
                           <li><a href="?i=<?php echo md5('lap_labarugi') ?>&1=<?php echo date('Y-m-d') ?>&2=<?php echo date('Y-m-d') ?>"><i class="fa fa-area-chart"></i>Laporan Laba Rugi</a></li>
                         </ul>
                       </a>
-                    </li>
+                    </li> -->
                   </ul>
                 </section>
               </aside>
@@ -236,6 +239,9 @@ if (empty($_SESSION['id'])) {
                     break;
                   case md5('v_user'):
                     require_once('v_user.php');
+                    break;
+                  case md5('dtl_user'):
+                    require_once('dtl_user.php');
                     break;
                   case md5('d_user'):
                     mysqli_query($koneksi, "DELETE FROM m_user WHERE user_id = '$_GET[id]'");

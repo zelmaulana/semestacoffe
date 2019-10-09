@@ -1,80 +1,61 @@
-
 <!-- Content Wrapper. Contains page content -->
- <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Data Admin 
-        <small>ADMIN</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-male"></i> Home</a></li>
-        <li><a href="#">Tables</a></li>
-        <li class="active">Data Admin</li>
-      </ol>
-    </section>
-    <!-- Main content -->
-    <section class="content">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Data Admin</h3>
-            </div>
-            <br>
-            <!-- /.box-header -->
-            <div class="box-body table-responsive">
-            <a href="?i=<?php echo md5('i_admin')?>"><button type="button" class="btn btn-primary fa fa-plus"> Tambah Data</button></a>
-              <table id="example4" class="table table table-bordered table-striped">
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Data Admin
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-male"></i> Home</a></li>
+      <li><a href="#">Tables</a></li>
+      <li class="active">Data Admin</li>
+    </ol>
+  </section>
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+
+          <!-- /.box-header -->
+          <div class="box-body table-responsive">
+            <div class="col-sm-8">
+              <!-- <a href="?i=<?php echo md5('i_admin') ?>"><button type="button" class="btn btn-primary fa fa-plus"> Tambah Admin</button></a> -->
+              <?php
+              $val1 = mysqli_query($koneksi, "SELECT * FROM m_user WHERE level_id = '1'");
+              $data = mysqli_fetch_array($val1);
+              ?>
+              <table id="" class="table" style="font-size:13px;width:100%">
                 <thead>
-           		<tr>
-                  <th>No</th>
-                  <th>Nama Admin</th>
-                  <th>E-Mail</th>
-                  <th>No.HP</th>
-                  <th>Action</th>
-                </tr>
+                  <tr>
+                    <th width="20%">Nama Lengkap</th>
+                    <th>:</th>
+                    <th><?php echo $data['user_nama'] ?></th>
+                  </tr>
+                  <tr>
+                    <th>No.HP</th>
+                    <th>:</th>
+                    <th><?php echo $data['user_nohp'] ?></th>
+                  </tr>
+                  <tr>
+                    <th>Email</th>
+                    <th>:</th>
+                    <th><?php echo $data['user_email'] ?></th>
+                  </tr>
                 </thead>
-                <tbody>
-<?php
-	$no = 1;
-	$sql = mysqli_query($koneksi, "SELECT * FROM m_user WHERE level_id = '1'");
-	while ($hasil = mysqli_fetch_assoc($sql)){
-?> 
-     
-                <tr>
-                  <td><?php echo $no ?></td>
-                  <td><?php echo $hasil['user_nama']?></td>
-                  <td><?php echo $hasil['user_email']?></td>
-                  <td><?php echo $hasil['user_nohp']?></td>
-                  <td><a href="?i=<?php echo md5('u_admin')?>&id=<?php echo $hasil['user_id']?>">
-                  <button type="button" class="btn btn-info fa fa-edit"> Edit</button></a>
-                  <!-- <a href="?i=<?php echo md5('d_admin')?>&id=<?php echo $hasil['user_id']?>">
-                  <button type="button" onclick="return konf()" class="btn btn-danger fa fa-trash"> Hapus</button></a> --></td>
-                  </tr> 
-                  <script type="text/javascript" language="javascript">
-					function konf(){
-					tanya = confirm("Apakah Anda Yakin Akan Menghapus Data Ini?");
-					if (tanya == true) return true;
-					else return false;
-					}
-				  </script>
- <?php     
- 				$no++;
- 				}
-				$num = mysqli_num_rows($sql);
- ?>
-                </tbody>
               </table>
+              <a href="?i=<?php echo md5('u_admin') ?>&id=<?php echo $data['user_id'] ?>">
+                <button type="button" class="btn btn-info fa fa-edit"> Edit</button></a>
             </div>
-            <!-- /.box-body -->
           </div>
-          <!-- /.box -->
+          <!-- /.box-body -->
         </div>
-        <!-- /.col -->
+        <!-- /.box -->
       </div>
-      <!-- /.row -->
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
