@@ -9,8 +9,25 @@ if (isset($_POST['simpan'])) {
 		mysqli_query($koneksi, "UPDATE m_user SET user_nama='$_POST[nama]', user_nohp='$_POST[nohp]', user_email='$_POST[email]' WHERE user_id = '$_GET[id]'");
 		?>
 		<script>
-			window.location = "?i=<?php echo md5('v_admin') ?>";
-			alert("Berhasil Diubah");
+			// window.location = "?i=<?php echo md5('v_admin') ?>";
+			// alert("Berhasil Diubah");
+
+			Swal.fire({
+				title: 'Data Berhasil Disimpan',
+				animation: true,
+				customClass: {
+					popup: 'animated tada'
+				},
+				text: "",
+				type: 'success',
+				showCancelButton: false,
+				confirmButtonColor: '#0000ff',
+				confirmButtonText: 'Oke'
+			}).then((result) => {
+				if (result.value) {
+					window.location = "?i=<?php echo md5('v_admin') ?>";
+				}
+			})
 		</script>
 		<?php
 			} else {
