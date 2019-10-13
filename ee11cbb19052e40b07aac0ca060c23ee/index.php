@@ -214,22 +214,20 @@ if (empty($_SESSION['id'])) {
 
 							if ($num_row > 0) {
 								$data = mysqli_fetch_array($sker);
+
+								tambahQty($_SESSION["id"], $_GET["idbrg"]);
 								//print_r($data);
 
-								$sql_update = " UPDATE t_keranjang SET    ";
-								$sql_update .= " jumlah_trx =  " . $data["jumlah_trx"] . " + 1 ,";
-								$sql_update .= " total =  (" . $data["jumlah_trx"] . " + 1) * '" . $_GET["jual"] . "'";
-								$sql_update .= "  WHERE user_id = '" . $_SESSION["id"] . "' ";
-								$sql_update .= "  AND ip =  '" . getRealIpAddr() . "' ";
+								// $sql_update = " UPDATE t_keranjang SET    ";
+								// $sql_update .= " jumlah_trx =  " . $data["jumlah_trx"] . " + 1 ,";
+								// $sql_update .= " total =  (" . $data["jumlah_trx"] . " + 1) * '" . $_GET["jual"] . "'";
+								// $sql_update .= "  WHERE user_id = '" . $_SESSION["id"] . "' ";
+								// $sql_update .= "  AND ip =  '" . getRealIpAddr() . "' ";
 
 
-								mysqli_query($koneksi, $sql_update);
+								//mysqli_query($koneksi, $sql_update);
 							} else {
-
-								$sql_insert = " INSERT INTO t_keranjang(user_id,brg_id,jumlah_trx,hargabarang,ip,total) ";
-								$sql_insert .= " VALUES('" . $_SESSION["id"] . "','" . $_GET["idbrg"] . "', 1 ,'" . $_GET["jual"] . "', '" . getRealIpAddr() . "', ('" . $_GET["jual"] . "'*1)) ";
-								mysqli_query($koneksi, $sql_insert);
-								//print_r($sql_insert);
+								insertKeranjang($_SESSION["id"], $_GET["idbrg"]);
 							}
 							?>
 					<script>

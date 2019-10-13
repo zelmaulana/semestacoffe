@@ -1,5 +1,163 @@
 <?php
 
+define("BASE_URL", "http://localhost/semestacoffee/");
+
+function kalkulasidiskon($hargaJual, $prosentaseDiskon)
+{
+    $a = ($prosentaseDiskon / 100) * $hargaJual;
+    $b = $hargaJual - $a;
+    return $b;
+}
+
+function insertKeranjang($user_id, $brg_id)
+{
+    include 'koneksi.php';
+
+    $product = getDetailsProduct($brg_id);
+    $hargadiskon = kalkulasidiskon($product["harga_jual"], $product["diskon"]);
+    $hargaTotal = $hargadiskon * 1;
+
+    $sql = " INSERT INTO t_keranjang(user_id,brg_id,jumlah_trx,hargabarang,ip,hargadiskon,total)  ";
+    $sql .= " SELECT  " . $user_id . ", '" . $brg_id . "', 1, '" . $product["harga_jual"] . "' , '" . getRealIpAddr() . " ', " . $hargadiskon . " , " . $hargaTotal . " ";
+
+
+    if (mysqli_query($koneksi, $sql)) { } else { }
+
+    mysqli_close($koneksi);
+}
+
+function getDetailsProduct($id)
+{
+    include 'koneksi.php';
+    $sql = " SELECT * FROM m_barang WHERE  brg_id = '" . $id . "' LIMIT 1";
+    $result = mysqli_query($koneksi, $sql);
+    if (mysqli_num_rows($result) > 0) {
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            $response = $row;
+        }
+    } else {
+        $response  = null;
+    }
+
+    mysqli_close($koneksi);
+    return $response;
+}
+
+
+function getTotalPembayaran($user_id)
+{
+    include 'koneksi.php';
+    $sql = "SELECT SUM(TOTAL) as 'TOTAL' FROM t_keranjang WHERE user_id ='" . $user_id . "'  and ip = '" . getRealIpAddr() . "'";
+    $result = mysqli_query($koneksi, $sql);
+    if (mysqli_num_rows($result) > 0) {
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            $response = $row["TOTAL"];
+        }
+    } else {
+        $response  = null;
+    }
+
+    mysqli_close($koneksi);
+    return $response;
+}
+
+function tambahQty($user_id, $brg_id)
+{
+    include 'koneksi.php';
+
+    $product = getDetailsProduct($brg_id);
+    $detailsBarang = getDetailsBarangCart($user_id, $brg_id);
+    $newQty =  ++$detailsBarang["jumlah_trx"];
+
+    //$hargadiskon = kalkulasidiskon($product["harga_jual"], $product["diskon"]);
+    $total = $newQty  * $detailsBarang["hargadiskon"];
+
+    $sql = "UPDATE t_keranjang SET jumlah_trx ='" . $newQty . "' , total  = '" . $total . "' WHERE  ip = '" . getRealIpAddr() . "' and  user_id = '" . $user_id . "' and brg_id = '" . $brg_id . "'  ";
+
+    if ($koneksi->query($sql) === TRUE) { } else { }
+
+    mysqli_close($koneksi);
+}
+
+function getDetailsBarangCart($userid, $brngId)
+{
+    include 'koneksi.php';
+    $sql = " SELECT * FROM t_keranjang WHERE  brg_id = '" . $brngId . "' and user_id  = '" . $userid . "' LIMIT 1";
+    $result = mysqli_query($koneksi, $sql);
+    if (mysqli_num_rows($result) > 0) {
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            $response = $row;
+        }
+    } else {
+        $response  = null;
+    }
+
+    mysqli_close($koneksi);
+    return $response;
+}
+function kurangiQty($user_id, $brg_id)
+{
+    //
+}
+
+function getLastNobill($p = 0)
+{
+    include 'koneksi.php';
+    $sql = "select nobill as nobill from t_order order by id desc limit 1";
+    $result = mysqli_query($koneksi, $sql);
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $response = $row["nobill"];
+        }
+    } else {
+        $response  = 0;
+    }
+    mysqli_close($koneksi);
+
+
+    $num = intval($response);
+
+    $v = $num + $p;
+
+    if ($v < 10) {
+        $value = '00000' . $v;
+    } else if ($v < 100) {
+        $value = '0000' . $v;
+    } else if ($v < 1000) {
+        $value = '000' . $v;
+    } else if ($v < 10000) {
+        $value = '00' . $v;
+    } else if ($v < 100000) {
+        $value = '0' . $v;
+    } else {
+        $value = $v;
+    }
+    return strval($value);
+}
+
+function simpanOrder($userid)
+{
+
+    include 'koneksi.php';
+    $newNobil = getLastNobill(1);
+    $sql = " INSERT INTO t_order (nobill,catatan,tanggal,userid, total,nomeja)  ";
+    $sql .= " SELECT  '" . $newNobil . "', '" . $_POST["catatan"] . "',  " . time() . ",'" . $userid . "' ,   '" . getTotalPembayaran($userid) . "' ,'" . $_POST["nomeja"] . "'";
+
+
+    if (mysqli_query($koneksi, $sql)) {
+        echo "New record created successfully";
+
+        simpanPemesanan($userid, $newNobil);
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($koneksi);
+    }
+
+    mysqli_close($koneksi);
+}
+
 function getListMeja()
 {
     $listMeja = [
@@ -80,22 +238,47 @@ function getRealIpAddr()
 }
 
 
-function simpanPemesanan($userid)
+function simpanPemesanan($userid, $nobill)
 {
     include 'koneksi.php';
 
 
-    $sql = " INSERT INTO t_pemesanan (user_id,id_meja,time,total,status_id)  ";
-    $sql .= " SELECT  " . $userid . ", '" . $_POST["nomeja"] . "',  " . time() . ", '" . getTotal($userid) . "' ,1 ";
+    $sql = " INSERT INTO t_pemesanan (nobill,user_id,time,brg_id,hargabarang,hargadiskon,qty,total)  ";
+    $sql .= " SELECT '" . $nobill . "', user_id, '" . time() . "', brg_id,hargabarang, hargadiskon,jumlah_trx,total   FROM t_keranjang WHERE ip='" . getRealIpAddr() . "' and user_id = '" . $userid . "'  ";
 
 
     if (mysqli_query($koneksi, $sql)) {
-        echo "New record created successfully";
-
-        ubah_pemesananid($userid);
+        updateStok($userid);
+        hapuskeranjang($userid);
+        header('Location: ' . BASE_URL);
     } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($koneksi);
+        //
     }
+
+    mysqli_close($koneksi);
+}
+
+function updateStok($userid)
+{
+    include 'koneksi.php';
+    $data  = getKeranjang($userid);
+
+    foreach ($data as $d) {
+        $sql = "UPDATE m_barang SET stok = stok -'" . $d["jumlah_trx"] . "'  WHERE brg_id = '" . $d["brg_id"]  . "' ";
+
+        if ($koneksi->query($sql) === TRUE) { } else { }
+    }
+
+    mysqli_close($koneksi);
+}
+
+function hapuskeranjang($userid)
+{
+    include 'koneksi.php';
+
+    $sql = " DELETE FROM t_keranjang WHERE  user_id = '" . $userid . "'  ";
+
+    if (mysqli_query($koneksi, $sql)) { } else { }
 
     mysqli_close($koneksi);
 }

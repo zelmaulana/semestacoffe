@@ -3,22 +3,22 @@
 
 include "../functions.php";
 
-$data = getKeranjang($_POST["user"]);
-echo "<pre>";
-print_r($_POST);
-echo "</pre>";
+//$data = getKeranjang($_POST["user"]);
+// echo "<pre>";
+// print_r($_POST);
+// echo "</pre>";
 
 
-
-$total = getTotal($_POST["user"]);
-
-
-echo "<pre>";
-print_r($total);
-echo "</pre>";
+//$newNoBill();
+//$total = getTotal($_POST["user"]);
 
 
-$savekerangjang = simpanPemesanan($_POST["user"]);
+// echo "<pre>";
+// print_r($total);
+// echo "</pre>";
+
+
+$savekerangjang = simpanOrder($_POST["user"]);
 
 
 

@@ -1,10 +1,10 @@
 <?php
 $listmeja = getListMeja();
 
-// $cek = getKeranjang($_SESSION["id"]);
-// echo "<pre>";
-// print_r($cek);
-// echo "</pre>";
+$nobill = getLastNobill(1);
+echo "<pre>";
+print_r(getKeranjang($_SESSION[id]));
+echo "</pre>";
 ?>
 
 <section id="cart_items">
@@ -26,12 +26,11 @@ $listmeja = getListMeja();
 				<tbody>
 
 					<?php
+					$sql  = "SELECT b.image,b.judul,b.deskripsi,b.estimasi_menu,b.harga_jual,b.diskon,a.jumlah_trx,a.total,a.hargadiskon FROM t_keranjang a
+LEFT OUTER JOIN m_barang b on a.brg_id = b.brg_id
+WHERE a.user_id = '$_SESSION[id]' AND ip = '" . getRealIpAddr() . "' and  pemesanan_id = 1";
 
-					$sker = mysqli_query($koneksi, "SELECT * FROM t_keranjang a
-					LEFT OUTER JOIN m_barang b on a.brg_id = b.brg_id
-					WHERE a.user_id = '$_SESSION[id]' AND ip = '" . getRealIpAddr() . "' and  pemesanan_id = 1");
-
-					//print_r($sker);
+					$sker = mysqli_query($koneksi, $sql);
 					$nker = mysqli_num_rows($sker);
 
 					if ($nker == 0) {
@@ -63,18 +62,14 @@ $listmeja = getListMeja();
 								</td>
 								<td class="cart_description">
 									<h4>&nbsp;&nbsp;&nbsp;<?php echo $hker['judul'] ?></h4>
-									<p><br /></p>
-									<!-- <p>Diskon <?php echo $hker['diskon'] ?>%</p> -->
 								</td>
 
 								<td class="cart_price">
 									<?php
 											if ($hker['diskon'] > 0) {
-												$harga = $hker['harga_jual'] * $diskon;
-												$hrgadiskon = $hker['harga_jual'] - $harga;
 												?>
 										<p style="color:#F00">Rp. <strike><?php echo number_format($hker['harga_jual'], 0, ",", ".") ?></strike></p>
-										<p>Rp. <?php echo number_format($hargadiskon, 0, ",", ".") ?></p>
+										<p>Rp. <?php echo number_format(kalkulasidiskon($hker['harga_jual'], $hker['diskon']), 0, ",", "."); ?></p>
 									<?php
 											} else {
 												?>
@@ -86,7 +81,7 @@ $listmeja = getListMeja();
 								<td class="cart_quantity" width="15%">
 									<div class="cart_quantity_button">
 										<a class="cart_quantity_up" href="?i=<?php echo md5('min_jumlah') ?>&id=<?php echo $hker['keranjang_id'] ?>"> - </a>
-										<input class="cart_quantity_input" type="text" name="quantity" value="<?php echo $hker['jumlah_trx'] ?>" autocomplete="off" size="2">
+										<input class="cart_quantity_input" type="text" name="quantity" value="<?php echo $hker['jumlah_trx'] ?>" autocomplete="off" size="2" disabled>
 										<a class="cart_quantity_down" href="?i=<?php echo md5('plus_jumlah') ?>&id=<?php echo $hker['keranjang_id'] ?>"> + </a>
 									</div>
 								</td>
@@ -133,7 +128,8 @@ $listmeja = getListMeja();
 				<div class="total_area">
 					<form method="POST" action="cek_proses.php">
 
-						<input class="user" type="hidden" name="user" value="<?php echo $_SESSION['id']; ?>" autocomplete="off">
+						<input class="user" type="text" name="user" value="<?php echo $_SESSION['id']; ?>" autocomplete="off">
+						<input type="text" name="totbayar" value="<?php echo getTotalPembayaran($_SESSION["id"]); ?>" autocomplete="off">
 
 						<ul>
 							Pilih No Meja
@@ -152,13 +148,27 @@ $listmeja = getListMeja();
 							Catatan Menu
 							<br />
 							<textarea name="catatan" id="catatan" class="form-control" placeholder="Contoh: Toping, Varian Rasa" required></textarea><br />
+
+
+
+
+							<br />
+							<!-- <label class="pull-left">Total Bayar </label>
+							<label class="pull-right"><?php echo getTotalPembayaran($_SESSION["id"]); ?></label> -->
+							<br>
+							<!-- <li>
+							
+									<label class="pull-left">Total Bayar </label>
+									<label class="pull-right"><?php echo getTotalPembayaran($_SESSION["id"]); ?></label>
+								</div>
+							</li>
+							<br /> -->
+
+							<li><label class="pull-left">Total Bayar </label>
+								<label class="pull-right"><?php echo getTotalPembayaran($_SESSION["id"]); ?></label></li>
 							<li>Total Menu <span><?php echo $hrinc['aa'] ?></span></li>
-							<li>Total Bayar <span>Rp. <?php echo number_format($hrinc['bb'], 0, ",", ".") ?></span></li><br />
-							<!-- <a href="?i=chekout"><button type="submit" class="btn-info" <?php if ($bb == 0) {
-																									echo "disabled";
-																								} else {
-																									echo "";
-																								} ?>>Pesan</button></a> -->
+							<li>Total Bayar <span>Rp. <?php echo number_format(getTotalPembayaran($_SESSION["id"]), 0, ",", ".") ?></span></li><br />
+
 							<input type="submit" class="btn btn-info" name="pesan" id="pesan" value="Pesan Sekarang" <?php /*if ($bb == 0) {
 																												echo "disabled";
 																											} else {
