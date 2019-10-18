@@ -74,7 +74,7 @@
 						<div class="col-sm-12">
 							<ul class="nav nav-tabs">
 								<li class="active"><a href="#rekomendasi" data-toggle="tab">Menu Terbaru</a></li>
-								<li><a href="#terlaris" data-toggle="tab">Terlaris</a></li>
+								<li><a href="#terlaris" data-toggle="tab">Favorite</a></li>
 								<!-- <li><a href="#diskon" data-toggle="tab">Diskon</a></li> -->
 							</ul>
 						</div>
@@ -86,7 +86,7 @@
 								<div class="tab-content">
 									<div class="tab-pane fade active in" id="rekomendasi" >
 									<?php
-									$sbarang = mysqli_query($koneksi, "SELECT * FROM m_barang a LEFT OUTER JOIN l_kategori b on a.kategori_id = b.kategori_id WHERE a.kategori_id = '$_GET[id]' AND a.kategori_id = '$_GET[kat]' AND a.judul LIKE '%$_POST[cari]%' ");
+									$sbarang = mysqli_query($koneksi, "SELECT * FROM m_barang a LEFT OUTER JOIN l_kategori b on a.kategori_id = b.kategori_id WHERE a.kategori_id = '$_GET[id]' AND a.kategori_id = '$_GET[kat]' AND a.judul LIKE '%$_POST[cari]%' ORDER BY brg_id DESC LIMIT 8 ");
 									while ($hbarang = mysqli_fetch_array($sbarang)){
 										?>
 										<div class="col-sm-3">
@@ -114,10 +114,10 @@
                                                             <?php
 														}
 														?>
-														<p><?php echo $hbarang['judul']?></p>
-														<!-- <p><small>(Klik Gambar Melihat Detail Menu)</small></p> -->
+														<p><b><?php echo $hbarang['judul']?></b></p> 
+														<p><small><i><?php echo $hbarang['kategori_name']?></i></small></p>
 														<!-- <p>(<?php echo $hbarang['kategori_name']?>)</p> -->
-														<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-warning" <?php if ($hbarang['stok'] == 0) {
+														<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>&jual=<?php echo $hbarang['harga_jual']?>" class="btn btn-warning" <?php if ($hbarang['stok'] == 0) {
 																																									echo "disabled";
 																																								} else {
 																																									echo "";
@@ -166,10 +166,10 @@
                                                             <?php
 														}
 														?>
-														<p><?php echo $hbarang['judul']?></p>
-														<p><small>(Klik Gambar Melihat Detail Menu)</small></p>
+														<p><b><?php echo $hbarang['judul']?></b></p> 
+														<p><small><i><?php echo $hbarang['kategori_name']?></i></small></p>
 														<!-- <p>(<?php echo $hbarang['kategori_name']?>)</p> -->
-														<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-warning" <?php if ($hbarang['stok'] == 0) {
+														<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>&jual=<?php echo $hbarang['harga_jual']?>" class="btn btn-warning" <?php if ($hbarang['stok'] == 0) {
 																																									echo "disabled";
 																																								} else {
 																																									echo "";
@@ -220,10 +220,10 @@
                                                             <?php
 														}
 														?>
-														<p><?php echo $hbarang['judul']?></p>
-														<p><small>(Klik Gambar Melihat Detail Menu)</small></p>
+														<p><b><?php echo $hbarang['judul']?></b></p> 
+														<p><small><i><?php echo $hbarang['kategori_name']?></i></small></p>
 														<!-- <p>(<?php echo $hbarang['kategori_name']?>)</p> -->
-														<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-warning" <?php if ($hbarang['stok'] == 0) {
+														<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>&jual=<?php echo $hbarang['harga_jual']?>" class="btn btn-warning" <?php if ($hbarang['stok'] == 0) {
 																																									echo "disabled";
 																																								} else {
 																																									echo "";
@@ -250,7 +250,7 @@
                                     <div class="tab-content">
                                         <div class="tab-pane fade active in" id="rekomendasi" >
                                         <?php
-                                        $sbarang = mysqli_query($koneksi, "SELECT * FROM m_barang a LEFT OUTER JOIN l_kategori b on a.kategori_id = b.kategori_id WHERE a.kategori_id = '$_GET[id]' AND a.judul LIKE '%$_POST[cari]%' ");
+                                        $sbarang = mysqli_query($koneksi, "SELECT * FROM m_barang a LEFT OUTER JOIN l_kategori b on a.kategori_id = b.kategori_id WHERE a.kategori_id = '$_GET[id]' AND a.judul LIKE '%$_POST[cari]%' ORDER BY brg_id DESC LIMIT 8 ");
                                         while ($hbarang = mysqli_fetch_array($sbarang)){
                                             ?>
                                             <div class="col-sm-3">
@@ -278,10 +278,10 @@
                                                             <?php
 														}
 														?>
-															<p><?php echo $hbarang['judul']?></p> 
-															<p><small>(Klik Gambar Melihat Detail Menu)</small></p>
+															<p><b><?php echo $hbarang['judul']?></b></p> 
+															<p><small><i><?php echo $hbarang['kategori_name']?></i></small></p>
 															<!-- <p>(<?php echo $hbarang['kategori_name']?>)</p> -->
-                                                            <a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-warning" <?php if ($hbarang['stok'] == 0) {
+                                                            <a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>&jual=<?php echo $hbarang['harga_jual']?>" class="btn btn-warning" <?php if ($hbarang['stok'] == 0) {
 																																									echo "disabled";
 																																								} else {
 																																									echo "";
@@ -330,10 +330,10 @@
                                                             <?php
 														}
 														?>
-															<p><?php echo $hbarang['judul']?></p> 
-															<p><small>(Klik Gambar Melihat Detail Menu)</small></p>
+															<p><b><?php echo $hbarang['judul']?></b></p> 
+															<p><small><i><?php echo $hbarang['kategori_name']?></i></small></p>
 															<!-- <p>(<?php echo $hbarang['kategori_name']?>)</p> -->
-                                                            <a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-warning" <?php if ($hbarang['stok'] == 0) {
+                                                            <a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>&jual=<?php echo $hbarang['harga_jual']?>" class="btn btn-warning" <?php if ($hbarang['stok'] == 0) {
 																																									echo "disabled";
 																																								} else {
 																																									echo "";
@@ -384,10 +384,10 @@
                                                             <?php
 														}
 														?>
-                                                            <p><?php echo $hbarang['judul']?></p> 
-															<p><small>(Klik Gambar Melihat Detail Menu)</small></p>
+                                                            <p><b><?php echo $hbarang['judul']?></b></p> 
+															<p><small><i><?php echo $hbarang['kategori_name']?></i></small></p>
 															<!-- <p>(<?php echo $hbarang['kategori_name']?>)</p> -->
-                                                            <a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-warning" <?php if ($hbarang['stok'] == 0) {
+                                                            <a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>&jual=<?php echo $hbarang['harga_jual']?>" class="btn btn-warning" <?php if ($hbarang['stok'] == 0) {
 																																									echo "disabled";
 																																								} else {
 																																									echo "";
@@ -459,7 +459,7 @@
 							<div class="tab-content">
 								<div class="tab-pane fade active in" id="rekomendasi" >
 								<?php
-								$sbarang = mysqli_query($koneksi, "SELECT * FROM m_barang a LEFT OUTER JOIN l_kategori b on a.kategori_id = b.kategori_id WHERE a.judul LIKE '%$_POST[cari]%' ORDER BY judul DESC LIMIT 8 ");
+								$sbarang = mysqli_query($koneksi, "SELECT * FROM m_barang a LEFT OUTER JOIN l_kategori b on a.kategori_id = b.kategori_id WHERE a.judul LIKE '%$_POST[cari]%' ORDER BY brg_id DESC LIMIT 8 ");
 								while ($hbarang = mysqli_fetch_array($sbarang)){
 									?>
 									<div class="col-sm-3">
@@ -487,10 +487,10 @@
                                                             <?php
 														}
 														?>
-															<p><?php echo $hbarang['judul']?></p> 
-															<p><small>( else !$_GET["id"])</small></p>
+															<p><b><?php echo $hbarang['judul']?></b></p> 
+															<p><small><i><?php echo $hbarang['kategori_name']?></i></small></p>
 															<!-- <p>(<?php echo $hbarang['kategori_name']?>)</p> -->
-													<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>&jual=<?php echo $hbarang['harga_jual']?>" class="btn btn-warning" <?php if ($hbarang['stok'] == 0) {
+															<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>&jual=<?php echo $hbarang['harga_jual']?>" class="btn btn-warning" <?php if ($hbarang['stok'] == 0) {
 																																									echo "disabled";
 																																								} else {
 																																									echo "";
@@ -539,10 +539,10 @@
                                                             <?php
 														}
 														?>
-															<p><?php echo $hbarang['judul']?></p> 
-															<p><small>(Klik Gambar Melihat Detail Menu)</small></p>
+															<p><b><?php echo $hbarang['judul']?></b></p> 
+															<p><small><i><?php echo $hbarang['kategori_name']?></i></small></p>
 															<!-- <p>(<?php echo $hbarang['kategori_name']?>)</p> -->
-													<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-warning" <?php if ($hbarang['stok'] == 0) {
+															<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>&jual=<?php echo $hbarang['harga_jual']?>" class="btn btn-warning" <?php if ($hbarang['stok'] == 0) {
 																																									echo "disabled";
 																																								} else {
 																																									echo "";
@@ -593,10 +593,10 @@
                                                             <?php
 														}
 														?>
-															<p><?php echo $hbarang['judul']?></p> 
-															<p><small>(Klik Gambar Melihat Detail Menu)</small></p>
+															<p><b><?php echo $hbarang['judul']?></b></p> 
+															<p><small><i><?php echo $hbarang['kategori_name']?></i></small></p>
 															<!-- <p>(<?php echo $hbarang['kategori_name']?>)</p> -->
-													<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>" class="btn btn-warning" <?php if ($hbarang['stok'] == 0) {
+															<a href="?i=<?php echo md5('beli')?>&idbrg=<?php echo $hbarang['brg_id']?>&jual=<?php echo $hbarang['harga_jual']?>" class="btn btn-warning" <?php if ($hbarang['stok'] == 0) {
 																																									echo "disabled";
 																																								} else {
 																																									echo "";

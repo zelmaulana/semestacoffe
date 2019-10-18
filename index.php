@@ -65,6 +65,29 @@ if ($b == 1) {
 	</head>
 
 	<body class="hold-transition login-page" style="background-color:#FFF">
+
+		<!-- Modal Pop Up Otomatis -->
+		<!-- <div id="myModal" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Welcome</h4>
+					</div>
+					<div class="modal-body">
+						<p><img class="img img-responsive" src="images/logo_header.png" width="390" height="95"></p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+
+			</div>
+		</div> -->
+		<!-- End Modal Pop Up Otomatis -->
+
+
 		<?php
 			if (isset($_GET['i'])) {
 				if ($_GET['i'] == md5('login') || $_GET['i'] == md5('regis') || $_GET['i'] == md5('verif') || $_GET['i'] == md5('resetpass') || $_GET['i'] == md5('resetpass_verif') || $_GET['i'] == md5('reset')) {
@@ -132,7 +155,7 @@ if ($b == 1) {
 							<div class="row">
 								<div class="col-sm-9">
 								</div>
-								<div class="col-sm-3">
+								<div class="col-sm-12">
 									<?php
 												switch ($_GET['i']) {
 													case 'detail-barang':
@@ -141,7 +164,7 @@ if ($b == 1) {
 														?>
 											<div class="search_box pull-right">
 												<form action="" method="post">
-													<input type="text" placeholder="Search" name="cari" value="<?php echo $_POST['cari'] ?>" />
+													<input type="text" style="width: 215px" placeholder="Search" name="cari" value="<?php echo $_POST['cari'] ?>" />
 													<button type="submit" class="btn btn-warning">Cari</button>
 												</form>
 											</div>
@@ -280,11 +303,11 @@ if ($b == 1) {
 					<script>
 						Swal.fire({
 							title: 'Mau pesan mudah?',
-							imageUrl: 'https://semestaku.com/images/logo_header.png',
+							imageUrl: 'https://semestaku.com/wp-content/uploads/2019/10/cropped-logo-13x5-coklat.png',
 							imageWidth: 120,
 							imageHeight: 35,
 							imageAlt: 'Custom image',
-							animation: true,
+							animation: false,
 							customClass: {
 								popup: 'animated tada'
 							},
@@ -306,6 +329,9 @@ if ($b == 1) {
 				}
 			}
 			?>
+
+
+
 
 			<footer id="footer">
 				<!--Footer-->
@@ -355,6 +381,9 @@ if ($b == 1) {
 			<script src="js/bootstrap.min.js"></script>
 			<script src="js/jquery.prettyPhoto.js"></script>
 			<script src="js/main.js"></script>
+			<script>
+				$('#myModal').modal('show');
+			</script>
 	</body>
 
 	</html>

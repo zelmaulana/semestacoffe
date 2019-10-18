@@ -2,9 +2,9 @@
 $listmeja = getListMeja();
 
 $nobill = getLastNobill(1);
-echo "<pre>";
-print_r(getKeranjang($_SESSION[id]));
-echo "</pre>";
+// echo "<pre>";
+// print_r(getKeranjang($_SESSION[id]));
+// echo "</pre>";
 ?>
 
 <section id="cart_items">
@@ -26,9 +26,9 @@ echo "</pre>";
 				<tbody>
 
 					<?php
-					$sql  = "SELECT b.image,b.judul,b.deskripsi,b.estimasi_menu,b.harga_jual,b.diskon,a.jumlah_trx,a.total,a.hargadiskon FROM t_keranjang a
+					$sql  = "SELECT b.image,b.judul,b.deskripsi,b.estimasi_menu,b.harga_jual,b.diskon,a.jumlah_trx,a.total,a.hargadiskon,a.keranjang_id FROM t_keranjang a
 LEFT OUTER JOIN m_barang b on a.brg_id = b.brg_id
-WHERE a.user_id = '$_SESSION[id]' AND ip = '" . getRealIpAddr() . "' and  pemesanan_id = 1";
+WHERE a.user_id = '$_SESSION[id]' AND ip = '" . getRealIpAddr() . "' AND  pemesanan_id = 1";
 
 					$sker = mysqli_query($koneksi, $sql);
 					$nker = mysqli_num_rows($sker);
@@ -80,9 +80,9 @@ WHERE a.user_id = '$_SESSION[id]' AND ip = '" . getRealIpAddr() . "' and  pemesa
 								</td>
 								<td class="cart_quantity" width="15%">
 									<div class="cart_quantity_button">
-										<a class="cart_quantity_up" href="?i=<?php echo md5('min_jumlah') ?>&id=<?php echo $hker['keranjang_id'] ?>"> - </a>
+										<!-- <a class="cart_quantity_up" href="?i=<?php echo md5('min_jumlah') ?>&id=<?php echo $hker['keranjang_id'] ?>"> - </a>  -->
 										<input class="cart_quantity_input" type="text" name="quantity" value="<?php echo $hker['jumlah_trx'] ?>" autocomplete="off" size="2" disabled>
-										<a class="cart_quantity_down" href="?i=<?php echo md5('plus_jumlah') ?>&id=<?php echo $hker['keranjang_id'] ?>"> + </a>
+										<!-- <a class="cart_quantity_down" href="?i=<?php echo md5('plus_jumlah') ?>&id=<?php echo $hker['keranjang_id'] ?>"> + </a>  -->
 									</div>
 								</td>
 								<td class="cart_total">
@@ -90,11 +90,11 @@ WHERE a.user_id = '$_SESSION[id]' AND ip = '" . getRealIpAddr() . "' and  pemesa
 								</td>
 
 							</tr>
-							<tr>
+							<a>
 								<td class="cart_delete">
 									<a href="?i=<?php echo md5('del_keranjang') ?>&id=<?php echo $hker['keranjang_id'] ?>"><i class="fa fa-trash-o"></i> Hapus</a>
 								</td>
-							</tr>
+							</a>
 					<?php
 						}
 					}
@@ -108,19 +108,10 @@ WHERE a.user_id = '$_SESSION[id]' AND ip = '" . getRealIpAddr() . "' and  pemesa
 <section id="do_action">
 	<div class="container">
 		<div class="row">
-			<!-- <div class="col-sm-6">
-					<div class="chose_area">
-						<ul>
-                        Catatan Menu
-                        <br />
-						<textarea name="note" class="form-control"  required></textarea>
-						</ul>
-					</div>
-				</div> -->
 			<?php
-			$srinc = mysqli_query($koneksi, "SELECT a.jumlah_trx as aa, a.total as bb FROM t_keranjang a LEFT OUTER JOIN m_barang b on a.brg_id = b.brg_id	WHERE a.user_id = '$_SESSION[id]' AND pemesanan_id = '1'");
+			$srinc = mysqli_query($koneksi, "SELECT SUM(a.jumlah_trx) as aa, a.total as bb FROM t_keranjang a LEFT OUTER JOIN m_barang b on a.brg_id = b.brg_id	WHERE a.user_id = '$_SESSION[id]' AND ip = '" . getRealIpAddr() . "' AND pemesanan_id = '1'");
 
-			$aa = mysqli_query($koneksi, "SELECT * FROM t_keranjang WHERE user_id = '$_SESSION[id]' AND pemesanan_id = '1'");
+			$aa = mysqli_query($koneksi, "SELECT * FROM t_keranjang WHERE user_id = '$_SESSION[id]' AND pemesanan_id = '1' AND ip = '" . getRealIpAddr() . "' ");
 			$bb = mysqli_num_rows($aa);
 			$hrinc = mysqli_fetch_array($srinc);
 			?>
@@ -128,8 +119,8 @@ WHERE a.user_id = '$_SESSION[id]' AND ip = '" . getRealIpAddr() . "' and  pemesa
 				<div class="total_area">
 					<form method="POST" action="cek_proses.php">
 
-						<input class="user" type="text" name="user" value="<?php echo $_SESSION['id']; ?>" autocomplete="off">
-						<input type="text" name="totbayar" value="<?php echo getTotalPembayaran($_SESSION["id"]); ?>" autocomplete="off">
+						<input class="user" type="hidden" name="user" value="<?php echo $_SESSION['id']; ?>" autocomplete="off">
+						<input type="hidden" name="totbayar" value="<?php echo getTotalPembayaran($_SESSION["id"]); ?>" autocomplete="off">
 
 						<ul>
 							Pilih No Meja
@@ -145,35 +136,25 @@ WHERE a.user_id = '$_SESSION[id]' AND ip = '" . getRealIpAddr() . "' and  pemesa
 								?>
 							</select>
 							<br />
-							Catatan Menu
+							Catatan Menu (Opsional)
 							<br />
-							<textarea name="catatan" id="catatan" class="form-control" placeholder="Contoh: Toping, Varian Rasa" required></textarea><br />
-
-
-
-
+							<textarea name="catatan" id="catatan" class="form-control" placeholder="Contoh: Toping, Varian Rasa"></textarea><br />
 							<br />
-							<!-- <label class="pull-left">Total Bayar </label>
-							<label class="pull-right"><?php echo getTotalPembayaran($_SESSION["id"]); ?></label> -->
-							<br>
-							<!-- <li>
-							
-									<label class="pull-left">Total Bayar </label>
-									<label class="pull-right"><?php echo getTotalPembayaran($_SESSION["id"]); ?></label>
-								</div>
+							<!-- <li>Total Bayar 
+								Rp. <?php echo number_format(getTotalPembayaran($_SESSION["id"]), 0, ",", "."); ?></li> -->
+							<li>
+								<p style="font-weight: bold;">Total Menu <span><?php echo $hrinc['aa'] ?></span></p>
 							</li>
-							<br /> -->
+							<li>
+								<p style="font-size: 14pt; font-weight: bold; color: red;">Total Bayar <span>Rp. <?php echo number_format(getTotalPembayaran($_SESSION["id"]), 0, ",", "."); ?></span></p>
+							</li>
+							<br />
 
-							<li><label class="pull-left">Total Bayar </label>
-								<label class="pull-right"><?php echo getTotalPembayaran($_SESSION["id"]); ?></label></li>
-							<li>Total Menu <span><?php echo $hrinc['aa'] ?></span></li>
-							<li>Total Bayar <span>Rp. <?php echo number_format(getTotalPembayaran($_SESSION["id"]), 0, ",", ".") ?></span></li><br />
-
-							<input type="submit" class="btn btn-info" name="pesan" id="pesan" value="Pesan Sekarang" <?php /*if ($bb == 0) {
-																												echo "disabled";
-																											} else {
-																												echo "";
-																											} */ ?> />
+							<input type="submit" class="btn btn-info" name="pesan" id="pesan" value="Pesan Sekarang" <?php if ($bb == 0) {
+																															echo "disabled";
+																														} else {
+																															echo "";
+																														}  ?> />
 						</ul>
 					</form>
 

@@ -16,7 +16,7 @@ if (isset($_POST['simpan'])) {
 				$x = strtolower(end(explode('.', $_FILES['file']['name'])));
 				if (in_array($x, $val)) {
 					move_uploaded_file($_FILES['file']['tmp_name'], 'dist/img/buku/' . $_FILES['file']['name']);
-					mysqli_query($koneksi, "INSERT INTO m_barang VALUES ('', '$_POST[judul]', '$_POST[estimasi]', '', 'Null', 'Null', '$_POST[stok]', '1', '$_POST[kategori]', '', '',  '$_POST[harga_beli]', '$_POST[harga_jual]', '', '$_POST[diskon]', '', '', '$img', '$_POST[deskripsi]')");
+					mysqli_query($koneksi, "INSERT INTO m_barang VALUES ('', '$_POST[judul]', '$_POST[estimasi]', '$_POST[stok]', '1', '$_POST[kategori]', '$_POST[harga_beli]', '$_POST[harga_jual]', '', '$_POST[diskon]', '$img', '$_POST[deskripsi]')");
 
 					?>
 			<script>

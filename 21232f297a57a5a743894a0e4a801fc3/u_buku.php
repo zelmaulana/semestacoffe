@@ -13,7 +13,7 @@ if (isset($_POST['simpan'])) {
 			</script>
 		<?php
 				} else {
-					mysqli_query($koneksi, "UPDATE m_barang SET judul='$_POST[judul]', estimasi_menu='$_POST[estimasi]', thn_terbit='Null', kota_terbit='Null', stok='$_POST[stok]', kategori_id='$_POST[kategori]', harga_beli='$_POST[harga_beli]', harga_jual='$_POST[harga_jual]', diskon='$_POST[diskon]', deskripsi = '$_POST[deskripsi]' WHERE brg_id = '$_GET[id]'");
+					mysqli_query($koneksi, "UPDATE m_barang SET judul='$_POST[judul]', estimasi_menu='$_POST[estimasi]', stok='$_POST[stok]', kategori_id='$_POST[kategori]', harga_beli='$_POST[harga_beli]', harga_jual='$_POST[harga_jual]', diskon='$_POST[diskon]', deskripsi = '$_POST[deskripsi]' WHERE brg_id = '$_GET[id]'");
 					?>
 			<script>
 				alert("Data Berhasil Diupdate");
@@ -34,7 +34,7 @@ if (isset($_POST['simpan'])) {
 						$x = strtolower(end(explode('.', $_FILES['file']['name'])));
 						if (in_array($x, $val)) {
 							move_uploaded_file($_FILES['file']['tmp_name'], 'dist/img/buku/' . $_FILES['file']['name']);
-							mysqli_query($koneksi, "UPDATE m_barang SET judul='$_POST[judul]', thn_terbit='Null', kota_terbit='Null', stok='$_POST[stok]', kategori_id='$_POST[kategori]', harga_beli='$_POST[harga_beli]', harga_jual='$_POST[harga_jual]', diskon='$_POST[diskon]', image='$img', deskripsi = '$_POST[deskripsi]' WHERE brg_id = '$_GET[id]'");
+							mysqli_query($koneksi, "UPDATE m_barang SET judul='$_POST[judul]',  stok='$_POST[stok]', kategori_id='$_POST[kategori]', harga_beli='$_POST[harga_beli]', harga_jual='$_POST[harga_jual]', diskon='$_POST[diskon]', image='$img', deskripsi = '$_POST[deskripsi]' WHERE brg_id = '$_GET[id]'");
 							?>
 				<script>
 					alert("Data Berhasil Diupdate");
@@ -105,11 +105,12 @@ if (isset($_POST['simpan'])) {
 											$sktgr = mysqli_query($koneksi, "SELECT * FROM l_kategori");
 											while ($hktgr = mysqli_fetch_array($sktgr)) {
 												?>
-												<option value="<?php echo $hktgr['kategori_id'] ?>" <?php
-																										if ($hasil['kategori_id'] == $hktgr['kategori_id']) {
-																											echo "selected";
-																										}
-																										?>><?php echo $hktgr['kategori_name'] ?></option>
+												<option value="<?php echo $hktgr['kategori_id'] ?>" 
+												<?php
+													if ($hasil['kategori_id'] == $hktgr['kategori_id']) {
+														echo "selected";
+													}
+												?>><?php echo $hktgr['kategori_name'] ?></option>
 											<?php
 											}
 											?>
@@ -126,72 +127,6 @@ if (isset($_POST['simpan'])) {
 
 									</div>
 								</div>
-								<!-- <div class="form-group">
-								<label>Penerbit</label>
-								<div class="input-group date">
-									<div class="input-group-addon">
-										<i class="fa fa-shekel"></i>
-									</div>
-									<select name="penerbit" class="form-control" required>
-										<option value="">==Penerbit==</option>
-										<?php
-										$spenerbit = mysqli_query($koneksi, "SELECT * FROM l_penerbit");
-										while ($hpenerbit = mysqli_fetch_array($spenerbit)) {
-											?>
-											<option value="<?php echo $hpenerbit['penerbit_id'] ?>"
-                                            <?php
-												if ($hasil['penerbit_id'] == $hpenerbit['penerbit_id']) {
-													echo "selected";
-												}
-												?>><?php echo $hpenerbit['penerbit_name'] ?></option>
-                          				  <?php
-											}
-											?>
-                 					 </select>
-								</div>
-							</div> -->
-								<!-- <div class="form-group">
-								<label>Tahun Terbit</label>
-								<div class="input-group date">
-									<div class="input-group-addon">
-										<i class="fa fa-shekel"></i>
-									</div>
-									<input type="text" class="form-control" name="thn_terbit" placeholder="Isi Disini" value="<?php echo $hasil['thn_terbit'] ?>" required>
-								</div>
-							</div> -->
-								<!-- <div class="form-group">
-								<label>Kota Terbit</label>
-								<div class="input-group date">
-									<div class="input-group-addon">
-										<i class="fa fa-shekel"></i>
-									</div>
-									<input type="text" class="form-control" name="kota_terbit" placeholder="Isi Disini" value="<?php echo $hasil['kota_terbit'] ?>" required>
-								</div>
-							</div> -->
-								<!-- <div class="form-group">
-								<label>Penulis</label>
-								<div class="input-group date">
-									<div class="input-group-addon">
-										<i class="fa fa-shekel"></i>
-									</div>
-									<select name="penulis" class="form-control" required>
-										<option value="">==Penulis==</option>
-										<?php
-										$spenulis = mysqli_query($koneksi, "SELECT * FROM l_penulis");
-										while ($hpenulis = mysqli_fetch_array($spenulis)) {
-											?>
-											<option value="<?php echo $hpenulis['penulis_id'] ?>"
-                                            <?php
-												if ($hasil['penulis_id'] == $hpenulis['penulis_id']) {
-													echo "selected";
-												}
-												?>><?php echo $hpenulis['penulis_name'] ?></option>
-                          				  <?php
-											}
-											?>
-                 					 </select>
-								</div>
-							</div> -->
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">

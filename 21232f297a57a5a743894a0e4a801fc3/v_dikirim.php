@@ -29,23 +29,31 @@
                   <th>Nama Pemesan</th>
                   <th>Nomor Meja</th>
                   <th>Tanggal Pemesanan</th>
+                  <th>IP Pengguna</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
                 <?php
                 $no = 1;
-                $sql = mysqli_query($koneksi, "SELECT * FROM t_pemesanan a
-								   LEFT OUTER JOIN m_user c on a.user_id = c.user_id
-								   WHERE a.status_id = '4'");
+                // $sql = mysqli_query($koneksi, "SELECT * FROM t_pemesanan a
+                //    LEFT OUTER JOIN m_user c on a.user_id = c.user_id
+                //    WHERE a.status_id = '4'");
+
+                $sql = mysqli_query($koneksi, "SELECT DISTINCT a.pemesanan_id, a.tanggal, a.ip, b.nobill, b.nomeja, b.catatan, c.user_nama FROM t_pemesanan a
+                LEFT OUTER JOIN t_order b on a.nobill = b.nobill
+                LEFT OUTER JOIN m_user c on a.user_id = c.user_id
+                WHERE a.status_id = '4' ORDER BY pemesanan_id DESC");
+
                 while ($hasil = mysqli_fetch_assoc($sql)) {
                   ?>
 
                   <tr>
                     <td><?php echo $no ?></td>
                     <td><?php echo $hasil['user_nama'] ?></td>
-                    <td><?php echo $hasil['id_meja'] ?></td>
+                    <td>Meja <?php echo $hasil['nomeja'] ?></td>
                     <td><?php echo date('d-m-Y', strtotime($hasil['tanggal'])) ?> / <?php echo date('G:i:s', strtotime($hasil['tanggal'])) ?></td>
+                    <td><?php echo $hasil['ip'] ?></td>
                     <td><a href="?i=<?php echo md5('dtl-pemesanan') ?>&id=<?php echo $hasil['pemesanan_id'] ?>">
                         <button type="button" class="btn btn-primary fa fa-eye"> Detail</button></a>
                       <!-- <a href="?i=<?php echo md5('u_resi') ?>&id=<?php echo $hasil['resi_id'] ?>">

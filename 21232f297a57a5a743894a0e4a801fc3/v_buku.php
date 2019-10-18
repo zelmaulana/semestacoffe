@@ -43,9 +43,7 @@
 	$no = 1;
 	$sql = mysqli_query($koneksi, "SELECT * FROM m_barang a
 								   LEFT OUTER JOIN l_kategori b on a.kategori_id = b.kategori_id
-								   LEFT OUTER JOIN l_penerbit c on a.penerbit_id = c.penerbit_id
-								   LEFT OUTER JOIN l_penulis d on a.penulis_id = d.penulis_id
-								   WHERE jenis_id = '1'");
+								   WHERE jenis_id = '1' ORDER BY brg_id DESC");
 	while ($hasil = mysqli_fetch_assoc($sql)){
 ?> 
      

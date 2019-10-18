@@ -353,10 +353,11 @@ if (empty($_SESSION['id'])) {
                     require_once('dtl_pemesanan.php');
                     break;
                   case md5('verif'):
-                    mysqli_query($koneksi, "UPDATE t_pemesanan SET status_id = '3' WHERE pemesanan_id = '$_GET[id]'");
+                    mysqli_query($koneksi, "UPDATE t_pemesanan SET status_id = '4' WHERE pemesanan_id = '$_GET[id]'");
                     ?>
                   <script>
-                    window.location = "?i=<?php echo md5('perlu-dikirim') ?>";
+                    alert("Proses Pesanan");
+                    window.location = "?i=<?php echo md5('dikirim') ?>";
                   </script>
                 <?php
                     break;
@@ -388,7 +389,7 @@ if (empty($_SESSION['id'])) {
                     ?>
                   <script>
                     alert("Pesanan Telah Selesai");
-                    window.location = "?i=<?php echo md5('dikirim') ?>";
+                    window.location = "?i=<?php echo md5('selesai') ?>";
                   </script>
                 <?php
                     break;

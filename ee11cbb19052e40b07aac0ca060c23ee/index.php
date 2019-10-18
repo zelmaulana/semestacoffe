@@ -135,7 +135,7 @@ if (empty($_SESSION['id'])) {
 										<?php
 												$sker = mysqli_query($koneksi, "SELECT * FROM t_keranjang WHERE user_id = '$_SESSION[id]' AND ip  = '" . getRealIpAddr() . "'  and pemesanan_id = 1");
 												$nker = mysqli_num_rows($sker);
-												$sker1 = mysqli_query($koneksi, "SELECT * FROM t_pemesanan a WHERE a.status_id < '5' AND a.user_id = '$_SESSION[id]'");
+												$sker1 = mysqli_query($koneksi, "SELECT * FROM t_pemesanan a WHERE a.status_id < '5' AND a.user_id = '$_SESSION[id]' AND ip = '".getRealIpAddr()."'");
 												$nker1 = mysqli_num_rows($sker1);
 												?>
 										<li><a href="?i=beranda"><i class="fa fa-home"></i> Beranda</a></li>
@@ -235,7 +235,7 @@ if (empty($_SESSION['id'])) {
 						// window.location = "?i=";
 
 						Swal.fire({
-							title: 'Yeay, berhasil ditambahkan ke keranjang,',
+							title: 'Berhasil dimasukkan ke Keranjang,',
 							animation: false,
 							customClass: {
 								popup: 'animated tada'
@@ -285,7 +285,25 @@ if (empty($_SESSION['id'])) {
 							mysqli_query($koneksi, "DELETE FROM t_keranjang WHERE keranjang_id = '$_GET[id]'");
 							?>
 					<script>
+						//alert("Hapus Item Menu?");
 						window.location = "?i=keranjang";
+
+						// Swal.fire({
+						// 	title: 'Hapus menu?',
+						// 	animation: false,
+						// 	customClass: {
+						// 		popup: 'animated tada'
+						// 	},
+						// 	text: "",
+						// 	type: 'warning',
+						// 	showCancelButton: false,
+						// 	confirmButtonColor: '#FFA500',
+						// 	confirmButtonText: 'Hapus',
+						// }).then((result) => {
+						// 	if (result.value) {
+						// 		window.location = "?i=keranjang";
+						// 	}
+						// })
 					</script>
 				<?php
 							break;

@@ -29,13 +29,14 @@
                   <th>Nama Pemesan</th>
                   <th>Total Bayar</th>
                   <th>Tanggal Pemesanan</th>
+                  <th>IP Pengguna</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
                 <?php
                 $no = 1;
-                $sql = mysqli_query($koneksi, "SELECT * FROM t_pemesanan a
+                $sql = mysqli_query($koneksi, "SELECT a.total, a.tanggal, a.ip, a.pemesanan_id, c.user_nama FROM t_pemesanan a
 								   LEFT OUTER JOIN m_user c on a.user_id = c.user_id
 								   WHERE a.status_id = '5' ORDER BY a.pemesanan_id DESC");
                 while ($hasil = mysqli_fetch_assoc($sql)) {
@@ -46,6 +47,7 @@
                     <td><?php echo $hasil['user_nama'] ?></td>
                     <td>Rp. <?php echo number_format($hasil['total'], 0, ",", ".") ?></td>
                     <td><?php echo date('d-m-Y', strtotime($hasil['tanggal'])) ?> / <?php echo date('G:i:s', strtotime($hasil['tanggal'])) ?></td>
+                    <td><?php echo $hasil['ip'] ?></td>
                     <td><a href="?i=<?php echo md5('dtl-pemesanan') ?>&id=<?php echo $hasil['pemesanan_id'] ?>">
                         <button type="button" class="btn btn-primary fa fa-eye"> Detail</button></a>
                       <a href="?i=<?php echo md5('btl-selesai') ?>&id=<?php echo $hasil['pemesanan_id'] ?>">

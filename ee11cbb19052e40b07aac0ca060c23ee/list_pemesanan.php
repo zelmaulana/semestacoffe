@@ -8,8 +8,6 @@
 						<ul class="nav nav-tabs">
 							<li class="active"><a href="#pesanan" data-toggle="tab">Daftar Pesanan</a></li>
 							<li><a href="#proses" data-toggle="tab">Pesanan Diproses</a></li>
-							<!-- <li><a href="#proses" data-toggle="tab">Menunggu Pengiriman</a></li>
-								<li><a href="#dikirim" data-toggle="tab">Dikirim</a></li> -->
 							<li><a href="#selesai" data-toggle="tab">Pesanan Selesai</a></li>
 						</ul>
 					</div>
@@ -23,11 +21,10 @@
 							$sqldata1 = mysqli_query($koneksi, "SELECT SUM(b.jumlah_trx) as jml FROM t_pemesanan a LEFT OUTER JOIN t_keranjang b on a.pemesanan_id = b.pemesanan_id
 															   WHERE status_id = '2' AND a.user_id = '$_SESSION[id]'");
 
-							$sqldata = mysqli_query($koneksi, "SELECT * FROM t_pemesanan 
-															   WHERE status_id = '2' AND user_id = '$_SESSION[id]' ORDER BY pemesanan_id DESC");
+							$sqldata = mysqli_query($koneksi, "SELECT a.qty,a.total,a.hargadiskon,a.tanggal,a.pemesanan_id,b.nomeja,b.catatan FROM t_pemesanan a LEFT OUTER JOIN  t_order b ON a.nobill = b.nobill WHERE status_id = '2' AND user_id = '$_SESSION[id]' AND a.ip = '" . getRealIpAddr() . "'  ORDER BY pemesanan_id DESC");
 
 							$jml = mysqli_fetch_array($sqldata1);
-							$num = mysqli_num_rows($sqlnum);
+							$num = mysqli_num_rows($sqldata);
 							$no = 1;
 							if ($num == 0) {
 								?>
@@ -70,17 +67,18 @@
 							<?php
 							$sqlnum = mysqli_query($koneksi, "SELECT a.*, b.* FROM t_pemesanan a
 												  			  LEFT OUTER JOIN t_keranjang b on a.pemesanan_id = b.pemesanan_id
-															  WHERE status_id = '3' AND a.user_id = '$_SESSION[id]'");
+															  WHERE status_id = '4' AND a.user_id = '$_SESSION[id]'");
 
 							$sqldata1 = mysqli_query($koneksi, "SELECT SUM(b.jumlah_trx) as jml FROM t_pemesanan a
 												  			   LEFT OUTER JOIN t_keranjang b on a.pemesanan_id = b.pemesanan_id
-															   WHERE status_id = '3' AND a.user_id = '$_SESSION[id]'");
+															   WHERE status_id = '4' AND a.user_id = '$_SESSION[id]'");
 
-							$sqldata = mysqli_query($koneksi, "SELECT * FROM t_pemesanan 
-															   WHERE status_id = '3' AND user_id = '$_SESSION[id]' ORDER BY pemesanan_id DESC");
+							// $sqldata = mysqli_query($koneksi, "SELECT a.*, b.* FROM t_pemesanan a LEFT OUTER JOIN  t_order b ON a.nobill = b.nobill WHERE status_id = '3' AND user_id = '$_SESSION[id]' AND a.ip = '" . getRealIpAddr() . "'  ORDER BY pemesanan_id DESC");
+
+							$sqldata = mysqli_query($koneksi, "SELECT a.qty,a.total,a.hargadiskon,a.tanggal,a.pemesanan_id,b.nomeja,b.catatan FROM t_pemesanan a LEFT OUTER JOIN  t_order b ON a.nobill = b.nobill WHERE status_id = '4' AND user_id = '$_SESSION[id]' AND a.ip = '" . getRealIpAddr() . "'  ORDER BY pemesanan_id DESC");
 
 							$jml = mysqli_fetch_array($sqldata1);
-							$num = mysqli_num_rows($sqlnum);
+							$num = mysqli_num_rows($sqldata);
 							$no = 1;
 							if ($num == 0) {
 								?>
@@ -106,9 +104,6 @@
 												<div class="productinfo text-left">
 													<h4><?php echo $no ?>. Pesanan Diproses</h4>
 													<p>Tanggal = <?php echo date('d-m-Y', strtotime($data['tanggal'])) ?> / <?php echo date('G:i:s', strtotime($data['tanggal'])) ?></p>
-
-													<!-- <p>Total Bayar = Rp. <?php echo number_format($data['total'], 0, ',', '.') ?></p>
-													<a href="?i=detail-pemesanan&id=<?php echo $data['pemesanan_id'] ?>" class="btn btn-default add-to-cart btn-xs pull-right"><i class="fa fa-eye"></i>Detail Menu</a> -->
 
 													<p style="color: red; font-weight: bold;">Total Bayar = Rp. <?php echo number_format($data['total'], 0, ',', '.') ?></p>
 													<a href="?i=detail-pemesanan&id=<?php echo $data['pemesanan_id'] ?>" class="btn btn-warning btn-xs pull-left"><i class="fa fa-eye"></i> Detail Menu</a>
@@ -244,10 +239,12 @@
 												  			   LEFT OUTER JOIN t_keranjang b on a.pemesanan_id = b.pemesanan_id
 															   WHERE status_id = '5' AND a.user_id = '$_SESSION[id]'");
 
-							$sqldata = mysqli_query($koneksi, "SELECT * FROM t_pemesanan WHERE status_id = '5' AND user_id = '$_SESSION[id]' ORDER BY pemesanan_id DESC LIMIT 4");
+							// $sqldata = mysqli_query($koneksi, "SELECT a.*, b.* FROM t_pemesanan a LEFT OUTER JOIN  t_order b ON a.nobill = b.nobill WHERE status_id = '5' AND user_id = '$_SESSION[id]' AND a.ip = '" . getRealIpAddr() . "'  ORDER BY pemesanan_id DESC LIMIT 4");
+
+							$sqldata = mysqli_query($koneksi, "SELECT a.qty,a.total,a.hargadiskon,a.tanggal,a.pemesanan_id,b.nomeja,b.catatan FROM t_pemesanan a LEFT OUTER JOIN  t_order b ON a.nobill = b.nobill WHERE status_id = '5' AND user_id = '$_SESSION[id]' AND a.ip = '" . getRealIpAddr() . "'  ORDER BY pemesanan_id DESC LIMIT 4");
 
 							$jml = mysqli_fetch_array($sqldata1);
-							$num = mysqli_num_rows($sqlnum);
+							$num = mysqli_num_rows($sqldata);
 							$no = 1;
 							if ($num == 0) {
 								?>
@@ -273,9 +270,6 @@
 												<div class="productinfo text-left">
 													<h4><?php echo $no ?>. Pesanan Selesai</h4>
 													<p>Tanggal = <?php echo date('d-m-Y', strtotime($data['tanggal'])) ?> / <?php echo date('G:i:s', strtotime($data['tanggal'])) ?></p>
-
-													<!-- <p>Total Bayar = Rp. <?php echo number_format($data['total'], 0, ',', '.') ?></p>
-													<a href="?i=detail-pemesanan&id=<?php echo $data['pemesanan_id'] ?>" class="btn btn-default add-to-cart btn-xs pull-right"><i class="fa fa-eye"></i>Detail Menu</a> -->
 
 													<p style="color: red; font-weight: bold;">Total Bayar = Rp. <?php echo number_format($data['total'], 0, ',', '.') ?></p>
 													<a href="?i=detail-pemesanan&id=<?php echo $data['pemesanan_id'] ?>" class="btn btn-warning btn-xs pull-left"><i class="fa fa-eye"></i> Detail Menu</a>

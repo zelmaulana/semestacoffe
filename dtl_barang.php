@@ -3,10 +3,7 @@
 		<div class="row">
 			<?php
 			$sbuku = mysqli_query($koneksi, "SELECT * FROM m_barang a
-								  			 LEFT OUTER JOIN l_kategori b on a.kategori_id = b.kategori_id 
-								  			 LEFT OUTER JOIN l_penerbit c on a.penerbit_id = c.penerbit_id
-								  			 LEFT OUTER JOIN l_penulis d on a.penulis_id = d.penulis_id
-											 WHERE brg_id = '$_GET[id]'");
+								  			 LEFT OUTER JOIN l_kategori b on a.kategori_id = b.kategori_id WHERE brg_id = '$_GET[id]'");
 			$hbuku = mysqli_fetch_array($sbuku);
 			?>
 			<div class="col-sm-12 padding-right">

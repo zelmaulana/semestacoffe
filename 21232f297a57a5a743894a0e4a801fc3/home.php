@@ -10,7 +10,6 @@ $user = mysqli_query($koneksi, "SELECT * FROM m_user WHERE level_id != '1'");
 $u = mysqli_num_rows($user);
 $terkirim = mysqli_query($koneksi, "SELECT * FROM t_pemesanan a
                    LEFT OUTER JOIN m_user c on a.user_id = c.user_id
-                   LEFT OUTER JOIN l_resi d on a.pemesanan_id = d.pemesanan_id
                    WHERE a.status_id = '5'");
 $t = mysqli_num_rows($terkirim);
 ?>

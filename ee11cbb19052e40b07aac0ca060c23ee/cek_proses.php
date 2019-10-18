@@ -16,7 +16,8 @@ include "../functions.php";
 // echo "<pre>";
 // print_r($total);
 // echo "</pre>";
-
+// date_default_timezone_set('Asia/Jakarta');
+// $tgl = date('d-m-Y G:i:s');
 
 $savekerangjang = simpanOrder($_POST["user"]);
 

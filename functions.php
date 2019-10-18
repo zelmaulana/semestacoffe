@@ -1,6 +1,6 @@
 <?php
 
-define("BASE_URL", "http://localhost/semestacoffee/");
+define("BASE_URL", "../");
 
 function kalkulasidiskon($hargaJual, $prosentaseDiskon)
 {
@@ -17,8 +17,8 @@ function insertKeranjang($user_id, $brg_id)
     $hargadiskon = kalkulasidiskon($product["harga_jual"], $product["diskon"]);
     $hargaTotal = $hargadiskon * 1;
 
-    $sql = " INSERT INTO t_keranjang(user_id,brg_id,jumlah_trx,hargabarang,ip,hargadiskon,total)  ";
-    $sql .= " SELECT  " . $user_id . ", '" . $brg_id . "', 1, '" . $product["harga_jual"] . "' , '" . getRealIpAddr() . " ', " . $hargadiskon . " , " . $hargaTotal . " ";
+    $sql = " INSERT INTO t_keranjang(user_id,brg_id,jumlah_trx,hargabarang,ip,hargadiskon,total,jenis_pemesanan_id)  ";
+    $sql .= " SELECT  " . $user_id . ", '" . $brg_id . "', 1, '" . $product["harga_jual"] . "' , '" . getRealIpAddr() . " ', " . $hargadiskon . " , " . $hargaTotal . ", '1' ";
 
 
     if (mysqli_query($koneksi, $sql)) { } else { }
@@ -140,11 +140,13 @@ function getLastNobill($p = 0)
 
 function simpanOrder($userid)
 {
-
+    date_default_timezone_set('Asia/Jakarta');
     include 'koneksi.php';
+    $tgl = date('d-m-Y G:i:s');
     $newNobil = getLastNobill(1);
-    $sql = " INSERT INTO t_order (nobill,catatan,tanggal,userid, total,nomeja)  ";
-    $sql .= " SELECT  '" . $newNobil . "', '" . $_POST["catatan"] . "',  " . time() . ",'" . $userid . "' ,   '" . getTotalPembayaran($userid) . "' ,'" . $_POST["nomeja"] . "'";
+
+    $sql = " INSERT INTO t_order (nobill,catatan,tanggal,userid,total,nomeja,ip)  ";
+    $sql .= " SELECT  '" . $newNobil . "', '" . $_POST["catatan"] . "',  '" . $tgl . "','" . $userid . "' ,   '" . getTotalPembayaran($userid) . "' ,'" . $_POST["nomeja"] . "', '" . getRealIpAddr() . "' ";
 
 
     if (mysqli_query($koneksi, $sql)) {
@@ -204,9 +206,9 @@ function getKeranjang($userid)
     $response = array();
 
 
-    $sql = "SELECT a.brg_id,b.image,b.judul,a.keranjang_id,b.harga_jual,b.diskon,a.jumlah_trx,a.total, a.jumlah_trx, a.total FROM t_keranjang a
- LEFT OUTER JOIN m_barang b on a.brg_id = b.brg_id
-   WHERE a.user_id = '" . $userid . "'  and  ip = '" . getRealIpAddr() . "' ";
+    $sql = "SELECT a.brg_id,b.image,b.judul,a.keranjang_id,b.harga_jual,b.diskon,a.jumlah_trx,a.total FROM t_keranjang a
+    LEFT OUTER JOIN m_barang b on a.brg_id = b.brg_id
+    WHERE a.user_id = '" . $userid . "'  and  ip = '" . getRealIpAddr() . "' ";
 
 
     $result = mysqli_query($koneksi, $sql);
@@ -240,15 +242,17 @@ function getRealIpAddr()
 
 function simpanPemesanan($userid, $nobill)
 {
+    date_default_timezone_set('Asia/Jakarta');
     include 'koneksi.php';
+    $tgl = date('d-m-Y G:i:s');
 
-
-    $sql = " INSERT INTO t_pemesanan (nobill,user_id,time,brg_id,hargabarang,hargadiskon,qty,total)  ";
-    $sql .= " SELECT '" . $nobill . "', user_id, '" . time() . "', brg_id,hargabarang, hargadiskon,jumlah_trx,total   FROM t_keranjang WHERE ip='" . getRealIpAddr() . "' and user_id = '" . $userid . "'  ";
+    $sql = " INSERT INTO t_pemesanan (nobill,user_id,brg_id,status_id,tanggal,hargabarang,hargadiskon,qty,total,ip,jenis_pemesanan_id)  ";
+    $sql .= " SELECT '" . $nobill . "', user_id, brg_id, '2', '" . $tgl . "', hargabarang, hargadiskon,jumlah_trx,total,'" . getRealIpAddr() . "', '1'   FROM t_keranjang WHERE ip='" . getRealIpAddr() . "' and user_id = '" . $userid . "'  ";
 
 
     if (mysqli_query($koneksi, $sql)) {
         updateStok($userid);
+        updateJmlterjual($userid);
         hapuskeranjang($userid);
         header('Location: ' . BASE_URL);
     } else {
@@ -265,6 +269,45 @@ function updateStok($userid)
 
     foreach ($data as $d) {
         $sql = "UPDATE m_barang SET stok = stok -'" . $d["jumlah_trx"] . "'  WHERE brg_id = '" . $d["brg_id"]  . "' ";
+
+        if ($koneksi->query($sql) === TRUE) { } else { }
+    }
+
+    mysqli_close($koneksi);
+}
+
+function getPemesanan($userid)
+{
+    include 'koneksi.php';
+
+    $response = array();
+
+    $sql = "SELECT * FROM t_pemesanan a
+    LEFT OUTER JOIN m_barang b on a.brg_id = b.brg_id
+    WHERE a.user_id = '" . $userid . "'  and  ip = '" . getRealIpAddr() . "' ";
+
+
+    $result = mysqli_query($koneksi, $sql);
+    if (mysqli_num_rows($result) > 0) {
+        // output data of each row
+        while ($row = mysqli_fetch_assoc($result)) {
+            $response[] = $row;
+        }
+    } else {
+        $response[] = null;
+    }
+
+    mysqli_close($koneksi);
+    return $response;
+}
+
+function updateJmlterjual($userid)
+{
+    include 'koneksi.php';
+    $data  = getPemesanan($userid);
+
+    foreach ($data as $d) {
+        $sql = "UPDATE m_barang SET jml_terjual = jml_terjual +'" . $d["qty"] . "'  WHERE brg_id = '" . $d["brg_id"]  . "' ";
 
         if ($koneksi->query($sql) === TRUE) { } else { }
     }
