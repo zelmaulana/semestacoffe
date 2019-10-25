@@ -203,7 +203,7 @@ if (empty($_SESSION['id'])) {
                     <li><a href="?i=<?php echo md5('selesai') ?>"><i class="fa fa-bell"></i>Selesai <sup style="color:#FF3"><i class="fa fa-bell"></i> <?php echo $h3 ?></sup></a></li>
                     </a>
                     </li>
-                    <!-- <li class="treeview">
+                    <li class="treeview">
                       <a href="#">
                         <i class="fa fa-area-chart"></i> <span>Laporan</span>
                         <span class="pull-right-container">
@@ -214,7 +214,7 @@ if (empty($_SESSION['id'])) {
                           <li><a href="?i=<?php echo md5('lap_labarugi') ?>&1=<?php echo date('Y-m-d') ?>&2=<?php echo date('Y-m-d') ?>"><i class="fa fa-area-chart"></i>Laporan Laba Rugi</a></li>
                         </ul>
                       </a>
-                    </li> -->
+                    </li>
                   </ul>
                 </section>
               </aside>
