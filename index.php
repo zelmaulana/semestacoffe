@@ -109,7 +109,7 @@ if ($b == 1) {
 								<div class="col-sm-6">
 									<div class="contactinfo">
 										<ul class="nav nav-pills">
-											<li><a href="#"><i class="fa fa-phone"></i> 0856-4298-8418</a></li>
+											<li><a href="#"><i class="fa fa-phone"></i> 0811 2600 106</a></li>
 											<!-- <li><a href="#"><i class="fa fa-envelope"></i> semesta.coffe@gmail.com</a></li> -->
 											<li><a href="https://www.instagram.com/semesta_coffee/" target="_blank"><i class="fa fa-instagram"></i> semesta_coffee</a></li>
 										</ul>
@@ -138,8 +138,8 @@ if ($b == 1) {
 														$sker = mysqli_query($koneksi, "SELECT * FROM t_keranjang WHERE user_id = '$_SESSION[id]' AND pemesanan_id = '0'");
 														$nker = mysqli_num_rows($sker);
 														?>
-											<li><a href="?i=beranda"><i class="fa fa-home"></i> Beranda</a></li>
-											<li><a href="?i=<?php echo md5('login') ?>"><i class="fa  fa-arrow-circle-right"></i> Masuk</a></li>
+											<li><a href="?i=beranda" class="active"><i class="fa fa-home"></i> Beranda</a></li>
+											<li><a href="?i=<?php echo md5('login') ?>"><i class="fa  fa-lock"></i> Masuk</a></li>
 											<li><a href="?i=<?php echo md5('regis') ?>"><i class="fa  fa-user"></i> Daftar</a></li>
 										</ul>
 									</div>
@@ -154,20 +154,48 @@ if ($b == 1) {
 						<div class="container">
 							<div class="row">
 								<div class="col-sm-9">
+									<div class="navbar-header">
+										<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+											<span class="sr-only">Toggle navigation</span>
+											<span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+										</button>
+									</div>
+									<div class="mainmenu pull-left">
+										<ul class="nav navbar-nav collapse navbar-collapse">
+											<li><a href="?i=beranda" class="active">Beranda</a></li>
+											<!-- <li class="dropdown"><a href="#">Souvenir<i class="fa fa-angle-down"></i></a>
+												<ul role="menu" class="sub-menu">
+													<li><a href="">Kaos</a></li>
+													<li><a href="">Kaos</a></li>
+													<li><a href="">Kaos</a></li>
+												</ul>
+											</li>
+											<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
+												<ul role="menu" class="sub-menu">
+													<li><a href="">Berita</a></li>
+													<li><a href="">Video</a></li>
+												</ul>
+											</li> -->
+											<li><a href="?i=contact">Kontak</a></li>
+										</ul>
+									</div>
 								</div>
-								<div class="col-sm-12">
+								<div class="col-sm-3">
+									<div class="search_box pull-right">
+										<form action="" method="post">
+											<input type="text" placeholder="Search" name="cari" value="<?php echo $_POST['cari'] ?>" />
+											<button type="submit" class="btn btn-warning">Cari</button>
+										</form>
+									</div>
 									<?php
 												switch ($_GET['i']) {
 													case 'detail-barang':
 														break;
 													default:
 														?>
-											<div class="search_box pull-right">
-												<form action="" method="post">
-													<input type="text" style="width: 215px" placeholder="Search" name="cari" value="<?php echo $_POST['cari'] ?>" />
-													<button type="submit" class="btn btn-warning">Cari</button>
-												</form>
-											</div>
+
 										<?php
 												}
 												?>
@@ -195,7 +223,7 @@ if ($b == 1) {
 							<div class="col-sm-6">
 								<div class="contactinfo">
 									<ul class="nav nav-pills">
-										<li><a href="#"><i class="fa fa-phone"></i> 0856-4298-8418</a></li>
+										<li><a href="#"><i class="fa fa-phone"></i> 0811 2600 106</a></li>
 										<!-- <li><a href="#"><i class="fa fa-envelope"></i> semesta.coffe@gmail.com</a></li> -->
 										<li><a href="https://www.instagram.com/semesta_coffee/" target="_blank"><i class="fa fa-instagram"></i> semesta_coffee</a></li>
 									</ul>
@@ -224,8 +252,8 @@ if ($b == 1) {
 												$sker = mysqli_query($koneksi, "SELECT * FROM t_keranjang WHERE user_id = '$_SESSION[id]' AND pemesanan_id = '0'");
 												$nker = mysqli_num_rows($sker);
 												?>
-										<li><a href="?i=beranda"><i class="fa fa-home"></i> Beranda</a></li>
-										<li><a href="?i=<?php echo md5('login') ?>"><i class="fa  fa-arrow-circle-right"></i> Masuk</a></li>
+										<li><a href="?i=beranda" class="active"><i class="fa fa-home"></i> Beranda</a></li>
+										<li><a href="?i=<?php echo md5('login') ?>"><i class="fa  fa-lock"></i> Masuk</a></li>
 										<li><a href="?i=<?php echo md5('regis') ?>"><i class="fa  fa-user"></i> Daftar</a></li>
 									</ul>
 								</div>
@@ -240,20 +268,47 @@ if ($b == 1) {
 					<div class="container">
 						<div class="row">
 							<div class="col-sm-9">
+								<div class="navbar-header">
+									<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+										<span class="sr-only">Toggle navigation</span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+									</button>
+								</div>
+								<div class="mainmenu pull-left">
+									<ul class="nav navbar-nav collapse navbar-collapse">
+										<li><a href="?i=beranda" class="active">Beranda</a></li>
+										<!-- <li class="dropdown"><a href="#">Souvenir<i class="fa fa-angle-down"></i></a>
+											<ul role="menu" class="sub-menu">
+												<li><a href="">Kaos</a></li>
+												<li><a href="">Kaos</a></li>
+												<li><a href="">Kaos</a></li>
+											</ul>
+										</li>
+										<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
+											<ul role="menu" class="sub-menu">
+												<li><a href="">Berita</a></li>
+												<li><a href="">Video</a></li>
+											</ul>
+										</li> -->
+										<li><a href="?i=contact">Kontak</a></li>
+									</ul>
+								</div>
 							</div>
-							<div class="col-sm-12">
+							<div class="col-sm-3">
+								<div class="search_box pull-right">
+									<form action="" method="post">
+										<input type="text" placeholder="Search" name="cari" value="<?php echo $_POST['cari'] ?>" />
+										<button type="submit" class="btn btn-warning">Cari</button>
+									</form>
+								</div>
 								<?php
 										switch ($_GET['i']) {
 											case 'detail-barang':
 												break;
 											default:
 												?>
-										<div class="search_box pull-right">
-											<form action="" method="post">
-												<input type="text" style="width: 215px" placeholder="Search" name="cari" value="<?php echo $_POST['cari'] ?>" />
-												<button type="submit" class="btn btn-warning">Cari</button>
-											</form>
-										</div>
 									<?php
 										}
 										?>
@@ -297,6 +352,9 @@ if ($b == 1) {
 						break;
 					case "detail-barang":
 						require_once('dtl_barang.php');
+						break;
+					case "contact":
+						require_once('contact.php');
 						break;
 					case md5('beli'):
 						?>
@@ -345,16 +403,27 @@ if ($b == 1) {
 								</div>
 							</div>
 							<div class="col-sm-3">
-								<div class="address">
-									<img src="images/home/map.png" alt="" />
-									<p style="text-align:center; color: orange;">Jl. Tegalsari Dukuhwaluh, Kembaran, Belakang Kampus 1 UMP</p>
+								<div class="companyinfo">
+									<h2><span>Jam</span> Operasional</h2>
+									<ul class="nav nav-pills nav-stacked">
+										<li>Setiap Hari</li>
+										<li>09.00 - 24.00 WIB</li>
+									</ul>
 								</div>
 							</div>
 							<div class="col-sm-3">
 								<div class="companyinfo">
-									<h2><span>Jam Operasional</span></h2>
-									<p style="color: orange;">Setiap Hari</p>
-									<p style="color: orange;">09.00 - 24.00 WIB</p>
+									<h2><span>Kontak</span> Kami</h2>
+									<ul class="nav nav-pills nav-stacked">
+										<li>Whatsapp: 0811 2600 106</li>
+										<li>Email: coffeesemesta@gmail.com</li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<div class="address">
+									<img src="images/home/map.png" alt="" />
+									<p style="color: black;">Jl. Tegalsari Dukuhwaluh, Kembaran, Belakang Kampus 1 UMP, Purwokerto, Jawa Tengah</p>
 								</div>
 							</div>
 						</div>
@@ -363,7 +432,7 @@ if ($b == 1) {
 				<div class="footer-bottom">
 					<div class="container">
 						<div class="row">
-							<p class="pull-left">Copyright © 2019 Semesta Coffee Inc.</p>
+							<p class="pull-left">Copyright © 2019 Semesta Coffee Inc. All rights reserved.</p>
 						</div>
 					</div>
 				</div>
@@ -375,7 +444,8 @@ if ($b == 1) {
 			<!-- /.login-box -->
 			<!-- jQuery 2.2.3 -->
 			<script src="js/jquery.js"></script>
-
+			<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+			<script type="text/javascript" src="js/gmaps.js"></script>
 			<script src="js/price-range.js"></script>
 			<script src="js/jquery.scrollUp.min.js"></script>
 			<script src="js/bootstrap.min.js"></script>

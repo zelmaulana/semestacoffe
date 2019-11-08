@@ -27,8 +27,8 @@ $nobill = getLastNobill(1);
 
 					<?php
 					$sql  = "SELECT b.image,b.judul,b.deskripsi,b.estimasi_menu,b.harga_jual,b.diskon,a.jumlah_trx,a.total,a.hargadiskon,a.keranjang_id FROM t_keranjang a
-LEFT OUTER JOIN m_barang b on a.brg_id = b.brg_id
-WHERE a.user_id = '$_SESSION[id]' AND ip = '" . getRealIpAddr() . "' AND  pemesanan_id = 1";
+					LEFT OUTER JOIN m_barang b on a.brg_id = b.brg_id
+					WHERE a.user_id = '$_SESSION[id]' AND ip = '" . getRealIpAddr() . "' AND  pemesanan_id = 1";
 
 					$sker = mysqli_query($koneksi, $sql);
 					$nker = mysqli_num_rows($sker);
@@ -53,7 +53,8 @@ WHERE a.user_id = '$_SESSION[id]' AND ip = '" . getRealIpAddr() . "' AND  pemesa
 
 							while ($hker = mysqli_fetch_array($sker)) {
 								$diskon = $hker['diskon'] / 100;
-
+								$user_id = $hker['user_id'];
+								$brg_id = $hker['brg_id'];
 								$hrg = $hker['total'] / $hker['jumlah_trx'];
 								?>
 							<tr>
@@ -80,9 +81,17 @@ WHERE a.user_id = '$_SESSION[id]' AND ip = '" . getRealIpAddr() . "' AND  pemesa
 								</td>
 								<td class="cart_quantity" width="15%">
 									<div class="cart_quantity_button">
-										<!-- <a class="cart_quantity_up" href="?i=<?php echo md5('min_jumlah') ?>&id=<?php echo $hker['keranjang_id'] ?>"> - </a>  -->
+										<a href="?i=<?php echo md5('min_jumlah') ?>&id=<?php echo $hker['keranjang_id'] ?> 
+										<?php if ($hker['jumlah_trx'] == 1) {
+													echo "class='not_allowed'";
+												} else {
+													echo "";
+												}  ?>"> - </a>
+
+
 										<input class="cart_quantity_input" type="text" name="quantity" value="<?php echo $hker['jumlah_trx'] ?>" autocomplete="off" size="2" disabled>
-										<!-- <a class="cart_quantity_down" href="?i=<?php echo md5('plus_jumlah') ?>&id=<?php echo $hker['keranjang_id'] ?>"> + </a>  -->
+
+										<a class="cart_quantity_down" href="?i=<?php echo md5('plus_jumlah') ?>&id=<?php echo $hker['keranjang_id'] ?>"> + </a>
 									</div>
 								</td>
 								<td class="cart_total">
@@ -164,6 +173,25 @@ WHERE a.user_id = '$_SESSION[id]' AND ip = '" . getRealIpAddr() . "' AND  pemesa
 	</div>
 </section>
 <!--/#do_action-->
+
+<style type="text/css">
+	.disabled {
+		color: currentColor;
+		pointer-events: none;
+		cursor: not-allowed;
+		opacity: 0.5;
+		text-decoration: none;
+	}
+
+	.not_allowed {
+		pointer-events: none;
+		cursor: default;
+	}
+
+	a[disabled="disabled"] {
+		pointer-events: none;
+	}
+</style>
 
 
 <script>

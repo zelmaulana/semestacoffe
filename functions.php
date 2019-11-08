@@ -81,6 +81,24 @@ function tambahQty($user_id, $brg_id)
     mysqli_close($koneksi);
 }
 
+function kurangiQty($user_id, $brg_id)
+{
+    include 'koneksi.php';
+
+    $product = getDetailsProduct($brg_id);
+    $detailsBarang = getDetailsBarangCart($user_id, $brg_id);
+    $newQty =  --$detailsBarang["jumlah_trx"];
+
+    //$hargadiskon = kalkulasidiskon($product["harga_jual"], $product["diskon"]);
+    $total = $newQty  * $detailsBarang["hargadiskon"];
+
+    $sql = "UPDATE t_keranjang SET jumlah_trx ='" . $newQty . "' , total  = '" . $total . "' WHERE  ip = '" . getRealIpAddr() . "' and  user_id = '" . $user_id . "' and brg_id = '" . $brg_id . "'  ";
+
+    if ($koneksi->query($sql) === TRUE) { } else { }
+
+    mysqli_close($koneksi);
+}
+
 function getDetailsBarangCart($userid, $brngId)
 {
     include 'koneksi.php';
@@ -98,10 +116,7 @@ function getDetailsBarangCart($userid, $brngId)
     mysqli_close($koneksi);
     return $response;
 }
-function kurangiQty($user_id, $brg_id)
-{
-    //
-}
+
 
 function getLastNobill($p = 0)
 {

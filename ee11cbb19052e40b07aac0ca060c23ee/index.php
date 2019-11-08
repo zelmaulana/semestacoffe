@@ -1,6 +1,4 @@
 <?php
-
-
 session_start();
 error_reporting(0);
 //include 'functions.php';
@@ -41,23 +39,6 @@ if (empty($_SESSION['id'])) {
 	<script>
 		window.location = "../";
 		alert("Silahkan Login Terlebih Dahulu!!!");
-
-		// Swal.fire({
-		// 	title: 'Silahkan login dulu yaa kak,',
-		// 	animation: false,
-		// 	customClass: {
-		// 		popup: 'animated tada'
-		// 	},
-		// 	text: "",
-		// 	type: 'warning',
-		// 	showCancelButton: false,
-		// 	confirmButtonColor: '#FFA500',
-		// 	confirmButtonText: 'Yaa, login'
-		// }).then((result) => {
-		// 	if (result.value) {
-		// 		window.location = "../";
-		// 	}
-		// })
 	</script>
 	<?php
 	} else {
@@ -86,9 +67,9 @@ if (empty($_SESSION['id'])) {
 			<link href="../css/responsive.css" rel="stylesheet">
 			<script src="../assets/sweetalert2/sweetalert2.all.min.js"></script>
 			<!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
+			<script src="js/html5shiv.js"></script>
+			<script src="js/respond.min.js"></script>
+			<![endif]-->
 			<link rel="shortcut icon" href="images/ico/favicon.ico">
 			<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../images/ico/apple-touch-icon-144-precomposed.png">
 			<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../images/ico/apple-touch-icon-114-precomposed.png">
@@ -107,7 +88,7 @@ if (empty($_SESSION['id'])) {
 							<div class="col-sm-6">
 								<div class="contactinfo">
 									<ul class="nav nav-pills">
-										<li><a href="#"><i class="fa fa-phone"></i> 0856-4298-8418</a></li>
+										<li><a href="#"><i class="fa fa-phone"></i> 0811 2600 106</a></li>
 										<!-- <li><a href="#"><i class="fa fa-envelope"></i> semesta.coffe@gmail.com</a></li> -->
 										<li><a href="https://www.instagram.com/semesta_coffee/" target="_blank"><i class="fa fa-instagram"></i> semesta_coffee</a></li>
 									</ul>
@@ -135,16 +116,16 @@ if (empty($_SESSION['id'])) {
 										<?php
 												$sker = mysqli_query($koneksi, "SELECT * FROM t_keranjang WHERE user_id = '$_SESSION[id]' AND ip  = '" . getRealIpAddr() . "'  and pemesanan_id = 1");
 												$nker = mysqli_num_rows($sker);
-												$sker1 = mysqli_query($koneksi, "SELECT * FROM t_pemesanan a WHERE a.status_id < '5' AND a.user_id = '$_SESSION[id]' AND ip = '".getRealIpAddr()."'");
+												$sker1 = mysqli_query($koneksi, "SELECT * FROM t_pemesanan a WHERE a.status_id < '5' AND a.user_id = '$_SESSION[id]' AND ip = '" . getRealIpAddr() . "'");
 												$nker1 = mysqli_num_rows($sker1);
 												?>
-										<li><a href="?i=beranda"><i class="fa fa-home"></i> Beranda</a></li>
+										<li><a href="?i=beranda" class="active"><i class="fa fa-home"></i> Beranda</a></li>
+										<!-- <li><a href="?i=saya"><i class="fa fa-user"></i> Akun</a></li> -->
 										<li><a href="?i=list_pemesanan"><i class="fa fa-book"></i> Pesanan
 												<span class="label label-warning"><?php echo $nker1 ?></span></a></li>
 										<li><a href="?i=keranjang"><i class="fa fa-shopping-cart"></i> Keranjang
 												<span class="label label-warning"><?php echo $nker ?></span></a></li>
-										<li><a href="?i=saya"><i class="fa fa-user"></i> Akun</a></li>
-										<li><a href="../logout.php"><i class="fa  fa-arrow-circle-right"></i> Keluar</a></li>
+										<!-- <li><a href="../logout.php"><i class="fa  fa-arrow-circle-right"></i> Keluar</a></li> -->
 									</ul>
 								</div>
 							</div>
@@ -158,8 +139,47 @@ if (empty($_SESSION['id'])) {
 					<div class="container">
 						<div class="row">
 							<div class="col-sm-9">
+								<div class="navbar-header">
+									<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+										<span class="sr-only">Toggle navigation</span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+									</button>
+								</div>
+								<div class="mainmenu pull-left">
+									<ul class="nav navbar-nav collapse navbar-collapse">
+										<li><a href="?i=beranda" class="active">Beranda</a></li>
+										<!-- <li class="dropdown"><a href="#">Souvenir<i class="fa fa-angle-down"></i></a>
+											<ul role="menu" class="sub-menu">
+												<li><a href="">Kaos</a></li>
+												<li><a href="">Kaos</a></li>
+												<li><a href="">Kaos</a></li>
+											</ul>
+										</li>
+										<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
+											<ul role="menu" class="sub-menu">
+												<li><a href="">Berita</a></li>
+												<li><a href="">Video</a></li>
+											</ul>
+										</li> -->
+										<li><a href="?i=contact">Kontak</a></li>
+										<li class="dropdown"><a href="#">Akun<i class="fa fa-angle-down"></i></a>
+											<ul role="menu" class="sub-menu">
+												<li><a href="?i=saya">Profil</a></li>
+												<li><a href="../logout.php">Keluar</a></li>
+											</ul>
+										</li>
+									</ul>
+								</div>
 							</div>
-							<div class="col-sm-12">
+							<div class="col-sm-3">
+								<div class="search_box pull-right">
+									<form action="" method="post">
+										<input type="text" placeholder="Search" name="cari" value="<?php echo $_POST['cari'] ?>" />
+										<button type="submit" class="btn btn-warning">Cari</button>
+									</form>
+								</div>
 								<?php
 										switch ($_GET['i']) {
 											case 'detail-barang':
@@ -182,12 +202,6 @@ if (empty($_SESSION['id'])) {
 												break;
 											default:
 												?>
-										<div class="search_box pull-right">
-											<form action="" method="post">
-												<input type="text" style="width: 215px" placeholder="Search" name="cari" value="<?php echo $_POST['cari'] ?>" />
-												<button type="submit" class="btn btn-warning">Cari</button>
-											</form>
-										</div>
 									<?php
 										}
 										?>
@@ -259,13 +273,14 @@ if (empty($_SESSION['id'])) {
 						case md5('min_jumlah'):
 							$sker = mysqli_query($koneksi, "SELECT * FROM t_keranjang WHERE keranjang_id = '$_GET[id]'");
 							$hker = mysqli_fetch_array($sker);
-							mysqli_query($koneksi, "UPDATE t_keranjang SET jumlah_trx = jumlah_trx-1 WHERE keranjang_id = '$_GET[id]'");
+							mysqli_query($koneksi, "UPDATE t_keranjang SET jumlah_trx = jumlah_trx-1, total = jumlah_trx*hargadiskon WHERE keranjang_id = '$_GET[id]'");
 							$sker1 = mysqli_query($koneksi, "SELECT * FROM t_keranjang WHERE keranjang_id = '$_GET[id]'");
 							$hker1 = mysqli_fetch_array($sker1);
 							if ($hker1['jumlah_trx'] < 1) {
 								mysqli_query($koneksi, "DELETE FROM t_keranjang WHERE keranjang_id = '$_GET[id]'");
 							}
 							?>
+
 					<script>
 						window.location = "?i=keranjang";
 					</script>
@@ -274,7 +289,7 @@ if (empty($_SESSION['id'])) {
 						case md5('plus_jumlah'):
 							$sker = mysqli_query($koneksi, "SELECT * FROM t_keranjang WHERE keranjang_id = '$_GET[id]'");
 							$hker = mysqli_fetch_array($sker);
-							mysqli_query($koneksi, "UPDATE t_keranjang SET jumlah_trx = jumlah_trx+1 WHERE keranjang_id = '$_GET[id]'");
+							mysqli_query($koneksi, "UPDATE t_keranjang SET jumlah_trx = jumlah_trx+1, total = jumlah_trx*hargadiskon WHERE keranjang_id = '$_GET[id]'");
 							?>
 					<script>
 						window.location = "?i=keranjang";
@@ -325,6 +340,9 @@ if (empty($_SESSION['id'])) {
 						case 'detail-pemesanan':
 							require_once('detail_pemesanan.php');
 							break;
+						case "contact":
+							require_once('contact.php');
+							break;
 						case 'diterima':
 							$sdata = mysqli_query($koneksi, "SELECT * FROM t_keranjang a
 											 LEFT OUTER JOIN m_barang b on a.brg_id = b.brg_id
@@ -373,16 +391,27 @@ if (empty($_SESSION['id'])) {
 									</div>
 								</div>
 								<div class="col-sm-3">
-									<div class="address">
-										<img src="../images/home/map.png" alt="" />
-										<p style="text-align:center; color: orange;">Jl. Tegalsari Dukuhwaluh, Kembaran, Belakang Kampus 1 UMP</p>
+									<div class="companyinfo">
+										<h2><span>Jam</span> Operasional</h2>
+										<ul class="nav nav-pills nav-stacked">
+											<li>Setiap Hari</li>
+											<li>09.00 - 24.00 WIB</li>
+										</ul>
 									</div>
 								</div>
 								<div class="col-sm-3">
 									<div class="companyinfo">
-										<h2><span>Jam Operasional</span></h2>
-										<p style="color: orange;">Setiap Hari</p>
-										<p style="color: orange;">09.00 - 24.00 WIB</p>
+										<h2><span>Kontak</span> Kami</h2>
+										<ul class="nav nav-pills nav-stacked">
+											<li>Whatsapp: 0811 2600 106</li>
+											<li>Email: coffeesemesta@gmail.com</li>
+										</ul>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="address">
+										<img src="../images/home/map.png" alt="" />
+										<p style="color: black;">Jl. Tegalsari Dukuhwaluh, Kembaran, Belakang Kampus 1 UMP, Purwokerto, Jawa Tengah</p>
 									</div>
 								</div>
 							</div>
@@ -391,7 +420,7 @@ if (empty($_SESSION['id'])) {
 					<div class="footer-bottom">
 						<div class="container">
 							<div class="row">
-								<p class="pull-left">Copyright © 2019 Semesta Coffee Inc.</p>
+								<p class="pull-left">Copyright © 2019 Semesta Coffee Inc. All rights reserved.</p>
 							</div>
 						</div>
 					</div>

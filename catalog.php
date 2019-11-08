@@ -459,8 +459,6 @@
 							?>
 
 
-
-
 							<!-- kie sing jalan -->
 							<div class="tab-content">
 								<div class="tab-pane fade active in" id="rekomendasi" >
@@ -629,7 +627,6 @@
 						?>
 							</div>
 						</div>
-                        
 					</div><!--/category-tab-->
 				</div>
 			</div>
