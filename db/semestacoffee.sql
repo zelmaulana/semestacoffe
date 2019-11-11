@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2019 at 12:07 AM
+-- Generation Time: Nov 11, 2019 at 10:12 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -236,7 +236,7 @@ INSERT INTO `m_barang` (`brg_id`, `judul`, `estimasi_menu`, `stok`, `jenis_id`, 
 (32, 'Brownies', '20 menit', 99, 1, 3, 6000, 10000, 1, 0.00, 'brownies.jpg', 'Brownies'),
 (33, 'Singkong Crispy', '20 menit', 100, 1, 3, 6000, 7000, 0, 0.00, 'coffee-480x385.jpg', 'Singkong Crispy'),
 (34, 'Kopiko', '40 menit', 100, 1, 1, 6000, 9000, 0, 0.00, 'coffee-480x385.jpg', 'Kopiko'),
-(35, 'Kopi Tubruk', '3', 100, 1, 1, 7000, 15000, 0, 10.00, 'coffee-480x385.jpg', 'Okok'),
+(35, 'Kopi Tubruk', '3', 99, 1, 1, 7000, 15000, 1, 10.00, 'coffee-480x385.jpg', 'Okok'),
 (36, 'Coklat Semesta', '2', 100, 1, 4, 7000, 10000, 0, 30.00, 'coffee-480x385.jpg', 'coklat semesta'),
 (37, 'Nasi Saus Padang', '15', 100, 1, 5, 7000, 10000, 0, 30.00, 'coffee-480x385.jpg', 'nasi saus padang semesta');
 
@@ -289,13 +289,6 @@ CREATE TABLE `t_keranjang` (
   `jenis_pemesanan_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `t_keranjang`
---
-
-INSERT INTO `t_keranjang` (`keranjang_id`, `user_id`, `brg_id`, `hargabarang`, `jumlah_trx`, `total`, `ip`, `pemesanan_id`, `hargadiskon`, `jenis_pemesanan_id`) VALUES
-(3, 2, 37, 10000, 1, 7000, '::1 ', 1, 7000, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -312,15 +305,6 @@ CREATE TABLE `t_order` (
   `nomeja` varchar(2) DEFAULT NULL,
   `ip` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `t_order`
---
-
-INSERT INTO `t_order` (`id`, `nobill`, `catatan`, `tanggal`, `userid`, `total`, `nomeja`, `ip`) VALUES
-(1, '000001', '', '17-10-2019 21:01:27', 2, 33000, '6', '::1'),
-(2, '000002', '', '17-10-2019 21:02:00', 2, 17100, '13', '::1'),
-(3, '000003', '', '18-10-2019 16:46:29', 2, 10000, '19', '::1');
 
 -- --------------------------------------------------------
 
@@ -342,15 +326,6 @@ CREATE TABLE `t_pemesanan` (
   `ip` varchar(20) NOT NULL,
   `jenis_pemesanan_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `t_pemesanan`
---
-
-INSERT INTO `t_pemesanan` (`pemesanan_id`, `user_id`, `total`, `status_id`, `tanggal`, `nobill`, `brg_id`, `hargabarang`, `hargadiskon`, `qty`, `ip`, `jenis_pemesanan_id`) VALUES
-(1, 2, 33000, 5, '17-10-2019 21:01:27', '000001', 9, 11000, 11000, 3, '::1', 1),
-(2, 2, 17100, 2, '17-10-2019 21:02:00', '000002', 5, 9000, 8550, 2, '::1', 1),
-(3, 2, 10000, 4, '18-10-2019 16:46:29', '000003', 32, 10000, 10000, 1, '::1', 1);
 
 --
 -- Indexes for dumped tables
@@ -490,19 +465,19 @@ ALTER TABLE `m_user`
 -- AUTO_INCREMENT for table `t_keranjang`
 --
 ALTER TABLE `t_keranjang`
-  MODIFY `keranjang_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `keranjang_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `t_order`
 --
 ALTER TABLE `t_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `t_pemesanan`
 --
 ALTER TABLE `t_pemesanan`
-  MODIFY `pemesanan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `pemesanan_id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
